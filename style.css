@@ -290,6 +290,41 @@ body::before {
   text-align: center;
 }
 
+/* ── Devices teaser ────────────────────────────────────────────────────────── */
+
+.devices-teaser {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--dim);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+
+.devices-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.devices-status {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--dim);
+}
+
+.devices-status .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  margin-right: 6px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
 /* ── Download ──────────────────────────────────────────────────────────────── */
 
 .download-section {
