@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "website",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["-m", "http.server", "3333"],
+      "port": 3333,
+      "cwd": "/Users/philipp/Projects/Deeptimerapp/website"
+    }
+  ]
+}
