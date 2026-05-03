@@ -1,0 +1,100 @@
+# ─────────────────────────────────────────────────────────────────────────
+# ELEMENT | 08 — Season Plan Template (.e08plan.csv  v1)
+# ─────────────────────────────────────────────────────────────────────────
+# A multi-phase progression toward a target competition or PB attempt.
+# Save as CSV (UTF-8) when you're done editing, then send the file to
+# your student. They tap IMPORT PLAN FROM FILE in the Plans screen.
+#
+# How this file works
+# ───────────────────
+# The plan is split across five sections (META / PHASES / WEEKS /
+# SESSIONS / EXERCISES). Lines starting with "#" are comments and get
+# ignored by the importer. Edit the rows under each section's header,
+# add as many as you need. Every row is keyed by index columns
+# (phase_idx → week_idx → session_idx → exercise_idx) so you can sort
+# or filter rows in your spreadsheet without breaking the import.
+#
+# Phases group consecutive weeks. A typical season has 3-5 phases
+# (e.g. base → capacity → specific → taper → competition).
+#
+# Tip: after first save, re-import the file in the app to verify it
+# parses cleanly. You'll see warnings for any unknown values.
+
+# === META ===
+# Required: title, author, type, kind.
+# kind:    training | season
+# mode:    depth | pool | general (plan-level guidance — sessions can override)
+key,value
+title,8-Week Depth Build to 35m
+author,Coach Maya
+type,season_plan
+kind,season
+mode,depth
+description,Two-phase build for divers with a 25-30m PB targeting 35m. Base builds CO2 + EQ rhythm; Capacity adds depth volume + mouthfill work.
+start_date,
+competition_date,
+
+# === PHASES ===
+# One row per phase. phase_idx starts at 0 and must be sequential.
+# type:  base | capacity | specific | taper | competition | transition
+phase_idx,id,name,type
+0,phase_base,Base,base
+1,phase_capacity,Capacity,capacity
+
+# === WEEKS ===
+# One row per week. week_idx restarts at 0 inside each phase. Leave
+# week_start blank to anchor at plan activation; the app fills in
+# concrete dates when the student activates the plan.
+# intensity: recovery | low | medium | high | max
+phase_idx,week_idx,week_start,focus,intensity,target_sessions,notes
+0,0,,Establish session rhythm. Comfort and relaxation in shallow water.,low,3,Don't push depth this week. Build the habit.
+0,1,,Build FRC volume. Introduce bottom hangs at 10-15m.,low,3,
+0,2,,Increase progressive dive depth. Add FRC mouthfill drills.,medium,3,Aim for 3 dives in the 18-22m range.
+0,3,,Deload. Reduce intensity. Let adaptations settle.,recovery,2,Easy week before pushing into Capacity.
+1,0,,Final base week. Build back from deload.,medium,3,
+1,1,,Push depth toward 25m on adaptation dives.,medium,3,
+1,2,,Extend bottom hangs to 8-10s at adaptation depth.,high,3,Stop if EQ rhythm breaks.
+1,3,,Mouthfill chargework + first attempts at 30m+.,high,2,Quality over quantity. Two well-prepped dives is plenty.
+
+# === SESSIONS ===
+# One row per session. day_of_week: 0=Mon 1=Tue 2=Wed 3=Thu 4=Fri 5=Sat 6=Sun.
+# mode: depth | pool | dry | general — drives the in-app session-type pills.
+# session_type — values depend on mode:
+#   depth:    EQ, DA, TE, FE, MAX, RC
+#   pool:     VOL, CO2, O2, SP, TE, MAX, FUN, RC
+#   dry:      co2_table, o2_table, comfy, pb_attempt, recovery
+#   general:  leave blank
+phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
+0,0,0,s_b0_0,1,Dry CO2 base,dry,co2_table
+0,0,1,s_b0_1,3,Shallow comfort dives,depth,RC
+0,0,2,s_b0_2,5,Pool aerobic,pool,VOL
+0,1,0,s_b1_0,1,Dry CO2 progression,dry,co2_table
+0,1,1,s_b1_1,3,FRC dives + bottom hangs,depth,EQ
+0,1,2,s_b1_2,5,Pool DYN technique,pool,TE
+0,2,0,s_b2_0,1,Dry CO2 stress,dry,co2_table
+0,2,1,s_b2_1,3,Adaptation dives,depth,DA
+0,2,2,s_b2_2,5,Pool DYN volume,pool,VOL
+0,3,0,s_b3_0,2,Easy dry session,dry,comfy
+0,3,1,s_b3_1,4,Recovery dives,depth,RC
+1,0,0,s_c0_0,1,Dry O2 prep,dry,o2_table
+1,0,1,s_c0_1,3,Mouthfill drill dives,depth,EQ
+1,0,2,s_c0_2,5,Pool DYN max,pool,MAX
+1,1,0,s_c1_0,1,Dry O2 progression,dry,o2_table
+1,1,1,s_c1_1,3,Adaptation toward 25m,depth,DA
+1,1,2,s_c1_2,5,Pool aerobic recovery,pool,VOL
+1,2,0,s_c2_0,1,Dry O2 stress,dry,o2_table
+1,2,1,s_c2_1,3,Long-hang adaptation,depth,DA
+1,2,2,s_c2_2,5,Pool quality DYN,pool,VOL
+1,3,0,s_c3_0,2,Mental prep + dry hangs,dry,pb_attempt
+1,3,1,s_c3_1,4,Max attempt session,depth,MAX
+
+# === EXERCISES ===
+# One row per exercise. Free-text descriptions — be specific. The
+# student sees these in the session detail screen.
+phase_idx,week_idx,session_idx,exercise_idx,exercise_id,description
+0,0,0,0,ex_b00_0,"CO2 table — 8 holds at 60% max, 1:30 → 1:00 rest."
+0,0,1,0,ex_b01_0,3 dives to 5-8m. Long surface intervals (5+ min). Focus relaxation.
+0,0,2,0,ex_b02_0,20 min easy continuous swim with snorkel.
+0,1,1,0,ex_b11_0,5 FRC dives at 8-12m with 5s bottom hang. Focus EQ rhythm.
+1,3,0,0,ex_c30_0,Visualisation + dry breathe-up routine. 20 min.
+1,3,1,0,ex_c31_0,Full warm-up protocol. One quality attempt at goal depth.

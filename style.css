@@ -228,6 +228,88 @@ body::before {
 .feature-card.green  { border-left-color: var(--green); }
 .feature-card.white  { border-left-color: var(--white); }
 
+/* ── For Coaches ──────────────────────────────────────────────────────────── */
+
+.coaches-intro {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 720px;
+  margin-bottom: 24px;
+}
+
+.coaches-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.coach-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--amber);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+
+.coach-card:nth-child(2) {
+  border-left-color: var(--green);
+}
+
+.coach-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.coach-card-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--dim);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.coach-card-title {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+
+.coach-card-desc {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.coach-card-cta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.coaches-note {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.6;
+  max-width: 720px;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+.coaches-note strong {
+  color: var(--text);
+  font-style: normal;
+}
+
 /* ── Screenshots ───────────────────────────────────────────────────────────── */
 
 .screenshots {
@@ -523,6 +605,7 @@ body::before {
   .hero-title { font-size: 24px; letter-spacing: 4px; }
   .hero-tagline { font-size: 9px; }
   .features-grid { grid-template-columns: 1fr; }
+  .coaches-grid { grid-template-columns: 1fr; }
   .phone-frame { width: 190px; border-radius: 22px; padding: 10px; }
   .phone-notch { width: 64px; height: 18px; top: 10px; border-radius: 0 0 10px 10px; }
   .phone-frame img { border-radius: 12px; }
