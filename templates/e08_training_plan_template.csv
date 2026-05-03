@@ -1,26 +1,10 @@
-# ─────────────────────────────────────────────────────────────────────────
-# ELEMENT | 08: Training Plan Template (.e08plan.csv  v1)
-# ─────────────────────────────────────────────────────────────────────────
-# A short focus block (1+ weeks, no phases). Save as CSV (UTF-8) when
-# you're done editing, then send the file to your student. They tap
-# IMPORT PLAN FROM FILE in the Plans screen and pick this CSV.
-#
-# How this file works
-# ───────────────────
-# The plan is split across five sections (META / PHASES / WEEKS /
-# SESSIONS / EXERCISES). Lines starting with "#" are comments and get
-# ignored by the importer. Edit the rows under each section's header,
-# add as many as you need. Every row is keyed by index columns
-# (phase_idx → week_idx → session_idx → exercise_idx) so you can sort
-# or filter rows in your spreadsheet without breaking the import.
-#
-# Tip: after first save, re-import the file in the app to verify it
-# parses cleanly. You'll see warnings for any unknown values.
+ELEMENT | 08 Training Plan Template,,,,,,,
+,,,,,,,
+This file is a working example. Edit the cells to make it your plan.,,,,,,,
+Save as CSV (UTF-8) when done. Send the file to your student.,,,,,,,
+Reference for valid values is at the bottom of this file.,,,,,,,
 
 # === META ===
-# Required: title, author, type, kind. Type training_plan = no phases.
-# kind:    training | season
-# mode:    depth | pool | dry | general
 key,value
 title,Pre-trip CO2 ramp
 author,Coach Maya
@@ -31,29 +15,15 @@ description,2-week pool block for divers prepping a depth trip. Builds CO2 toler
 start_date,
 
 # === PHASES ===
-# Training plans always have exactly one phase. Leave this row alone
-# unless you're converting the file to a season plan.
-# type:  base | capacity | specific | taper | competition | transition
 phase_idx,id,name,type
 0,phase_0,Training Plan,base
 
 # === WEEKS ===
-# One row per week. week_idx starts at 0. Leave week_start blank to
-# anchor at activation (recommended for short coach handouts). The
-# app fills it in when the student activates the plan.
-# intensity: recovery | low | medium | high | max
 phase_idx,week_idx,week_start,focus,intensity,target_sessions,notes
 0,0,,Build CO2 base. Aerobic distance. Easy turn rhythm.,low,3,Pool sessions only. No depth.
 0,1,,Add CO2 stress. Shorter rests on DYN sets.,medium,3,Watch for over-reaching. Back off if recovery suffers.
 
 # === SESSIONS ===
-# One row per session. day_of_week: 0=Mon 1=Tue 2=Wed 3=Thu 4=Fri 5=Sat 6=Sun.
-# mode: depth | pool | dry | general. Drives the in-app session-type pills.
-# session_type, values depend on mode:
-#   depth:    EQ, DA, TE, FE, MAX, RC
-#   pool:     VOL, CO2, O2, SP, TE, MAX, FUN, RC
-#   dry:      co2_table, o2_table, comfy, pb_attempt, recovery
-#   general:  leave blank
 phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
 0,0,0,sess_w1_a,1,Aerobic distance,pool,VOL
 0,0,1,sess_w1_b,3,CO2 table,dry,co2_table
@@ -63,14 +33,60 @@ phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
 0,1,2,sess_w2_c,5,Recovery swim,pool,RC
 
 # === EXERCISES ===
-# One row per exercise. Free-text descriptions, be specific. The
-# student sees these in the session detail screen.
 phase_idx,week_idx,session_idx,exercise_idx,exercise_id,description
 0,0,0,0,ex_1,15 min easy continuous swim with snorkel. Long even strokes.
 0,0,0,1,ex_2,4x100m DYN @ 2:30 send-off. Aim for relaxed 1:30/100m pace.
-0,0,1,0,ex_3,"CO2 table: 8 holds, max length 1:30, decreasing rest 1:30 → 1:00."
+0,0,1,0,ex_3,"CO2 table: 8 holds, max length 1:30, decreasing rest 1:30 to 1:00."
 0,0,2,0,ex_4,Drill set: 4x25m streamline + 4x25m perfect turns.
 0,0,2,1,ex_5,3x50m DYN at moderate pace. Focus glide.
 0,1,0,0,ex_6,5x75m DYN @ 2:00 send-off. Push the last two.
-0,1,1,0,ex_7,"CO2 table: 8 holds, max length 2:00, rest 1:30 → 0:45."
+0,1,1,0,ex_7,"CO2 table: 8 holds, max length 2:00, rest 1:30 to 0:45."
 0,1,2,0,ex_8,500m easy swim with fins. No diving.
+
+# === REFERENCE ===
+# Sentinel marker. Lines after this are ignored by the importer.
+#
+# ────────────────────────────────────────────────────────────────────────
+# HOW THIS WORKS
+# ────────────────────────────────────────────────────────────────────────
+#
+# The plan is split across five sections: META / PHASES / WEEKS /
+# SESSIONS / EXERCISES. Each section starts with a header row defining
+# its columns. Edit the rows under each header. Add as many as you need.
+#
+# Hierarchy is encoded by index columns:
+#   phase_idx (always 0 for a training plan)
+#     week_idx (starts at 0)
+#       session_idx (starts at 0 within each week)
+#         exercise_idx (starts at 0 within each session)
+#
+# You can sort or filter rows in your spreadsheet without breaking the
+# import. The app rebuilds the nested structure from the indices.
+#
+# Lines starting with "#" are ignored by the importer. Use them for
+# notes-to-self if you like.
+#
+# Save as CSV (UTF-8) when done. Send the file to your student.
+# They tap "Import Plan from File" in the Plans screen and pick this CSV.
+# Validation surfaces every issue at once so you can fix and re-export
+# in one pass.
+#
+# ────────────────────────────────────────────────────────────────────────
+# VALID VALUES
+# ────────────────────────────────────────────────────────────────────────
+#
+# kind:               training (this template) or season
+# type:               training_plan (this template) or season_plan
+# mode (plan):        depth, pool, general
+# mode (session):     depth, pool, dry, general
+# intensity:          recovery, low, medium, high, max
+# phase type:         base, capacity, specific, taper, competition, transition
+# day_of_week:        0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
+# session_type:       depends on the session's mode:
+#   mode=depth:       EQ, DA, TE, FE, MAX, RC
+#   mode=pool:        VOL, CO2, O2, SP, TE, MAX, FUN, RC
+#   mode=dry:         co2_table, o2_table, comfy, pb_attempt, recovery
+#   mode=general:     leave blank
+#
+# Cells with commas, line breaks, or quotes need to be wrapped in
+# double-quotes. Example: "CO2 table: 8 holds, max length 2:00".

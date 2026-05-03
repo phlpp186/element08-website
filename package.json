@@ -1,0 +1,11 @@
+{
+  "name": "element08-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build-templates": "node scripts/build-templates.mjs"
+  },
+  "devDependencies": {
+    "exceljs": "^4.4.0"
+  }
+}

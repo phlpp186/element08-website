@@ -1,51 +1,26 @@
-# ─────────────────────────────────────────────────────────────────────────
-# ELEMENT | 08: Season Plan Template (.e08plan.csv  v1)
-# ─────────────────────────────────────────────────────────────────────────
-# A multi-phase progression toward a target competition or PB attempt.
-# Save as CSV (UTF-8) when you're done editing, then send the file to
-# your student. They tap IMPORT PLAN FROM FILE in the Plans screen.
-#
-# How this file works
-# ───────────────────
-# The plan is split across five sections (META / PHASES / WEEKS /
-# SESSIONS / EXERCISES). Lines starting with "#" are comments and get
-# ignored by the importer. Edit the rows under each section's header,
-# add as many as you need. Every row is keyed by index columns
-# (phase_idx → week_idx → session_idx → exercise_idx) so you can sort
-# or filter rows in your spreadsheet without breaking the import.
-#
-# Phases group consecutive weeks. A typical season has 3-5 phases
-# (e.g. base → capacity → specific → taper → competition).
-#
-# Tip: after first save, re-import the file in the app to verify it
-# parses cleanly. You'll see warnings for any unknown values.
+ELEMENT | 08 Season Plan Template,,,,,,,
+,,,,,,,
+This file is a working example. Edit the cells to make it your plan.,,,,,,,
+Save as CSV (UTF-8) when done. Send the file to your student.,,,,,,,
+Reference for valid values is at the bottom of this file.,,,,,,,
 
 # === META ===
-# Required: title, author, type, kind.
-# kind:    training | season
-# mode:    depth | pool | general (plan-level guidance, sessions can override)
 key,value
 title,8-Week Depth Build to 35m
 author,Coach Maya
 type,season_plan
 kind,season
 mode,depth
-description,Two-phase build for divers with a 25-30m PB targeting 35m. Base builds CO2 + EQ rhythm; Capacity adds depth volume + mouthfill work.
+description,"Two-phase build for divers with a 25-30m PB targeting 35m. Base builds CO2 + EQ rhythm; Capacity adds depth volume + mouthfill work."
 start_date,
 competition_date,
 
 # === PHASES ===
-# One row per phase. phase_idx starts at 0 and must be sequential.
-# type:  base | capacity | specific | taper | competition | transition
 phase_idx,id,name,type
 0,phase_base,Base,base
 1,phase_capacity,Capacity,capacity
 
 # === WEEKS ===
-# One row per week. week_idx restarts at 0 inside each phase. Leave
-# week_start blank to anchor at plan activation; the app fills in
-# concrete dates when the student activates the plan.
-# intensity: recovery | low | medium | high | max
 phase_idx,week_idx,week_start,focus,intensity,target_sessions,notes
 0,0,,Establish session rhythm. Comfort and relaxation in shallow water.,low,3,Don't push depth this week. Build the habit.
 0,1,,Build FRC volume. Introduce bottom hangs at 10-15m.,low,3,
@@ -57,13 +32,6 @@ phase_idx,week_idx,week_start,focus,intensity,target_sessions,notes
 1,3,,Mouthfill chargework + first attempts at 30m+.,high,2,Quality over quantity. Two well-prepped dives is plenty.
 
 # === SESSIONS ===
-# One row per session. day_of_week: 0=Mon 1=Tue 2=Wed 3=Thu 4=Fri 5=Sat 6=Sun.
-# mode: depth | pool | dry | general. Drives the in-app session-type pills.
-# session_type, values depend on mode:
-#   depth:    EQ, DA, TE, FE, MAX, RC
-#   pool:     VOL, CO2, O2, SP, TE, MAX, FUN, RC
-#   dry:      co2_table, o2_table, comfy, pb_attempt, recovery
-#   general:  leave blank
 phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
 0,0,0,s_b0_0,1,Dry CO2 base,dry,co2_table
 0,0,1,s_b0_1,3,Shallow comfort dives,depth,RC
@@ -89,12 +57,61 @@ phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
 1,3,1,s_c3_1,4,Max attempt session,depth,MAX
 
 # === EXERCISES ===
-# One row per exercise. Free-text descriptions, be specific. The
-# student sees these in the session detail screen.
 phase_idx,week_idx,session_idx,exercise_idx,exercise_id,description
-0,0,0,0,ex_b00_0,"CO2 table: 8 holds at 60% max, 1:30 → 1:00 rest."
+0,0,0,0,ex_b00_0,"CO2 table: 8 holds at 60% max, 1:30 to 1:00 rest."
 0,0,1,0,ex_b01_0,3 dives to 5-8m. Long surface intervals (5+ min). Focus relaxation.
 0,0,2,0,ex_b02_0,20 min easy continuous swim with snorkel.
 0,1,1,0,ex_b11_0,5 FRC dives at 8-12m with 5s bottom hang. Focus EQ rhythm.
 1,3,0,0,ex_c30_0,Visualisation + dry breathe-up routine. 20 min.
 1,3,1,0,ex_c31_0,Full warm-up protocol. One quality attempt at goal depth.
+
+# === REFERENCE ===
+# Sentinel marker. Lines after this are ignored by the importer.
+#
+# ────────────────────────────────────────────────────────────────────────
+# HOW THIS WORKS
+# ────────────────────────────────────────────────────────────────────────
+#
+# The plan is split across five sections: META / PHASES / WEEKS /
+# SESSIONS / EXERCISES. Each section starts with a header row defining
+# its columns. Edit the rows under each header. Add as many as you need.
+#
+# Hierarchy is encoded by index columns:
+#   phase_idx (starts at 0; sequential across phases)
+#     week_idx (restarts at 0 inside each phase)
+#       session_idx (starts at 0 within each week)
+#         exercise_idx (starts at 0 within each session)
+#
+# Phases group consecutive weeks. A typical season has 3 to 5 phases
+# (e.g. base, capacity, specific, taper, competition).
+#
+# You can sort or filter rows in your spreadsheet without breaking the
+# import. The app rebuilds the nested structure from the indices.
+#
+# Lines starting with "#" are ignored by the importer. Use them for
+# notes-to-self if you like.
+#
+# Save as CSV (UTF-8) when done. Send the file to your student.
+# They tap "Import Plan from File" in the Plans screen and pick this CSV.
+# Validation surfaces every issue at once so you can fix and re-export
+# in one pass.
+#
+# ────────────────────────────────────────────────────────────────────────
+# VALID VALUES
+# ────────────────────────────────────────────────────────────────────────
+#
+# kind:               season (this template) or training
+# type:               season_plan (this template) or training_plan
+# mode (plan):        depth, pool, general
+# mode (session):     depth, pool, dry, general
+# intensity:          recovery, low, medium, high, max
+# phase type:         base, capacity, specific, taper, competition, transition
+# day_of_week:        0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
+# session_type:       depends on the session's mode:
+#   mode=depth:       EQ, DA, TE, FE, MAX, RC
+#   mode=pool:        VOL, CO2, O2, SP, TE, MAX, FUN, RC
+#   mode=dry:         co2_table, o2_table, comfy, pb_attempt, recovery
+#   mode=general:     leave blank
+#
+# Cells with commas, line breaks, or quotes need to be wrapped in
+# double-quotes. Example: "CO2 table: 8 holds at 60% max".
