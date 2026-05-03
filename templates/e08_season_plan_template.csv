@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────────────────
-# ELEMENT | 08 — Season Plan Template (.e08plan.csv  v1)
+# ELEMENT | 08: Season Plan Template (.e08plan.csv  v1)
 # ─────────────────────────────────────────────────────────────────────────
 # A multi-phase progression toward a target competition or PB attempt.
 # Save as CSV (UTF-8) when you're done editing, then send the file to
@@ -23,7 +23,7 @@
 # === META ===
 # Required: title, author, type, kind.
 # kind:    training | season
-# mode:    depth | pool | general (plan-level guidance — sessions can override)
+# mode:    depth | pool | general (plan-level guidance, sessions can override)
 key,value
 title,8-Week Depth Build to 35m
 author,Coach Maya
@@ -58,8 +58,8 @@ phase_idx,week_idx,week_start,focus,intensity,target_sessions,notes
 
 # === SESSIONS ===
 # One row per session. day_of_week: 0=Mon 1=Tue 2=Wed 3=Thu 4=Fri 5=Sat 6=Sun.
-# mode: depth | pool | dry | general — drives the in-app session-type pills.
-# session_type — values depend on mode:
+# mode: depth | pool | dry | general. Drives the in-app session-type pills.
+# session_type, values depend on mode:
 #   depth:    EQ, DA, TE, FE, MAX, RC
 #   pool:     VOL, CO2, O2, SP, TE, MAX, FUN, RC
 #   dry:      co2_table, o2_table, comfy, pb_attempt, recovery
@@ -89,10 +89,10 @@ phase_idx,week_idx,session_idx,session_id,day_of_week,label,mode,session_type
 1,3,1,s_c3_1,4,Max attempt session,depth,MAX
 
 # === EXERCISES ===
-# One row per exercise. Free-text descriptions — be specific. The
+# One row per exercise. Free-text descriptions, be specific. The
 # student sees these in the session detail screen.
 phase_idx,week_idx,session_idx,exercise_idx,exercise_id,description
-0,0,0,0,ex_b00_0,"CO2 table — 8 holds at 60% max, 1:30 → 1:00 rest."
+0,0,0,0,ex_b00_0,"CO2 table: 8 holds at 60% max, 1:30 → 1:00 rest."
 0,0,1,0,ex_b01_0,3 dives to 5-8m. Long surface intervals (5+ min). Focus relaxation.
 0,0,2,0,ex_b02_0,20 min easy continuous swim with snorkel.
 0,1,1,0,ex_b11_0,5 FRC dives at 8-12m with 5s bottom hang. Focus EQ rhythm.
