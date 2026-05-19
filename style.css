@@ -1,27 +1,38 @@
 /* ── ELEMENT | 08 Website Styles ────────────────────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
 
 /* ── Reset & Base ──────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Chalk Dark palette — warm slate, soft borders, rounded corners. Brand
+   stays red (matches logo + Instagram carousel); analyzer keeps cyan as
+   its own differentiator on the web side. */
 :root {
-  --bg:        #080808;
-  --surface:   #111111;
-  --panel:     #222222;
-  --accent:    #C8190F;
-  --accent-dim: rgba(200,25,15,0.15);
-  --green:     #00E54A;
-  --amber:     #D4860A;
-  --white:     #F0EDE8;
-  --text:      #C8C4BE;
-  --dim:       #555550;
-  --border:    rgba(240,237,232,0.10);
-  --border-solid: #2c2c2c;
-  --font-heading: 'Space Grotesk', sans-serif;
-  --font-mono: 'Michroma', monospace;
-  --radius: 2px;
+  --bg:        #1F1D1A;
+  --abyss:     #161412;
+  --surface:   #2A2724;
+  --panel:     #33302C;
+  --accent:    #C8272D;
+  --accent-dim: rgba(200,39,45,0.18);
+  --green:     #3DC96B;
+  --amber:     #F0A500;
+  --white:     #F7F5F0;
+  --text:      #EDE9E2;
+  --dim:       #8A857C;
+  --border:    rgba(255,255,255,0.10);
+  --border-solid: #4A463F;
+  --font-heading: 'Nunito', system-ui, sans-serif;
+  /* "Mono" is Nunito SemiBold with wide letter-spacing — matches the
+     all-caps label style used in the app. Not a real monospace. */
+  --font-mono: 'Nunito', system-ui, sans-serif;
+  --radius-sm:    12px;
+  --radius-card:  20px;
+  --radius-btn:   24px;
+  --radius-modal: 28px;
+  --radius-pill:  100px;
+  --radius: var(--radius-card);
 }
 
 html { scroll-behavior: smooth; }
@@ -33,6 +44,7 @@ body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Grid background ───────────────────────────────────────────────────────── */
@@ -71,24 +83,29 @@ body::before {
 }
 
 .nav-wordmark {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 14px;
   letter-spacing: 3px;
   color: var(--white);
   text-decoration: none;
+  white-space: nowrap;
 }
 
-.nav-wordmark .pipe { color: var(--accent); }
+.nav-wordmark .pipe { color: var(--accent); padding: 0 0.15em; }
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px 20px;
   list-style: none;
 }
 
 .nav-links a {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   text-decoration: none;
@@ -106,57 +123,41 @@ body::before {
   position: relative;
 }
 
-/* Corner decorations */
-.hero::before,
-.hero::after {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--border-solid);
-  border-style: solid;
-}
-
-.hero::before {
-  top: 60px;
-  left: 0;
-  border-width: 1px 0 0 1px;
-}
-
-.hero::after {
-  top: 60px;
-  right: 0;
-  border-width: 1px 1px 0 0;
-}
+/* Chalk Dark has no decorations — corner brackets are dropped. The hero
+   is now grounded in typography and breathing room alone. */
 
 .hero-icon {
   width: 100px;
   height: 100px;
-  border-radius: 20px;
+  border-radius: 24px;
   margin-bottom: 32px;
 }
 
 .hero-title {
-  font-family: var(--font-mono);
-  font-size: 36px;
-  letter-spacing: 6px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 56px;
+  letter-spacing: 4px;
   color: var(--white);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  line-height: 1.05;
 }
 
 .hero-title .pipe {
   color: var(--accent);
+  padding: 0 0.15em;
   animation: pulse 3.6s ease-in-out infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
+  0%, 100% { opacity: 0.6; }
   50% { opacity: 1; }
 }
 
 .hero-tagline {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 4px;
   color: var(--dim);
   text-transform: uppercase;
@@ -164,9 +165,9 @@ body::before {
 }
 
 .hero-desc {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text);
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -175,7 +176,8 @@ body::before {
 
 .section-header {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 3px;
   color: var(--dim);
   text-transform: uppercase;
@@ -193,17 +195,21 @@ body::before {
   gap: 16px;
 }
 
+/* Chalk Dark cards: full surface, soft border, generous radius. The
+   accent-color sliver lives at the top instead of the side so each card
+   has the same balanced weight. */
 .feature-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 2px solid var(--accent);
-  border-radius: var(--radius);
+  border-top: 3px solid var(--accent);
+  border-radius: var(--radius-card);
   padding: 24px;
 }
 
 .feature-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   margin-bottom: 8px;
@@ -211,29 +217,31 @@ body::before {
 }
 
 .feature-title {
-  font-weight: 700;
-  font-size: 15px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
   color: var(--white);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
 }
 
 .feature-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* Feature accent colors */
-.feature-card.amber  { border-left-color: var(--amber); }
-.feature-card.green  { border-left-color: var(--green); }
-.feature-card.white  { border-left-color: var(--white); }
+.feature-card.amber  { border-top-color: var(--amber); }
+.feature-card.green  { border-top-color: var(--green); }
+.feature-card.white  { border-top-color: var(--white); }
 
 /* ── For Coaches ──────────────────────────────────────────────────────────── */
 
 .coaches-intro {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 720px;
   margin-bottom: 24px;
 }
@@ -248,8 +256,8 @@ body::before {
   display: block;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 2px solid var(--amber);
-  border-radius: var(--radius);
+  border-top: 3px solid var(--amber);
+  border-radius: var(--radius-card);
   padding: 24px;
   text-decoration: none;
   color: inherit;
@@ -257,7 +265,7 @@ body::before {
 }
 
 .coach-card:nth-child(2) {
-  border-left-color: var(--green);
+  border-top-color: var(--green);
 }
 
 .coach-card:hover {
@@ -267,7 +275,8 @@ body::before {
 
 .coach-card-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   margin-bottom: 8px;
@@ -275,34 +284,35 @@ body::before {
 }
 
 .coach-card-title {
-  font-weight: 700;
-  font-size: 15px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
   color: var(--white);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .coach-card-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 12px;
 }
 
 .coach-card-cta {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 1.5px;
   color: var(--accent);
   text-transform: uppercase;
 }
 
 .coaches-note {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--dim);
-  line-height: 1.6;
+  line-height: 1.65;
   max-width: 720px;
   margin-top: 24px;
-  font-style: italic;
 }
 
 .coaches-note strong {
@@ -333,12 +343,12 @@ body::before {
 .phone-frame {
   position: relative;
   width: 230px;
-  background: #1a1a1a;
-  border-radius: 28px;
+  background: var(--panel);
+  border-radius: 32px;
   padding: 12px;
   box-shadow:
-    0 0 0 1px rgba(255,255,255,0.08),
-    0 20px 60px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.06),
+    0 20px 60px rgba(0,0,0,0.55),
     inset 0 0 0 1px rgba(255,255,255,0.04);
   overflow: hidden;
 }
@@ -350,7 +360,7 @@ body::before {
   transform: translateX(-50%);
   width: 80px;
   height: 22px;
-  background: #1a1a1a;
+  background: var(--panel);
   border-radius: 0 0 14px 14px;
   z-index: 2;
 }
@@ -358,13 +368,14 @@ body::before {
 .phone-frame img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  border-radius: 20px;
   display: block;
 }
 
 .screenshot-label {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   text-transform: uppercase;
@@ -377,22 +388,23 @@ body::before {
 .devices-teaser {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-left: 2px solid var(--dim);
-  border-radius: var(--radius);
-  padding: 24px;
+  border-top: 3px solid var(--dim);
+  border-radius: var(--radius-card);
+  padding: 28px;
   text-align: center;
 }
 
 .devices-text {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.65;
   margin-bottom: 12px;
 }
 
 .devices-status {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
 }
@@ -427,10 +439,11 @@ body::before {
   align-items: center;
   gap: 10px;
   padding: 14px 28px;
-  border-radius: var(--radius);
+  border-radius: var(--radius-btn);
   border: 1px solid;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
@@ -463,7 +476,8 @@ body::before {
 
 .coming-soon {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   margin-top: 16px;
@@ -496,18 +510,21 @@ body::before {
 }
 
 .status-val {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 1px;
   color: var(--white);
 }
 
 .status-key {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-weight: 600;
+  font-size: 10px;
   letter-spacing: 2px;
   color: var(--dim);
-  margin-top: 2px;
+  margin-top: 4px;
+  text-transform: uppercase;
 }
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
@@ -528,7 +545,8 @@ body::before {
 
 .footer-links a {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   text-decoration: none;
@@ -540,7 +558,8 @@ body::before {
 
 .footer-copy {
   font-family: var(--font-mono);
-  font-size: 8px;
+  font-weight: 600;
+  font-size: 10px;
   letter-spacing: 1px;
   color: var(--dim);
 }
@@ -552,16 +571,18 @@ body::before {
 }
 
 .legal h1 {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  letter-spacing: 4px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 32px;
+  letter-spacing: 2px;
   color: var(--white);
   margin-bottom: 8px;
 }
 
 .legal .last-updated {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-weight: 600;
+  font-size: 11px;
   letter-spacing: 2px;
   color: var(--dim);
   margin-bottom: 40px;
@@ -569,7 +590,8 @@ body::before {
 
 .legal h2 {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-weight: 600;
+  font-size: 12px;
   letter-spacing: 3px;
   color: var(--white);
   text-transform: uppercase;
@@ -580,7 +602,7 @@ body::before {
 .legal h2 .slash { color: var(--accent); }
 
 .legal p, .legal li {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
   color: var(--text);
   margin-bottom: 12px;
@@ -598,18 +620,96 @@ body::before {
 
 .legal a:hover { text-decoration: underline; }
 
+/* ── Analyzer callout ──────────────────────────────────────────────────────── */
+/* Bridges the app and the web analyzer. The analyzer is the cyan side
+   of the brand, so this card uses a subtle cyan-tinted border to read
+   as "the other tool" without competing with the red app accent. */
+
+.analyzer-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid #1BAFE0;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.analyzer-card-text {
+  min-width: 0;
+}
+
+.analyzer-card-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #1BAFE0;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.analyzer-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.analyzer-card-desc {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.analyzer-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: var(--radius-btn);
+  border: 1px solid #1BAFE0;
+  background: rgba(27,175,224,0.10);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1BAFE0;
+  transition: background 120ms ease, transform 120ms ease;
+  white-space: nowrap;
+}
+
+.analyzer-card-btn:hover {
+  background: rgba(27,175,224,0.18);
+  transform: translateY(-1px);
+}
+
 /* ── Responsive ────────────────────────────────────────────────────────────── */
 
 @media (max-width: 640px) {
   .hero { padding: 60px 0 40px; }
-  .hero-title { font-size: 24px; letter-spacing: 4px; }
-  .hero-tagline { font-size: 9px; }
+  .hero-title { font-size: 36px; letter-spacing: 3px; }
+  .hero-tagline { font-size: 11px; }
   .features-grid { grid-template-columns: 1fr; }
   .coaches-grid { grid-template-columns: 1fr; }
-  .phone-frame { width: 190px; border-radius: 22px; padding: 10px; }
+  .phone-frame { width: 190px; border-radius: 26px; padding: 10px; }
   .phone-notch { width: 64px; height: 18px; top: 10px; border-radius: 0 0 10px 10px; }
-  .phone-frame img { border-radius: 12px; }
+  .phone-frame img { border-radius: 16px; }
   .screenshots { gap: 16px; }
   .status-strip { gap: 20px; }
-  .nav-links { gap: 16px; }
+  .nav-links { gap: 8px 14px; font-size: 10px; }
+  .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
+  .nav-wordmark { font-size: 12px; letter-spacing: 2px; }
+  .analyzer-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .analyzer-card-btn { justify-content: center; }
+  .legal h1 { font-size: 26px; }
 }
