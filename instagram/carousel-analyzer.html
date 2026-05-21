@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ELEMENT | 08 — Analyzer carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Same Chalk Dark palette as the main carousel. The analyzer's brand
+     accent is cyan; the wordmark pipe stays brand red so it reads as
+     the same product family. */
+  :root {
+    --deep:    #1F1D1A;
+    --abyss:   #161412;
+    --card:    #2A2724;
+    --panel:   #33302C;
+    --border:  #4A463F;
+    --text:    #EDE9E2;
+    --textDim: #8A857C;
+    --white:   #F7F5F0;
+    --accent:  #1BAFE0;
+    --accentDim: rgba(27,175,224,0.18);
+    --brandRed: #C8272D;
+    --brandRedDim: rgba(200,39,45,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #000;
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: var(--text);
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    background: var(--deep);
+    background-image:
+      linear-gradient(to right, rgba(74,70,63,0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(74,70,63,0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+    margin: 20px auto;
+  }
+
+  /* Typography primitives */
+  .label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    font-size: 30px;
+  }
+  .heading {
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    font-size: 84px;
+    margin: 0;
+  }
+  .body {
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.4;
+    font-size: 30px;
+    max-width: 900px;
+  }
+
+  /* Footer wordmark — present on every non-hero slide */
+  .footer-mark {
+    position: absolute;
+    bottom: 56px;
+    left: 80px;
+    font-weight: 800;
+    color: var(--textDim);
+    letter-spacing: 0.4em;
+    font-size: 22px;
+  }
+  .footer-mark .pipe { color: var(--brandRed); padding: 0 0.2em; }
+  .footer-url {
+    position: absolute;
+    bottom: 56px;
+    right: 80px;
+    font-weight: 600;
+    color: var(--textDim);
+    letter-spacing: 0.2em;
+    font-size: 20px;
+    text-transform: uppercase;
+  }
+
+  /* Page indicator — top right (1/5, 2/5, …) */
+  .pager {
+    position: absolute;
+    top: 56px;
+    right: 80px;
+    display: flex;
+    gap: 12px;
+    z-index: 2;
+  }
+  .pager span {
+    width: 36px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+  .pager span.active { background: var(--accent); }
+
+  /* ─── Slide 1 · Hero ─────────────────────────────────────────────────── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 80px;
+  }
+  .hero-wordmark {
+    font-weight: 800;
+    font-size: 112px;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin: 0;
+    line-height: 1;
+  }
+  .hero-wordmark .pipe {
+    color: var(--brandRed);
+    padding: 0 0.22em;
+  }
+  .hero-sub {
+    margin-top: 24px;
+    font-weight: 600;
+    font-size: 28px;
+    color: var(--accent);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    padding-left: 0.5em; /* offset the trailing letter-spacing */
+  }
+  .hero-divider {
+    width: 120px;
+    height: 2px;
+    background: var(--border);
+    margin: 110px 0 64px;
+    border-radius: 1px;
+  }
+  .hero-tagline {
+    font-weight: 800;
+    font-size: 78px;
+    color: var(--white);
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0;
+    letter-spacing: 0.005em;
+  }
+  .hero-tagline .accent { color: var(--accent); }
+  .hero-footnote {
+    margin-top: 56px;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--textDim);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Slide 2 · How it works (3 steps) ───────────────────────────────── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    padding: 140px 80px 160px;
+    height: 100%;
+  }
+  .steps-header { margin-bottom: 60px; }
+  .steps-header .label { margin-bottom: 18px; display: block; }
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accentDim);
+  }
+  .step-shot {
+    width: 100%;
+    height: 640px;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--abyss);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow:
+      0 24px 60px rgba(0,0,0,0.55),
+      0 6px 12px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .step-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .step-shot.contain img {
+    object-fit: contain;
+    object-position: center;
+  }
+  .step-label {
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+  .step-sub {
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--textDim);
+    line-height: 1.35;
+    max-width: 280px;
+  }
+
+  /* ─── Slide 3, 4 · Feature with full-width screenshot ─────────────────── */
+  .feature {
+    display: flex;
+    flex-direction: column;
+    padding: 130px 80px 160px;
+    height: 100%;
+    gap: 48px;
+  }
+  .feature-text { display: flex; flex-direction: column; gap: 24px; }
+  .feature-text .label { display: block; }
+  .feature-shot {
+    flex: 1;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--abyss);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow:
+      0 24px 70px rgba(0,0,0,0.55),
+      0 6px 12px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .feature-shot img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* ─── Slide 5 · CTA + privacy ────────────────────────────────────────── */
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 140px 80px;
+    gap: 56px;
+    height: 100%;
+  }
+  .cta-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--accentDim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .cta-headline {
+    font-weight: 800;
+    font-size: 72px;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    max-width: 900px;
+    margin: 0;
+  }
+  .cta-sub {
+    font-weight: 400;
+    font-size: 30px;
+    color: var(--text);
+    line-height: 1.45;
+    max-width: 800px;
+    margin: 0;
+  }
+  .cta-button {
+    margin-top: 8px;
+    font-weight: 700;
+    font-size: 38px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    padding: 24px 56px;
+    border: 2px solid var(--accent);
+    border-radius: 100px;
+    background: var(--accentDim);
+    font-family: 'JetBrains Mono', 'Nunito', monospace;
+  }
+  .cta-footnote {
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--textDim);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Slide 1 · Hero ──────────────────────────────────────────────────── -->
+<section class="slide hero" id="slide-1">
+  <div class="pager">
+    <span class="active"></span><span></span><span></span><span></span><span></span>
+  </div>
+  <h1 class="hero-wordmark">ELEMENT<span class="pipe">|</span>08</h1>
+  <p class="hero-sub">ANALYZER</p>
+
+  <div class="hero-divider"></div>
+
+  <h2 class="hero-tagline">Bigger screen.<br><span class="accent">Deeper</span> dive into your data.</h2>
+  <p class="hero-footnote">Web companion · runs in your browser</p>
+
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">analyze.element08.io</div>
+</section>
+
+<!-- ─── Slide 2 · How it works ──────────────────────────────────────────── -->
+<section class="slide" id="slide-2">
+  <div class="pager">
+    <span></span><span class="active"></span><span></span><span></span><span></span>
+  </div>
+  <div class="steps">
+    <div class="steps-header">
+      <span class="label">3 STEPS TO START</span>
+      <h2 class="heading">From phone to web<br>in under a minute.</h2>
+    </div>
+    <div class="steps-row">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-shot"><img src="screenshots/step1-export.png" alt="Export backup"></div>
+        <div class="step-label">EXPORT</div>
+        <div class="step-sub">Settings → Backup → Export</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-shot contain" style="background: #000;"><img src="screenshots/step2-drop.png" alt="Drop into analyzer"></div>
+        <div class="step-label">DROP</div>
+        <div class="step-sub">Open the analyzer<br>drop the file</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-shot"><img src="screenshots/step3-dashboard.png" alt="Dashboard"></div>
+        <div class="step-label">EXPLORE</div>
+        <div class="step-sub">Sessions, dives,<br>seasons, all of it</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">analyze.element08.io</div>
+</section>
+
+<!-- ─── Slide 3 · Compare Seasons ───────────────────────────────────────── -->
+<section class="slide" id="slide-3">
+  <div class="pager">
+    <span></span><span></span><span class="active"></span><span></span><span></span>
+  </div>
+  <div class="feature">
+    <div class="feature-text">
+      <span class="label">COMPARE SEASONS</span>
+      <h2 class="heading">Stack year on year.</h2>
+      <p class="body">Overlay this season against last. Sessions per week, deepest dive, longest hold. Easy long-term analysis.</p>
+    </div>
+    <div class="feature-shot">
+      <img src="screenshots/compare-seasons.png" alt="Compare seasons">
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">analyze.element08.io</div>
+</section>
+
+<!-- ─── Slide 4 · Depth Details ─────────────────────────────────────────── -->
+<section class="slide" id="slide-4">
+  <div class="pager">
+    <span></span><span></span><span></span><span class="active"></span><span></span>
+  </div>
+  <div class="feature">
+    <div class="feature-text">
+      <span class="label">EVERY DIVE, IN DETAIL</span>
+      <h2 class="heading">Profile, hangs,<br>contractions, speed.</h2>
+      <p class="body">Tap any dive to see the depth curve, heart rate, vertical speed, and your logged markers: mouthfill, first contraction, alarms.</p>
+    </div>
+    <div class="feature-shot">
+      <img src="screenshots/depth-details.png" alt="Depth dive detail">
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">analyze.element08.io</div>
+</section>
+
+<!-- ─── Slide 5 · CTA + Privacy ─────────────────────────────────────────── -->
+<section class="slide" id="slide-5">
+  <div class="pager">
+    <span></span><span></span><span></span><span></span><span class="active"></span>
+  </div>
+  <div class="cta">
+    <div class="cta-icon">🔒</div>
+    <h2 class="cta-headline">Your data stays<br>on your computer.</h2>
+    <p class="cta-sub">Nothing is uploaded. The file you drop is parsed locally. Try it now with built-in demo data, no backup needed.</p>
+    <div class="cta-button">analyze.element08.io</div>
+    <p class="cta-footnote">Free · No signup · Demo included</p>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+</section>
+
+</body>
+</html>

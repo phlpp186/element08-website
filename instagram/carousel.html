@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ELEMENT | 08 — Instagram carousel</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  /* ─── Chalk Dark palette ────────────────────────────────────────────────── */
+  :root {
+    --deep:    #1F1D1A;
+    --abyss:   #161412;
+    --card:    #2A2724;
+    --panel:   #33302C;
+    --border:  #4A463F;
+    --text:    #EDE9E2;
+    --textDim: #8A857C;
+    --white:   #F7F5F0;
+    --accent:  #1BAFE0;
+    --accentDim: rgba(27,175,224,0.18);
+    /* App brand red (used in carousel hero/CTA pipe and footer marks).
+       Matches the official ELEMENT | 08 logomark red — deep signal-red,
+       warmer than vermilion, distinct from the analyzer's cyan. */
+    --brandRed: #C8272D;
+    --brandRedDim: rgba(200,39,45,0.18);
+    --highlight: #E84393;
+    --amber:   #F0A500;
+    --green:   #3DC96B;
+  }
+
+  /* ─── Reset & frame ─────────────────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #000;
+    font-family: 'Nunito', system-ui, sans-serif;
+    color: var(--text);
+  }
+
+  /* Each slide is exactly 1080×1350 (4:5). The renderer crops to one slide
+     at a time via element-level screenshots, so flow layout here is fine. */
+  .slide {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    overflow: hidden;
+    background: var(--deep);
+    /* Subtle grid texture matching the in-app vibe. Bumped to 15% per the
+       brand notes (visible in marketing). */
+    background-image:
+      linear-gradient(to right, rgba(74,70,63,0.15) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(74,70,63,0.15) 1px, transparent 1px);
+    background-size: 60px 60px;
+    /* Stack slides vertically with a gap so the user can preview them all
+       on one scroll. The renderer screenshots element-by-element so the
+       gap doesn't leak into the exports. */
+    margin: 20px auto;
+  }
+
+  /* ─── Typography primitives ─────────────────────────────────────────────── */
+  .label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    font-size: 32px;
+  }
+  .heading {
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    font-size: 96px;
+  }
+  .body {
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.45;
+    font-size: 36px;
+    max-width: 900px;
+  }
+  .dim {
+    color: var(--textDim);
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Footer wordmark — present on every non-hero slide */
+  .footer-mark {
+    position: absolute;
+    bottom: 56px;
+    left: 80px;
+    font-weight: 800;
+    color: var(--textDim);
+    letter-spacing: 0.4em;
+    font-size: 24px;
+  }
+  .footer-mark .pipe { color: var(--brandRed); padding: 0 0.2em; }
+  .footer-url {
+    position: absolute;
+    bottom: 56px;
+    right: 80px;
+    font-weight: 600;
+    color: var(--textDim);
+    letter-spacing: 0.2em;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+
+  /* Page indicator — top right (1/5, 2/5, …) */
+  .pager {
+    position: absolute;
+    top: 56px;
+    right: 80px;
+    display: flex;
+    gap: 12px;
+  }
+  .pager span {
+    width: 36px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+  }
+  .pager span.active { background: var(--accent); }
+
+  /* ─── Screenshot card ───────────────────────────────────────────────────── */
+  /* Source screenshots are 630×~1260 (1:2). Rendered at 480×~960 we get
+     plenty of pixel density at IG's display size. Soft drop shadow + a
+     thin border to anchor on the dark background. Rounded 36px matches
+     the app's modal radius scaled up. */
+  .device {
+    width: 480px;
+    border-radius: 36px;
+    overflow: hidden;
+    box-shadow:
+      0 30px 80px rgba(0,0,0,0.55),
+      0 8px 16px rgba(0,0,0,0.35),
+      0 0 0 1px rgba(255,255,255,0.04);
+    background: var(--abyss);
+  }
+  .device img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ─── Slide 1 · Hero ─────────────────────────────────────────────────────── */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 80px;
+  }
+  .hero-wordmark {
+    font-weight: 800;
+    font-size: 104px;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    margin: 0;
+  }
+  .hero-wordmark .pipe {
+    color: var(--brandRed);
+    padding: 0 0.25em;
+  }
+  .hero-tagline {
+    margin-top: 80px;
+    font-weight: 600;
+    font-size: 44px;
+    color: var(--text);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .hero-sub {
+    margin-top: 28px;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--textDim);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+  }
+  /* Depth-profile line motif — subtle, anchors the brand */
+  .hero-line {
+    position: absolute;
+    bottom: 80px; left: 80px; right: 80px;
+    height: 200px;
+    pointer-events: none;
+  }
+
+  /* ─── Slide 2-4 · Feature layout ─────────────────────────────────────────── */
+  /* Two-column: text on the left, screenshot on the right. Slight vertical
+     stagger and asymmetric padding keeps it from feeling templated. */
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 540px;
+    align-items: center;
+    gap: 60px;
+    padding: 160px 100px 200px;
+    height: 100%;
+  }
+  .feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .feature-text .label { margin-bottom: 8px; }
+  .feature-text .heading { max-width: 460px; }
+
+  /* ─── Slide 5 · CTA ──────────────────────────────────────────────────────── */
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 160px 80px;
+    gap: 64px;
+  }
+  .cta-wordmark {
+    font-weight: 800;
+    font-size: 96px;
+    letter-spacing: 0.18em;
+    color: var(--white);
+    margin: 0;
+  }
+  .cta-wordmark .pipe { color: var(--brandRed); padding: 0 0.25em; }
+  .cta-headline {
+    font-weight: 800;
+    font-size: 84px;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin: 0;
+  }
+  .cta-url {
+    font-weight: 600;
+    font-size: 48px;
+    color: var(--brandRed);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 24px 56px;
+    border: 2px solid var(--brandRed);
+    border-radius: 100px;
+    background: var(--brandRedDim);
+  }
+  .cta-sub {
+    font-weight: 400;
+    font-size: 32px;
+    color: var(--textDim);
+    max-width: 720px;
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Slide 1 · Hero ────────────────────────────────────────────────────── -->
+<section class="slide hero" id="slide-1">
+  <div class="pager">
+    <span class="active"></span><span></span><span></span><span></span><span></span>
+  </div>
+  <h1 class="hero-wordmark">ELEMENT<span class="pipe">|</span>08</h1>
+  <p class="hero-tagline">Train · Log · Analyze</p>
+  <p class="hero-sub">Freediving Performance System</p>
+</section>
+
+<!-- ─── Slide 2 · TRAIN ───────────────────────────────────────────────────── -->
+<section class="slide" id="slide-2">
+  <div class="pager">
+    <span></span><span class="active"></span><span></span><span></span><span></span>
+  </div>
+  <div class="feature">
+    <div class="feature-text">
+      <span class="label">TRAIN</span>
+      <h2 class="heading">Build Your Program</h2>
+      <p class="body">Dry Static, Breathwork, EQ Training, Training Plans and Season Plans, all in one app.</p>
+    </div>
+    <div class="device">
+      <img src="../img/screen-timer.jpg" alt="Training timer">
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">element08.io</div>
+</section>
+
+<!-- ─── Slide 3 · LOG ─────────────────────────────────────────────────────── -->
+<section class="slide" id="slide-3">
+  <div class="pager">
+    <span></span><span></span><span class="active"></span><span></span><span></span>
+  </div>
+  <div class="feature">
+    <div class="feature-text">
+      <span class="label">LOG</span>
+      <h2 class="heading">Every dive captured</h2>
+      <p class="body">Import from dive watches, manually, or from your coach. Monitor your training habit.</p>
+    </div>
+    <div class="device">
+      <img src="../img/screen-dive.jpg" alt="Dive log detail">
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">element08.io</div>
+</section>
+
+<!-- ─── Slide 4 · ANALYZE ─────────────────────────────────────────────────── -->
+<section class="slide" id="slide-4">
+  <div class="pager">
+    <span></span><span></span><span></span><span class="active"></span><span></span>
+  </div>
+  <div class="feature">
+    <div class="feature-text">
+      <span class="label">ANALYZE</span>
+      <h2 class="heading">Patterns across seasons</h2>
+      <p class="body">Long-term analysis of SpO₂ trends, depth and distance progression, training balance. See your improvements.</p>
+    </div>
+    <div class="device">
+      <img src="../img/screen-insights.jpg" alt="Insights">
+    </div>
+  </div>
+  <div class="footer-mark">ELEMENT<span class="pipe">|</span>08</div>
+  <div class="footer-url">element08.io</div>
+</section>
+
+<!-- ─── Slide 5 · CTA ─────────────────────────────────────────────────────── -->
+<section class="slide cta" id="slide-5">
+  <div class="pager">
+    <span></span><span></span><span></span><span></span><span class="active"></span>
+  </div>
+  <h2 class="cta-wordmark">ELEMENT<span class="pipe">|</span>08</h2>
+  <h3 class="cta-headline">Unlock the value<br>of your data</h3>
+  <p class="cta-url">element08.io</p>
+  <p class="cta-sub">Your data is yours. We do not collect any of your training data.</p>
+</section>
+
+</body>
+</html>
