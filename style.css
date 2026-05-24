@@ -713,3 +713,73 @@ body::before {
   .analyzer-card-btn { justify-content: center; }
   .legal h1 { font-size: 26px; }
 }
+
+/* ── Roadmap ───────────────────────────────────────────────────────────── */
+.roadmap-intro {
+  font-family: var(--font-heading);
+  color: var(--dim);
+  max-width: 640px;
+  margin: 0 0 28px;
+  line-height: 1.5;
+}
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.roadmap-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+}
+.roadmap-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.roadmap-name {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  color: var(--white);
+  font-size: 22px;
+  margin: 0;
+}
+.roadmap-stage {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid rgba(200, 39, 45, 0.5);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+.roadmap-desc {
+  color: var(--dim);
+  margin: 8px 0 14px;
+  font-size: 15px;
+}
+.roadmap-bar {
+  height: 8px;
+  background: var(--abyss);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.roadmap-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+}
+.roadmap-scale {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--dim);
+  text-align: center;
+  margin-top: 28px;
+}
