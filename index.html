@@ -152,7 +152,12 @@
     <div class="container">
       <div class="section-header"><span class="slash">//</span> PREVIEW</div>
 
-      <div class="screenshots">
+      <div class="screenshots-viewport">
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous screenshots">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+
+        <div class="screenshots">
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
@@ -209,6 +214,11 @@
           </div>
           <div class="screenshot-label">Season Plan</div>
         </div>
+        </div>
+
+        <button class="carousel-arrow carousel-next" type="button" aria-label="Next screenshots">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -291,6 +301,46 @@
       <p class="footer-copy">&copy; 2026 ELEMENT | 08. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      document.querySelectorAll('.screenshots-viewport').forEach(function (viewport) {
+        var scroller = viewport.querySelector('.screenshots');
+        var prev = viewport.querySelector('.carousel-prev');
+        var next = viewport.querySelector('.carousel-next');
+        if (!scroller || !prev || !next) return;
+
+        function step() {
+          var card = scroller.querySelector('.screenshot-wrap');
+          if (!card) return scroller.clientWidth * 0.8;
+          var styles = getComputedStyle(scroller);
+          var gap = parseInt(styles.columnGap || styles.gap, 10) || 24;
+          return card.offsetWidth + gap;
+        }
+
+        function update() {
+          var max = scroller.scrollWidth - scroller.clientWidth;
+          if (max <= 1) {
+            viewport.classList.add('no-overflow');
+            return;
+          }
+          viewport.classList.remove('no-overflow');
+          prev.classList.toggle('is-disabled', scroller.scrollLeft <= 1);
+          next.classList.toggle('is-disabled', scroller.scrollLeft >= max - 1);
+        }
+
+        prev.addEventListener('click', function () {
+          scroller.scrollBy({ left: -step(), behavior: 'smooth' });
+        });
+        next.addEventListener('click', function () {
+          scroller.scrollBy({ left: step(), behavior: 'smooth' });
+        });
+        scroller.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      });
+    })();
+  </script>
 
 </body>
 </html>
