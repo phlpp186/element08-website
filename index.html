@@ -284,8 +284,7 @@
             <p>
               ELEMENT | 08 talks to any device that speaks the standard Bluetooth
               <strong>Heart Rate Service (0x180D)</strong> for HR alone, or the standard
-              <strong>PLX Continuous / Spot-Check service (0x1822)</strong> for SpO2 + HR
-              (covers Masimo MightySat, Nonin, and most generic PLX devices).
+              <strong>PLX Continuous / Spot-Check service (0x1822)</strong> for SpO2 + HR.
             </p>
             <p>
               On top of the standards, custom framings are supported for:
@@ -294,6 +293,11 @@
               and simple AA-55 framings), and <strong>Nordic UART</strong> devices
               including <strong>BCI</strong> and <strong>Viatom PF-10AW / Vibeat</strong>.
               A HealthTree framing is also handled.
+            </p>
+            <p>
+              <strong>Not currently supported:</strong> the <strong>Masimo MightySat</strong>.
+              It requires a proprietary handshake we have not yet reverse-engineered. If
+              you have one and want to help, get in touch.
             </p>
             <p>
               If your device is not on the list, the BLE Analyzer (next question) will
