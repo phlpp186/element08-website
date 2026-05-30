@@ -289,15 +289,10 @@
             <p>
               On top of the standards, custom framings are supported for:
               <strong>BerryMed</strong>, <strong>Nonin 3230</strong>,
-              <strong>Viatom / Wellue / CheckMe</strong> (including the command/response
-              and simple AA-55 framings), and <strong>Nordic UART</strong> devices
-              including <strong>BCI</strong> and <strong>Viatom PF-10AW / Vibeat</strong>.
-              A HealthTree framing is also handled.
-            </p>
-            <p>
-              <strong>Not currently supported:</strong> the <strong>Masimo MightySat</strong>.
-              It requires a proprietary handshake we have not yet reverse-engineered. If
-              you have one and want to help, get in touch.
+              <strong>Viatom / Wellue / CheckMe</strong>, and
+              <strong>Nordic UART</strong> devices including <strong>BCI</strong> and
+              <strong>Viatom PF-10AW / Vibeat</strong>. A HealthTree framing is also
+              handled.
             </p>
             <p>
               If your device is not on the list, the BLE Analyzer (next question) will
@@ -312,15 +307,13 @@
           <div class="faq-answer">
             <p>
               Open <strong>Settings → Devices → BLE Analyzer</strong>, switch on your
-              oximeter, and tap <em>Passive Scan</em>. The analyzer captures every
+              oximeter, and tap <em>Scan Device</em>. The analyzer captures every
               notify characteristic the device advertises and runs every known parser
               against the live frames.
             </p>
             <p>
               After a few seconds tap <strong>Share Scan List</strong> and send it to
-              support. The report contains the GATT structure and the raw bytes,
-              which is exactly what we need to add a parser branch for your specific
-              device. Many of the formats above were added this way.
+              support. Many of the formats above were added this way.
             </p>
           </div>
         </details>
@@ -332,13 +325,11 @@
               FIT import covers the <strong>Garmin Descent</strong> family
               (G1, G2, Mk1, Mk3, Mk3i). Suunto is supported via both <strong>FIT</strong>
               and the older <strong>SML</strong> (DM5) export, so D4i and D6i both work.
-              Shearwater and Oceanic computers are supported via <strong>UDDF</strong>,
-              and a generic dive-computer <strong>CSV</strong> import is available for
-              anything else with a time + depth column.
-            </p>
-            <p>
-              On Garmin: record the activity with the Freediving / Apnea app, then
-              export the .fit from Garmin Connect.
+              <strong>Shearwater</strong> and <strong>Oceanic</strong> computers are
+              expected to work via <strong>UDDF</strong> but this path is currently
+              untested — get in touch if you have one to try. A generic dive-computer
+              <strong>CSV</strong> import is also available for anything else with a
+              time + depth column.
             </p>
           </div>
         </details>
@@ -448,7 +439,8 @@
             <p>
               <strong>Dry breath-hold training</strong> (sitting still, no water) can
               be done at home and is what the timer, tables, and breathwork modes are
-              built for.
+              built for. Even so, do not push to your absolute limits on dry without
+              a buddy present.
             </p>
             <p>
               <strong>Never train in or near water alone</strong>. Breath-hold
