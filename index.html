@@ -22,6 +22,7 @@
           <li><a href="#coaches">For Coaches</a></li>
           <li><a href="https://analyze.element08.io">Analyzer ↗</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#faq">FAQ</a></li>
           <li><a href="#download">Download</a></li>
           <li><a href="privacy.html">Privacy</a></li>
         </ul>
@@ -268,6 +269,193 @@
       </div>
 
       <p class="roadmap-scale">PLANNING &rarr; DESIGN &rarr; PROTOTYPE &rarr; BETA &rarr; RELEASED</p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header"><span class="slash">//</span> FAQ</div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Which oximeters does the app support?</summary>
+          <div class="faq-answer">
+            <p>
+              ELEMENT | 08 talks to any device that speaks the standard Bluetooth
+              <strong>Heart Rate Service (0x180D)</strong> for HR alone, or the standard
+              <strong>PLX Continuous / Spot-Check service (0x1822)</strong> for SpO2 + HR
+              (covers Masimo MightySat, Nonin, and most generic PLX devices).
+            </p>
+            <p>
+              On top of the standards, custom framings are supported for:
+              <strong>BerryMed</strong>, <strong>Nonin 3230</strong>,
+              <strong>Viatom / Wellue / CheckMe</strong> (including the command/response
+              and simple AA-55 framings), and <strong>Nordic UART</strong> devices
+              including <strong>BCI</strong> and <strong>Viatom PF-10AW / Vibeat</strong>.
+              A HealthTree framing is also handled.
+            </p>
+            <p>
+              If your device is not on the list, the BLE Analyzer (next question) will
+              usually still pick it up automatically by trying every known parser
+              against the incoming frames.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What can I do if my oximeter is not recognized?</summary>
+          <div class="faq-answer">
+            <p>
+              Open <strong>Settings → Devices → BLE Analyzer</strong>, switch on your
+              oximeter, and tap <em>Passive Scan</em>. The analyzer captures every
+              notify characteristic the device advertises and runs every known parser
+              against the live frames.
+            </p>
+            <p>
+              After a few seconds tap <strong>Share Scan List</strong> and send it to
+              support. The report contains the GATT structure and the raw bytes,
+              which is exactly what we need to add a parser branch for your specific
+              device. Many of the formats above were added this way.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Which dive computers are supported?</summary>
+          <div class="faq-answer">
+            <p>
+              FIT import covers the <strong>Garmin Descent</strong> family
+              (G1, G2, Mk1, Mk3, Mk3i). Suunto is supported via both <strong>FIT</strong>
+              and the older <strong>SML</strong> (DM5) export, so D4i and D6i both work.
+              Shearwater and Oceanic computers are supported via <strong>UDDF</strong>,
+              and a generic dive-computer <strong>CSV</strong> import is available for
+              anything else with a time + depth column.
+            </p>
+            <p>
+              On Garmin: record the activity with the Freediving / Apnea app, then
+              export the .fit from Garmin Connect.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I import my existing dive history in bulk?</summary>
+          <div class="faq-answer">
+            <p>
+              Each file is imported one at a time today. The good news: a single
+              FIT / SML / UDDF file can carry multiple sessions, and the parser will
+              expand them into separate logbook entries.
+            </p>
+            <p>
+              From Garmin Connect you can either export individual activities
+              (one .fit each) or request the full account data export and import each
+              .fit from the unzipped archive. Multi-file selection is on the roadmap.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Where is my data stored, and is it private?</summary>
+          <div class="faq-answer">
+            <p>
+              All of it stays on your device. Your dives, holds, SpO2 traces, plans,
+              and notes are never uploaded to any ELEMENT | 08 server. The only network
+              traffic the app makes is to RevenueCat (to check your subscription state
+              when you open the paywall) and to Expo (to fetch over-the-air JS updates).
+            </p>
+            <p>
+              Backups go where you send them: Files, AirDrop, email, or your own cloud
+              of choice. See the full Privacy Policy for the exact list.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need a Bluetooth oximeter to use the app?</summary>
+          <div class="faq-answer">
+            <p>
+              No. The breath-hold timer, custom tables, breathwork, guided sessions,
+              season plans, and dive-computer logbook all work without any BLE
+              hardware. An oximeter adds live SpO2, heart rate, and PI to the session
+              timeline and unlocks post-session SpO2 analysis. Everything else is
+              unaffected.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How is a hang detected on a depth profile?</summary>
+          <div class="faq-answer">
+            <p>
+              A hang is a stationary segment in the depth profile where you hold
+              depth. A sliding window scans the profile and a sample only counts as
+              stationary if (a) it does not jump suddenly relative to the previous
+              sample, (b) the depth range inside the window stays under the
+              wave-oscillation tolerance, and (c) the linear slope through the window
+              is close to zero.
+            </p>
+            <p>
+              Short stationary runs during a continuous ascent or descent are
+              kick-glide rhythm and are dropped automatically. Only directional
+              turnarounds (descent into the run, ascent out of it, or vice versa) are
+              kept. A hang whose average depth is within 2 m of your deepest point is
+              classified as a <strong>bottom hang</strong>; everything else is an
+              <strong>off-bottom hang</strong>. Phase times (descent, hang, ascent)
+              are split on the first and last detected hang.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the pool dive merge function?</summary>
+          <div class="faq-answer">
+            <p>
+              Sometimes a long pool attempt surfaces briefly mid-attempt and the watch
+              splits it into two consecutive dives. The merge function combines them
+              back into a single continuous record.
+            </p>
+            <p>
+              Open the session, pick a dive, and choose <strong>Merge with next</strong>.
+              The surface interval between the two becomes part of the total dive
+              time. Distance and lap times concatenate; contractions are time-shifted
+              into the merged timeline; HR is linearly interpolated across the break
+              so the chart stays coherent. The original dives' metadata follows the
+              first dive (discipline, lung volume, rating, remarks).
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is the app free?</summary>
+          <div class="faq-answer">
+            <p>
+              The core app is free, with no mandatory subscription. Optional Pro
+              features unlock advanced analytics, additional custom training programs,
+              and the full guided-session library. You can train seriously on the
+              free tier.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is it safe to do breath-hold training at home with the app?</summary>
+          <div class="faq-answer">
+            <p>
+              <strong>Dry breath-hold training</strong> (sitting still, no water) can
+              be done at home and is what the timer, tables, and breathwork modes are
+              built for.
+            </p>
+            <p>
+              <strong>Never train in or near water alone</strong>. Breath-hold
+              training in water carries real risks including blackout, and always
+              requires a trained buddy supervising you directly at arm's length.
+              ELEMENT | 08 supports your training. It does not replace certified
+              instruction or medical advice.
+            </p>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
