@@ -403,6 +403,31 @@
         </details>
 
         <details class="faq-item">
+          <summary>How are descent and ascent speed calculated?</summary>
+          <div class="faq-answer">
+            <p>
+              Each is an <strong>average vertical speed for the moving part of the
+              dive</strong>: the depth covered divided by the time spent moving, with
+              any <strong>bottom hang excluded</strong>. The dive is split into
+              descent, hang, and ascent (see the hang question above), so a pause at
+              depth never makes your descent or ascent look artificially slow.
+            </p>
+            <p>
+              When your dive computer records its own per-second vertical-speed values
+              (for example Garmin), the app averages those across the moving samples.
+              Otherwise it uses max depth divided by the phase time. For manually
+              entered dives it uses the descent / ascent time (or speed) you logged,
+              falling back to an estimate if you logged neither.
+            </p>
+            <p>
+              Because the bottom hang is removed, these speeds can read slightly faster
+              than a simple "depth over time-to-the-bottom" worked out by hand. That is
+              intentional and reflects how fast you were actually moving.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
           <summary>What is the pool dive merge function?</summary>
           <div class="faq-answer">
             <p>
