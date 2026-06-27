@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ELEMENT | 08: Freediving Performance System</title>
-  <meta name="description" content="Breath hold training, logbook, and performance analytics for freedivers. CO2 & O2 tables, breathwork, oximeter support, dive log import.">
+  <title data-i18n="meta.title.home">ELEMENT | 08: Freediving Performance System</title>
+  <meta name="description" data-i18n-content="meta.desc.home" content="Breath hold training, logbook, and performance analytics for freedivers. CO2 & O2 tables, breathwork, oximeter support, dive log import.">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -18,14 +18,15 @@
       <a href="/" class="nav-wordmark">ELEMENT <span class="pipe">|</span> 08</a>
       <nav>
         <ul class="nav-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#coaches">For Coaches</a></li>
-          <li><a href="https://analyze.element08.io">Analyzer ↗</a></li>
-          <li><a href="#roadmap">Roadmap</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#download">Download</a></li>
+          <li><a href="#features" data-i18n="nav.features">Features</a></li>
+          <li><a href="#coaches" data-i18n="nav.coaches">For Coaches</a></li>
+          <li><a href="https://analyze.element08.io" data-i18n="nav.analyzer">Analyzer ↗</a></li>
+          <li><a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+          <li><a href="#download" data-i18n="nav.download">Download</a></li>
         </ul>
       </nav>
+      <select id="lang-select" class="lang-select" aria-label="Language"></select>
     </div>
   </header>
 
@@ -34,8 +35,8 @@
     <div class="container">
       <img src="img/icon.png" alt="ELEMENT | 08 app icon" class="hero-icon">
       <h1 class="hero-title">ELEMENT <span class="pipe">|</span> 08</h1>
-      <p class="hero-tagline">Freediving Performance System</p>
-      <p class="hero-desc">
+      <p class="hero-tagline" data-i18n="hero.tagline">Freediving Performance System</p>
+      <p class="hero-desc" data-i18n="hero.desc">
         Build custom breath hold and breathwork sessions, track your SpO2 with a
         Bluetooth oximeter, import dive computer logs, and analyze your performance
         over time.
@@ -47,50 +48,50 @@
   <div class="status-strip">
     <div class="status-item">
       <div class="status-val">5</div>
-      <div class="status-key">THEMES</div>
+      <div class="status-key" data-i18n="status.themes">THEMES</div>
     </div>
     <div class="status-item">
       <div class="status-val">4</div>
-      <div class="status-key">VOICES</div>
+      <div class="status-key" data-i18n="status.voices">VOICES</div>
     </div>
     <div class="status-item">
       <div class="status-val">20+</div>
-      <div class="status-key">GUIDED_SESSIONS</div>
+      <div class="status-key" data-i18n="status.guided">GUIDED_SESSIONS</div>
     </div>
     <div class="status-item">
       <div class="status-val">BLE</div>
-      <div class="status-key">OXIMETER</div>
+      <div class="status-key" data-i18n="status.oximeter">OXIMETER</div>
     </div>
   </div>
 
   <!-- ── Features ────────────────────────────────────────────────────── -->
   <section id="features">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> FEATURES</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="features.header">FEATURES</span></div>
 
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-label">// 01</div>
-          <div class="feature-title">Free Session Builder</div>
-          <div class="feature-desc">CO2 and O2 tables, breathwork mode, custom rest/hold/recover blocks with full audio announcements.</div>
+          <div class="feature-title" data-i18n="features.f1.title">Free Session Builder</div>
+          <div class="feature-desc" data-i18n="features.f1.desc">CO2 and O2 tables, breathwork mode, custom rest/hold/recover blocks with full audio announcements.</div>
         </div>
 
         <div class="feature-card amber">
           <div class="feature-label">// 02</div>
-          <div class="feature-title">Logbook</div>
-          <div class="feature-desc">Every session saved with SpO2/HR charts, block timeline, contractions, and personal notes. Import dive logs from several dive computer brands.</div>
+          <div class="feature-title" data-i18n="features.f2.title">Logbook</div>
+          <div class="feature-desc" data-i18n="features.f2.desc">Every session saved with SpO2/HR charts, block timeline, contractions, and personal notes. Import dive logs from several dive computer brands.</div>
         </div>
 
         <div class="feature-card green">
           <div class="feature-label">// 03</div>
-          <div class="feature-title">Training Plans & Season Planning</div>
-          <div class="feature-desc">Follow structured programs from beginner to advanced, or build your own season plan with periodized phases for competition prep.</div>
+          <div class="feature-title" data-i18n="features.f3.title">Training Plans & Season Planning</div>
+          <div class="feature-desc" data-i18n="features.f3.desc">Follow structured programs from beginner to advanced, or build your own season plan with periodized phases for competition prep.</div>
         </div>
 
         <div class="feature-card white">
           <div class="feature-label">// 04</div>
-          <div class="feature-title">Insights & Analytics</div>
-          <div class="feature-desc">Hold time trends, depth bands, SpO2 exposure zones, and live SpO2, HR, and PI readings via Bluetooth oximeter. Detailed analysis after every session.</div>
+          <div class="feature-title" data-i18n="features.f4.title">Insights & Analytics</div>
+          <div class="feature-desc" data-i18n="features.f4.desc">Hold time trends, depth bands, SpO2 exposure zones, and live SpO2, HR, and PI readings via Bluetooth oximeter. Detailed analysis after every session.</div>
         </div>
       </div>
     </div>
@@ -99,13 +100,13 @@
   <!-- ── Web Analyzer ───────────────────────────────────────────────── -->
   <section id="analyzer">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> WEB ANALYZER</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="analyzer.header">WEB ANALYZER</span></div>
 
       <div class="analyzer-card">
         <div class="analyzer-card-text">
-          <div class="analyzer-card-label">Companion tool</div>
-          <div class="analyzer-card-title">Analyze your data in the browser</div>
-          <p class="analyzer-card-desc">
+          <div class="analyzer-card-label" data-i18n="analyzer.label">Companion tool</div>
+          <div class="analyzer-card-title" data-i18n="analyzer.title">Analyze your data in the browser</div>
+          <p class="analyzer-card-desc" data-i18n="analyzer.desc">
             Export a backup from the app, drop the file into the web analyzer, and explore your training across seasons: cross-cut by mode, build custom charts, compare dives side by side. Runs entirely in your browser. Your data never leaves your machine.
           </p>
         </div>
@@ -119,29 +120,29 @@
   <!-- ── For Coaches ─────────────────────────────────────────────────── -->
   <section id="coaches">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> FOR COACHES</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="coaches.header">FOR COACHES</span></div>
 
-      <p class="coaches-intro">
+      <p class="coaches-intro" data-i18n="coaches.intro">
         Build training plans in your spreadsheet, share them with students as a single file. Students import in one tap. No accounts. No subscriptions. Imported plans show "Imported from {your name}" and the author field is locked once you export.
       </p>
 
       <div class="coaches-grid">
         <a class="coach-card" href="templates/e08_training_plan_template.xlsx" download>
           <div class="coach-card-label">// TEMPLATE</div>
-          <div class="coach-card-title">Training Plan</div>
-          <div class="coach-card-desc">Short focus block: 1+ weeks, no phases. Pre-trip primer, in-season micro-cycle, recovery week. Pre-filled with a 2-week pool example you can edit.</div>
-          <div class="coach-card-cta">Download .xlsx ↓</div>
+          <div class="coach-card-title" data-i18n="coaches.c1.title">Training Plan</div>
+          <div class="coach-card-desc" data-i18n="coaches.c1.desc">Short focus block: 1+ weeks, no phases. Pre-trip primer, in-season micro-cycle, recovery week. Pre-filled with a 2-week pool example you can edit.</div>
+          <div class="coach-card-cta" data-i18n="coaches.c1.cta">Download .xlsx ↓</div>
         </a>
 
         <a class="coach-card" href="templates/e08_season_plan_template.xlsx" download>
           <div class="coach-card-label">// TEMPLATE</div>
-          <div class="coach-card-title">Season Plan</div>
-          <div class="coach-card-desc">Multi-phase progression toward a target: competition, depth attempt, distance goal. Pre-filled with a worked base-then-specific example you can edit.</div>
-          <div class="coach-card-cta">Download .xlsx ↓</div>
+          <div class="coach-card-title" data-i18n="coaches.c2.title">Season Plan</div>
+          <div class="coach-card-desc" data-i18n="coaches.c2.desc">Multi-phase progression toward a target: competition, depth attempt, distance goal. Pre-filled with a worked base-then-specific example you can edit.</div>
+          <div class="coach-card-cta" data-i18n="coaches.c2.cta">Download .xlsx ↓</div>
         </a>
       </div>
 
-      <p class="coaches-note">
+      <p class="coaches-note" data-i18n-html="coaches.note">
         Open in Numbers, Excel, or Google Sheets. Each row is one exercise: fill the <strong>Phase / Week / Session</strong> columns on the first row, then add exercise rows below leaving those blank to keep them in the same session. Dropdowns guide you through valid values. When you're done, just send the <strong>.xlsx</strong> file to your student, no CSV export needed. They tap <strong>↓ Import Plan from File</strong> in the Plans screen and pick it. Validation surfaces every issue at once so you can fix and re-send in one pass.
       </p>
     </div>
@@ -150,7 +151,7 @@
   <!-- ── Screenshots ─────────────────────────────────────────────────── -->
   <section id="screenshots">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> PREVIEW</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="screenshots.header">PREVIEW</span></div>
 
       <div class="screenshots-viewport">
         <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous screenshots">
@@ -163,56 +164,56 @@
             <div class="phone-notch"></div>
             <img src="img/screen-timer.jpg" alt="Live session with oximeter" loading="lazy">
           </div>
-          <div class="screenshot-label">Live Session</div>
+          <div class="screenshot-label" data-i18n="shot.live">Live Session</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-dive.jpg" alt="Dive detail with depth profile" loading="lazy">
           </div>
-          <div class="screenshot-label">Dive Detail</div>
+          <div class="screenshot-label" data-i18n="shot.dive">Dive Detail</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-builder.jpg" alt="Session builder" loading="lazy">
           </div>
-          <div class="screenshot-label">Session Builder</div>
+          <div class="screenshot-label" data-i18n="shot.builder">Session Builder</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-insights.jpg" alt="Insights and analytics" loading="lazy">
           </div>
-          <div class="screenshot-label">Insights</div>
+          <div class="screenshot-label" data-i18n="shot.insights">Insights</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-path.jpg" alt="Your Path training plan" loading="lazy">
           </div>
-          <div class="screenshot-label">Your Path</div>
+          <div class="screenshot-label" data-i18n="shot.path">Your Path</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-logbook.jpg" alt="Training log" loading="lazy">
           </div>
-          <div class="screenshot-label">Training Log</div>
+          <div class="screenshot-label" data-i18n="shot.log">Training Log</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-hold.jpg" alt="Hold detail with SpO2 chart" loading="lazy">
           </div>
-          <div class="screenshot-label">Hold Detail</div>
+          <div class="screenshot-label" data-i18n="shot.hold">Hold Detail</div>
         </div>
         <div class="screenshot-wrap">
           <div class="phone-frame">
             <div class="phone-notch"></div>
             <img src="img/screen-season.jpg" alt="Season plan" loading="lazy">
           </div>
-          <div class="screenshot-label">Season Plan</div>
+          <div class="screenshot-label" data-i18n="shot.season">Season Plan</div>
         </div>
         </div>
 
@@ -226,60 +227,60 @@
   <!-- ── Roadmap ─────────────────────────────────────────────────────────── -->
   <section id="roadmap">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> ROADMAP</div>
-      <p class="roadmap-intro">App plus dedicated hardware, built to work together. Here is where each part of the system stands today.</p>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="roadmap.header">ROADMAP</span></div>
+      <p class="roadmap-intro" data-i18n="roadmap.intro">App plus dedicated hardware, built to work together. Here is where each part of the system stands today.</p>
 
       <div class="roadmap-list">
         <div class="roadmap-item">
           <div class="roadmap-row">
-            <h3 class="roadmap-name">App</h3>
-            <span class="roadmap-stage">Closed Beta</span>
+            <h3 class="roadmap-name" data-i18n="roadmap.app.name">App</h3>
+            <span class="roadmap-stage" data-i18n="roadmap.app.stage">Closed Beta</span>
           </div>
-          <p class="roadmap-desc">Training, logbook, analytics, and dive-computer import.</p>
+          <p class="roadmap-desc" data-i18n="roadmap.app.desc">Training, logbook, analytics, and dive-computer import.</p>
           <div class="roadmap-bar"><div class="roadmap-fill" style="width:80%"></div></div>
         </div>
 
         <div class="roadmap-item">
           <div class="roadmap-row">
-            <h3 class="roadmap-name">EQ Tool</h3>
-            <span class="roadmap-stage">Prototype 90%</span>
+            <h3 class="roadmap-name" data-i18n="roadmap.eq.name">EQ Tool</h3>
+            <span class="roadmap-stage" data-i18n="roadmap.eq.stage">Prototype 90%</span>
           </div>
-          <p class="roadmap-desc">A dedicated equalization trainer.</p>
+          <p class="roadmap-desc" data-i18n="roadmap.eq.desc">A dedicated equalization trainer.</p>
           <div class="roadmap-bar"><div class="roadmap-fill" style="width:68%"></div></div>
         </div>
 
         <div class="roadmap-item">
           <div class="roadmap-row">
-            <h3 class="roadmap-name">Depth &amp; Pool Computer</h3>
-            <span class="roadmap-stage">Design</span>
+            <h3 class="roadmap-name" data-i18n="roadmap.computer.name">Depth &amp; Pool Computer</h3>
+            <span class="roadmap-stage" data-i18n="roadmap.computer.stage">Design</span>
           </div>
-          <p class="roadmap-desc">Wearable dive tracking built for freedivers.</p>
+          <p class="roadmap-desc" data-i18n="roadmap.computer.desc">Wearable dive tracking built for freedivers.</p>
           <div class="roadmap-bar"><div class="roadmap-fill" style="width:40%"></div></div>
         </div>
 
         <div class="roadmap-item">
           <div class="roadmap-row">
-            <h3 class="roadmap-name">Oximeter</h3>
-            <span class="roadmap-stage">Planning</span>
+            <h3 class="roadmap-name" data-i18n="roadmap.oximeter.name">Oximeter</h3>
+            <span class="roadmap-stage" data-i18n="roadmap.oximeter.stage">Planning</span>
           </div>
-          <p class="roadmap-desc">Live blood-oxygen and heart rate during breath-hold.</p>
+          <p class="roadmap-desc" data-i18n="roadmap.oximeter.desc">Live blood-oxygen and heart rate during breath-hold.</p>
           <div class="roadmap-bar"><div class="roadmap-fill" style="width:20%"></div></div>
         </div>
       </div>
 
-      <p class="roadmap-scale">PLANNING &rarr; DESIGN &rarr; PROTOTYPE &rarr; BETA &rarr; RELEASED</p>
+      <p class="roadmap-scale" data-i18n="roadmap.scale">PLANNING &rarr; DESIGN &rarr; PROTOTYPE &rarr; BETA &rarr; RELEASED</p>
     </div>
   </section>
 
   <!-- ── FAQ ─────────────────────────────────────────────────────────── -->
   <section id="faq">
     <div class="container">
-      <div class="section-header"><span class="slash">//</span> FAQ</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="faq.header">FAQ</span></div>
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Which oximeters does the app support?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q1.q">Which oximeters does the app support?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q1.a">
             <p>
               ELEMENT | 08 talks to any device that speaks the standard Bluetooth
               <strong>Heart Rate Service (0x180D)</strong> for HR alone, or the standard
@@ -303,8 +304,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>What can I do if my oximeter is not recognized?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q2.q">What can I do if my oximeter is not recognized?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q2.a">
             <p>
               Open <strong>Settings → Devices → BLE Analyzer</strong>, switch on your
               oximeter, and tap <em>Scan Device</em>. The analyzer captures every
@@ -319,8 +320,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Which dive computers are supported?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q3.q">Which dive computers are supported?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q3.a">
             <p>
               FIT import covers the <strong>Garmin Descent</strong> family
               (G1, G2, Mk1, Mk3, Mk3i). Suunto is supported via both <strong>FIT</strong>
@@ -335,8 +336,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Can I import my existing dive history in bulk?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q4.q">Can I import my existing dive history in bulk?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q4.a">
             <p>
               Each file is imported one at a time today. The good news: a single
               FIT / SML / UDDF file can carry multiple sessions, and the parser will
@@ -351,8 +352,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Where is my data stored, and is it private?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q5.q">Where is my data stored, and is it private?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q5.a">
             <p>
               All of it stays on your device. Your dives, holds, SpO2 traces, plans,
               and notes are never uploaded to any ELEMENT | 08 server. The only network
@@ -367,8 +368,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Do I need a Bluetooth oximeter to use the app?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q6.q">Do I need a Bluetooth oximeter to use the app?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q6.a">
             <p>
               No. The breath-hold timer, custom tables, breathwork, guided sessions,
               season plans, and dive-computer logbook all work without any BLE
@@ -380,8 +381,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>How is a hang detected on a depth profile?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q7.q">How is a hang detected on a depth profile?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q7.a">
             <p>
               A hang is a stationary segment in the depth profile where you hold
               depth. A sliding window scans the profile and a sample only counts as
@@ -403,8 +404,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>How are descent and ascent speed calculated?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q8.q">How are descent and ascent speed calculated?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q8.a">
             <p>
               Each is an <strong>average vertical speed for the moving part of the
               dive</strong>: the depth covered divided by the time spent moving, with
@@ -428,8 +429,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>What is the pool dive merge function?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q9.q">What is the pool dive merge function?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q9.a">
             <p>
               Sometimes a long pool attempt surfaces briefly mid-attempt and the watch
               splits it into two consecutive dives. The merge function combines them
@@ -447,8 +448,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Is the app free?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q10.q">Is the app free?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q10.a">
             <p>
               The core app is free, with no mandatory subscription. Optional Pro
               features unlock advanced analytics, additional custom training programs,
@@ -459,8 +460,8 @@
         </details>
 
         <details class="faq-item">
-          <summary>Is it safe to do breath-hold training at home with the app?</summary>
-          <div class="faq-answer">
+          <summary data-i18n="faq.q11.q">Is it safe to do breath-hold training at home with the app?</summary>
+          <div class="faq-answer" data-i18n-html="faq.q11.a">
             <p>
               <strong>Dry breath-hold training</strong> (sitting still, no water) can
               be done at home and is what the timer, tables, and breathwork modes are
@@ -487,7 +488,7 @@
   <!-- ── Download ────────────────────────────────────────────────────── -->
   <section id="download">
     <div class="container download-section">
-      <div class="section-header"><span class="slash">//</span> DOWNLOAD</div>
+      <div class="section-header"><span class="slash">//</span> <span data-i18n="download.header">DOWNLOAD</span></div>
 
       <div class="download-buttons">
         <a
@@ -509,7 +510,7 @@
           App Store
         </a>
       </div>
-      <p class="coming-soon"><span class="dot"></span>Now on the App Store and Google Play.</p>
+      <p class="coming-soon"><span class="dot"></span><span data-i18n="download.note">Now on the App Store and Google Play.</span></p>
     </div>
   </section>
 
@@ -517,15 +518,16 @@
   <footer class="site-footer">
     <div class="container">
       <ul class="footer-links">
-        <li><a href="safety.html">Safety &amp; Contraindications</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms of Service</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="safety.html" data-i18n="footer.safety">Safety &amp; Contraindications</a></li>
+        <li><a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+        <li><a href="terms.html" data-i18n="footer.terms">Terms of Service</a></li>
+        <li><a href="impressum.html" data-i18n="footer.impressum">Impressum</a></li>
       </ul>
-      <p class="footer-copy">&copy; 2026 ELEMENT | 08. All rights reserved.</p>
+      <p class="footer-copy" data-i18n-html="footer.copy">&copy; 2026 ELEMENT | 08. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script>
     (function () {
       document.querySelectorAll('.screenshots-viewport').forEach(function (viewport) {
