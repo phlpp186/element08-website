@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08: Freediving Performance System",
   "nav.features": "Features",
-  "nav.coaches": "For Coaches",
+  "nav.coaches": "For Coaches ↗",
   "nav.analyzer": "Analyzer ↗",
   "nav.roadmap": "Roadmap",
   "nav.faq": "FAQ",
@@ -45,7 +45,7 @@
   "roadmap.header": "ROADMAP",
   "roadmap.intro": "App plus dedicated hardware, built to work together. Here is where each part of the system stands today.",
   "roadmap.app.name": "App",
-  "roadmap.app.stage": "Closed Beta",
+  "roadmap.app.stage": "Released",
   "roadmap.app.desc": "Training, logbook, analytics, and dive-computer import.",
   "roadmap.eq.name": "EQ Tool",
   "roadmap.eq.stage": "Prototype 90%",

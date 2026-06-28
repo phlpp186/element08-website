@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08：自由潜水表现系统",
   "nav.features": "功能",
-  "nav.coaches": "教练专区",
+  "nav.coaches": "教练专区 ↗",
   "nav.analyzer": "分析器 ↗",
   "nav.roadmap": "路线图",
   "nav.faq": "常见问题",
@@ -45,7 +45,7 @@
   "roadmap.header": "路线图",
   "roadmap.intro": "应用加专属硬件，为协同工作而打造。以下是系统各部分目前所处的阶段。",
   "roadmap.app.name": "应用",
-  "roadmap.app.stage": "封闭测试",
+  "roadmap.app.stage": "发布",
   "roadmap.app.desc": "训练、日志、分析以及潜水电脑导入。",
   "roadmap.eq.name": "平压工具",
   "roadmap.eq.stage": "原型 90%",

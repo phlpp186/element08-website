@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08: Sistema de rendimiento para apnea",
   "nav.features": "Funciones",
-  "nav.coaches": "Para entrenadores",
+  "nav.coaches": "Para entrenadores ↗",
   "nav.analyzer": "Analizador ↗",
   "nav.roadmap": "Hoja de ruta",
   "nav.faq": "Preguntas frecuentes",
@@ -45,7 +45,7 @@
   "roadmap.header": "HOJA DE RUTA",
   "roadmap.intro": "Una app más hardware dedicado, diseñados para funcionar juntos. Aquí es donde se encuentra hoy cada parte del sistema.",
   "roadmap.app.name": "App",
-  "roadmap.app.stage": "Beta cerrada",
+  "roadmap.app.stage": "Lanzado",
   "roadmap.app.desc": "Entrenamiento, cuaderno de bitácora, análisis e importación desde ordenador de buceo.",
   "roadmap.eq.name": "Herramienta EQ",
   "roadmap.eq.stage": "Prototipo 90%",

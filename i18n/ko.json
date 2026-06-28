@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08: 프리다이빙 퍼포먼스 시스템",
   "nav.features": "기능",
-  "nav.coaches": "코치를 위한 기능",
+  "nav.coaches": "코치를 위한 기능 ↗",
   "nav.analyzer": "분석기 ↗",
   "nav.roadmap": "로드맵",
   "nav.faq": "자주 묻는 질문",
@@ -45,7 +45,7 @@
   "roadmap.header": "로드맵",
   "roadmap.intro": "앱과 전용 하드웨어가 함께 작동하도록 만들어졌습니다. 현재 시스템의 각 부분이 어디에 있는지 보여드립니다.",
   "roadmap.app.name": "앱",
-  "roadmap.app.stage": "비공개 베타",
+  "roadmap.app.stage": "출시",
   "roadmap.app.desc": "트레이닝, 로그북, 분석, 다이브컴퓨터 가져오기.",
   "roadmap.eq.name": "EQ 도구",
   "roadmap.eq.stage": "프로토타입 90%",

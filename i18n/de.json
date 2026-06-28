@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08: Freitauch-Leistungssystem",
   "nav.features": "Funktionen",
-  "nav.coaches": "Für Coaches",
+  "nav.coaches": "Für Coaches ↗",
   "nav.analyzer": "Analyzer ↗",
   "nav.roadmap": "Roadmap",
   "nav.faq": "FAQ",
@@ -45,7 +45,7 @@
   "roadmap.header": "ROADMAP",
   "roadmap.intro": "App plus dedizierte Hardware, dafür gebaut, zusammenzuarbeiten. Hier steht jeder Teil des Systems heute.",
   "roadmap.app.name": "App",
-  "roadmap.app.stage": "Geschlossene Beta",
+  "roadmap.app.stage": "Veröffentlicht",
   "roadmap.app.desc": "Training, Logbuch, Analysen und Tauchcomputer-Import.",
   "roadmap.eq.name": "EQ-Tool",
   "roadmap.eq.stage": "Prototyp 90%",

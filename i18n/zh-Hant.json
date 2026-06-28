@@ -1,7 +1,7 @@
 {
   "meta.title.home": "ELEMENT | 08：自由潛水表現系統",
   "nav.features": "功能",
-  "nav.coaches": "教練專區",
+  "nav.coaches": "教練專區 ↗",
   "nav.analyzer": "分析工具 ↗",
   "nav.roadmap": "發展藍圖",
   "nav.faq": "常見問題",
@@ -45,7 +45,7 @@
   "roadmap.header": "發展藍圖",
   "roadmap.intro": "App 加上專屬硬體，協同運作而生。以下是系統各部分目前的進度。",
   "roadmap.app.name": "App",
-  "roadmap.app.stage": "封閉測試",
+  "roadmap.app.stage": "發布",
   "roadmap.app.desc": "訓練、日誌、分析，以及潛水電腦匯入。",
   "roadmap.eq.name": "EQ 工具",
   "roadmap.eq.stage": "原型 90%",
