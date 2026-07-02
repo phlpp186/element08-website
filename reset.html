@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset password: ELEMENT | 08</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .reset-input {
+      width: 100%; box-sizing: border-box; margin-top: 12px;
+      padding: 13px 14px; font-size: 15px; font-family: inherit;
+      color: var(--text); background: var(--panel);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .reset-input:focus { outline: none; border-color: var(--accent); }
+    .reset-msg { margin-top: 16px; font-size: 14px; color: var(--amber); min-height: 18px; }
+    .reset-hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="nav-wordmark">ELEMENT <span class="pipe">|</span> 08</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="legal">
+    <div class="container" style="max-width:520px; text-align:center;">
+
+      <div id="verifying">
+        <h1><span class="slash">//</span> Checking your link</h1>
+        <p>One moment…</p>
+      </div>
+
+      <div id="form" class="reset-hidden">
+        <h1><span class="slash">//</span> Set a new password</h1>
+        <p>Choose a new password for your ELEMENT&nbsp;|&nbsp;08 account.</p>
+        <form id="pwform" style="margin-top:20px; text-align:left;">
+          <input id="pw" class="reset-input" type="password" placeholder="New password" autocomplete="new-password" minlength="6" required>
+          <input id="pw2" class="reset-input" type="password" placeholder="Confirm new password" autocomplete="new-password" minlength="6" required>
+          <div id="msg" class="reset-msg"></div>
+          <div class="download-buttons" style="justify-content:flex-start; margin-top:8px;">
+            <button id="submit" type="submit" class="btn btn-primary">Update password</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="done" class="reset-hidden">
+        <h1><span class="slash">//</span> Password updated</h1>
+        <p>Your password has been changed. Open the app and sign in with your new password.</p>
+        <div class="download-buttons" style="margin-top:24px;">
+          <a href="element08://" class="btn btn-primary">Open the app</a>
+        </div>
+      </div>
+
+      <div id="error" class="reset-hidden">
+        <h1><span class="slash">//</span> Link expired</h1>
+        <p id="errtext">This password reset link is invalid or has expired. Request a new one from the app.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="safety.html">Safety &amp; Contraindications</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 ELEMENT | 08. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    var SUPA_URL = 'https://gtgoqdaapnzwkrvanaab.supabase.co';
+    var SUPA_KEY = 'sb_publishable_EqsQtlSzqWILFpr7ioss_Q_9sK-YJLl';
+    var client = window.supabase.createClient(SUPA_URL, SUPA_KEY);
+
+    function show(id) {
+      ['verifying', 'form', 'done', 'error'].forEach(function (k) {
+        document.getElementById(k).classList.toggle('reset-hidden', k !== id);
+      });
+    }
+    function showError(text) {
+      if (text) document.getElementById('errtext').textContent = text;
+      show('error');
+    }
+
+    var ready = false;
+    function onSession() { if (!ready) { ready = true; show('form'); } }
+
+    // Supabase redirects an expired/invalid link back with an error in the hash.
+    var hp = new URLSearchParams(window.location.hash.slice(1));
+    var errDesc = hp.get('error_description');
+
+    client.auth.onAuthStateChange(function (_event, session) { if (session) onSession(); });
+
+    window.addEventListener('load', function () {
+      if (errDesc) { showError(errDesc.replace(/\+/g, ' ')); return; }
+      client.auth.getSession().then(function (res) {
+        if (res.data.session) { onSession(); return; }
+        setTimeout(function () {
+          client.auth.getSession().then(function (r2) {
+            if (r2.data.session) onSession();
+            else if (!ready) showError();
+          });
+        }, 1800);
+      });
+    });
+
+    document.getElementById('pwform').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var pw = document.getElementById('pw').value;
+      var pw2 = document.getElementById('pw2').value;
+      var msg = document.getElementById('msg');
+      var btn = document.getElementById('submit');
+      if (pw.length < 6) { msg.textContent = 'Password must be at least 6 characters.'; return; }
+      if (pw !== pw2) { msg.textContent = 'Passwords do not match.'; return; }
+      msg.textContent = '';
+      btn.disabled = true;
+      client.auth.updateUser({ password: pw }).then(function (res) {
+        btn.disabled = false;
+        if (res.error) { msg.textContent = res.error.message; return; }
+        client.auth.signOut().finally(function () { show('done'); });
+      });
+    });
+  </script>
+
+</body>
+</html>
