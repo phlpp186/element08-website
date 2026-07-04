@@ -1,31 +1,38 @@
 /* ── ELEMENT | 08 Website Styles ────────────────────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 /* ── Reset & Base ──────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Chalk Dark palette — warm slate, soft borders, rounded corners. Brand
-   stays red (matches logo + Instagram carousel); analyzer keeps cyan as
-   its own differentiator on the web side. */
+/* Open Water direction: Caribbean (light, default) + Chalk Dark (dark).
+   Both palettes are lifted 1:1 from the app's theme.ts so app and web read
+   as one product. The pipe wordmark follows the theme accent, exactly like
+   the logo does inside the app. */
 :root {
-  --bg:        #1F1D1A;
-  --abyss:     #161412;
-  --surface:   #2A2724;
-  --panel:     #33302C;
-  --accent:    #C8272D;
-  --accent-dim: rgba(200,39,45,0.18);
-  --green:     #3DC96B;
-  --amber:     #F0A500;
-  --white:     #F7F5F0;
-  --text:      #EDE9E2;
-  --dim:       #8A857C;
-  --border:    rgba(255,255,255,0.10);
-  --border-solid: #4A463F;
+  /* Caribbean — light Caribbean aqua, coral accent, sea-ink text */
+  --bg:        #D9F1F6;
+  --abyss:     #A9DEE9;
+  --surface:   #F7FDFE;
+  --panel:     #FFFFFF;
+  --accent:    #F2764F;
+  --accent-dim: rgba(242,118,79,0.14);
+  --sand:      #E8A93A;
+  --green:     #1FB894;
+  --amber:     #E8942A;
+  --white:     #08323B;   /* strongest text (headings) */
+  --text:      #0C3B45;
+  --dim:       #5E828A;
+  --border:    rgba(12,59,69,0.10);
+  --border-solid: #B9DCE3;
+  --shadow-card: 0 6px 22px rgba(12,59,69,0.09);
+  --shadow-float: 0 14px 40px rgba(12,59,69,0.16);
+  --on-accent: #FFFFFF;
+  --canvas:
+    radial-gradient(90% 55% at 50% -8%, rgba(255,255,255,0.85), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #EAF9FB 0%, #CDEFF5 45%, #B9E6EF 100%);
   --font-heading: 'Nunito', system-ui, sans-serif;
-  /* "Mono" is Nunito SemiBold with wide letter-spacing — matches the
-     all-caps label style used in the app. Not a real monospace. */
   --font-mono: 'Nunito', system-ui, sans-serif;
   --radius-sm:    12px;
   --radius-card:  20px;
@@ -33,6 +40,28 @@
   --radius-modal: 28px;
   --radius-pill:  100px;
   --radius: var(--radius-card);
+}
+
+html[data-theme="dark"] {
+  /* Chalk Dark — warm dark slate, sky-cyan accent (the app's chalk_dark) */
+  --bg:        #1F1D1A;
+  --abyss:     #161412;
+  --surface:   #2A2724;
+  --panel:     #33302C;
+  --accent:    #1BAFE0;
+  --accent-dim: rgba(27,175,224,0.16);
+  --sand:      #F0A500;
+  --green:     #3DC96B;
+  --amber:     #F0A500;
+  --white:     #F7F5F0;
+  --text:      #EDE9E2;
+  --dim:       #8A857C;
+  --border:    rgba(255,255,255,0.10);
+  --border-solid: #4A463F;
+  --shadow-card: 0 8px 26px rgba(0,0,0,0.35);
+  --shadow-float: 0 16px 44px rgba(0,0,0,0.5);
+  --on-accent: #10222B;
+  --canvas: linear-gradient(180deg, #232019 0%, #1F1D1A 35%, #1B1917 100%);
 }
 
 html { scroll-behavior: smooth; }
@@ -47,18 +76,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Grid background ───────────────────────────────────────────────────────── */
-
+/* Fixed page canvas — a soft sunlit gradient instead of the old grid. */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background: var(--canvas);
   pointer-events: none;
   z-index: -1;
+}
+
+a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ── Layout ────────────────────────────────────────────────────────────────── */
@@ -73,7 +104,6 @@ body::before {
 
 .site-header {
   padding: 20px 0;
-  border-bottom: 1px solid var(--border);
 }
 
 .site-header .container {
@@ -87,10 +117,9 @@ body::before {
 
 /* Language switcher */
 .lang-select {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 1px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
   color: var(--dim);
   background: var(--surface);
   border: 1px solid var(--border-solid);
@@ -101,7 +130,7 @@ body::before {
   /* custom caret */
   -webkit-appearance: none;
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A857C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E828A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;
@@ -110,11 +139,32 @@ body::before {
 .lang-select:focus { outline: none; border-color: var(--accent); }
 .lang-select option { color: var(--text); background: var(--surface); }
 
+/* Theme toggle */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--border-solid);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--dim);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
 .nav-wordmark {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 3px;
+  font-size: 15px;
+  letter-spacing: 2px;
   color: var(--white);
   text-decoration: none;
   white-space: nowrap;
@@ -131,41 +181,37 @@ body::before {
 }
 
 .nav-links a {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
   color: var(--dim);
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--white); }
+.nav-links a:hover { color: var(--accent); }
 
 /* ── Hero ──────────────────────────────────────────────────────────────────── */
 
 .hero {
-  padding: 100px 0 80px;
+  padding: 90px 0 70px;
   text-align: center;
   position: relative;
 }
-
-/* Chalk Dark has no decorations — corner brackets are dropped. The hero
-   is now grounded in typography and breathing room alone. */
 
 .hero-icon {
   width: 100px;
   height: 100px;
   border-radius: 24px;
   margin-bottom: 32px;
+  box-shadow: var(--shadow-float);
 }
 
 .hero-title {
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 56px;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
   color: var(--white);
   margin-bottom: 12px;
   line-height: 1.05;
@@ -182,14 +228,16 @@ body::before {
   50% { opacity: 1; }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .pipe, .dot { animation: none; }
+}
+
 .hero-tagline {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 4px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
   color: var(--dim);
-  text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .hero-desc {
@@ -203,17 +251,29 @@ body::before {
 /* ── Section headers ───────────────────────────────────────────────────────── */
 
 .section-header {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--dim);
-  text-transform: uppercase;
-  margin-bottom: 32px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 26px;
+  color: var(--white);
+  margin-bottom: 28px;
   padding-top: 80px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
-.section-header .slash { color: var(--accent); }
+/* The old "//" marker is retired; a rounded coral dash carries the accent. */
+.section-header .slash { display: none; }
+
+.section-header::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--accent);
+  flex: none;
+}
 
 /* ── Features ──────────────────────────────────────────────────────────────── */
 
@@ -223,25 +283,14 @@ body::before {
   gap: 16px;
 }
 
-/* Chalk Dark cards: full surface, soft border, generous radius. The
-   accent-color sliver lives at the top instead of the side so each card
-   has the same balanced weight. */
+/* Open Water cards: bright surface, soft shadow, colour lives in a small
+   dot next to the title instead of a border sliver. */
 .feature-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent);
   border-radius: var(--radius-card);
   padding: 24px;
-}
-
-.feature-label {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--dim);
-  margin-bottom: 8px;
-  text-transform: uppercase;
+  box-shadow: var(--shadow-card);
 }
 
 .feature-title {
@@ -250,102 +299,28 @@ body::before {
   font-size: 18px;
   color: var(--white);
   margin-bottom: 8px;
-  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.feature-title::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.feature-card.amber .feature-title::before { background: var(--sand); }
+.feature-card.green .feature-title::before { background: var(--green); }
+.feature-card.white .feature-title::before { background: var(--dim); }
 
 .feature-desc {
   font-size: 14px;
   color: var(--text);
   line-height: 1.55;
-}
-
-/* Feature accent colors */
-.feature-card.amber  { border-top-color: var(--amber); }
-.feature-card.green  { border-top-color: var(--green); }
-.feature-card.white  { border-top-color: var(--white); }
-
-/* ── For Coaches ──────────────────────────────────────────────────────────── */
-
-.coaches-intro {
-  font-size: 15px;
-  color: var(--text);
-  line-height: 1.65;
-  max-width: 720px;
-  margin-bottom: 24px;
-}
-
-.coaches-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.coach-card {
-  display: block;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--amber);
-  border-radius: var(--radius-card);
-  padding: 24px;
-  text-decoration: none;
-  color: inherit;
-  transition: border-color 120ms ease, transform 120ms ease;
-}
-
-.coach-card:nth-child(2) {
-  border-top-color: var(--green);
-}
-
-.coach-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-1px);
-}
-
-.coach-card-label {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--dim);
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.coach-card-title {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.coach-card-desc {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.55;
-  margin-bottom: 12px;
-}
-
-.coach-card-cta {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 1.5px;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.coaches-note {
-  font-size: 14px;
-  color: var(--dim);
-  line-height: 1.65;
-  max-width: 720px;
-  margin-top: 24px;
-}
-
-.coaches-note strong {
-  color: var(--text);
-  font-style: normal;
 }
 
 /* ── Screenshots ───────────────────────────────────────────────────────────── */
@@ -368,15 +343,16 @@ body::before {
 
 /* ── Phone frame ──────────────────────────────────────────────────────────── */
 
+/* The frame stays deep sea-ink in both themes so the app screenshots pop. */
 .phone-frame {
   position: relative;
   width: 230px;
-  background: var(--panel);
+  background: #12262E;
   border-radius: 32px;
   padding: 12px;
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.06),
-    0 20px 60px rgba(0,0,0,0.55),
+    var(--shadow-float),
     inset 0 0 0 1px rgba(255,255,255,0.04);
   overflow: hidden;
 }
@@ -388,7 +364,7 @@ body::before {
   transform: translateX(-50%);
   width: 80px;
   height: 22px;
-  background: var(--panel);
+  background: #12262E;
   border-radius: 0 0 14px 14px;
   z-index: 2;
 }
@@ -401,12 +377,10 @@ body::before {
 }
 
 .screenshot-label {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
   color: var(--dim);
-  text-transform: uppercase;
   margin-top: 12px;
   text-align: center;
 }
@@ -428,17 +402,16 @@ body::before {
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 1px solid var(--border-solid);
+  border: 1px solid var(--border);
   border-radius: var(--radius-pill);
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-float);
   transition: opacity .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
 }
 
 .carousel-arrow:hover {
-  background: var(--surface);
   border-color: var(--accent);
   color: var(--accent);
 }
@@ -465,40 +438,69 @@ body::before {
   display: none;
 }
 
-/* ── Devices teaser ────────────────────────────────────────────────────────── */
+/* ── Callout cards (Analyzer / Coach portal) ──────────────────────────────── */
 
-.devices-teaser {
+.analyzer-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-top: 3px solid var(--dim);
   border-radius: var(--radius-card);
-  padding: 28px;
-  text-align: center;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  box-shadow: var(--shadow-card);
 }
 
-.devices-text {
-  font-size: 15px;
+.analyzer-card-text {
+  min-width: 0;
+}
+
+.analyzer-card-label {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.analyzer-card-title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.analyzer-card-desc {
+  font-size: 14px;
   color: var(--text);
-  line-height: 1.65;
-  margin-bottom: 12px;
+  line-height: 1.55;
 }
 
-.devices-status {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--dim);
+.analyzer-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--accent);
+  background: var(--accent-dim);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--accent);
+  transition: background 120ms ease, color 120ms ease, transform 120ms ease;
+  white-space: nowrap;
 }
 
-.devices-status .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--amber);
-  margin-right: 6px;
-  animation: pulse 2s ease-in-out infinite;
+.analyzer-card-btn:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+  transform: translateY(-1px);
 }
 
 /* ── Download ──────────────────────────────────────────────────────────────── */
@@ -520,27 +522,26 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 28px;
-  border-radius: var(--radius-btn);
+  padding: 14px 30px;
+  border-radius: var(--radius-pill);
   border: 1px solid;
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 15px;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .btn-primary {
-  background: var(--accent-dim);
+  background: var(--accent);
   border-color: var(--accent);
-  color: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 6px 18px var(--accent-dim);
 }
 
 .btn-primary:hover {
-  background: var(--accent);
-  color: var(--white);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px var(--accent-dim);
 }
 
 .btn-disabled {
@@ -557,10 +558,9 @@ body::before {
 }
 
 .coming-soon {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
   color: var(--dim);
   margin-top: 16px;
 }
@@ -580,33 +580,37 @@ body::before {
 .status-strip {
   display: flex;
   justify-content: center;
-  gap: 32px;
-  padding: 16px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  margin: 60px 0;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 24px;
+  margin: 56px auto;
+  max-width: 800px;
 }
 
 .status-item {
   text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 24px;
+  min-width: 120px;
+  box-shadow: var(--shadow-card);
 }
 
 .status-val {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: var(--white);
+  font-size: 20px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
 }
 
 .status-key {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
   color: var(--dim);
-  margin-top: 4px;
-  text-transform: uppercase;
+  margin-top: 2px;
 }
 
 /* ── Footer ────────────────────────────────────────────────────────────────── */
@@ -619,30 +623,28 @@ body::before {
 
 .footer-links {
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 12px 24px;
   justify-content: center;
   list-style: none;
   margin-bottom: 16px;
 }
 
 .footer-links a {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12.5px;
   color: var(--dim);
   text-decoration: none;
-  text-transform: uppercase;
   transition: color 0.2s;
 }
 
-.footer-links a:hover { color: var(--white); }
+.footer-links a:hover { color: var(--accent); }
 
 .footer-copy {
-  font-family: var(--font-mono);
+  font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 11px;
   color: var(--dim);
 }
 
@@ -656,32 +658,28 @@ body::before {
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: 32px;
-  letter-spacing: 2px;
   color: var(--white);
   margin-bottom: 8px;
 }
 
 .legal .last-updated {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
   color: var(--dim);
   margin-bottom: 40px;
 }
 
 .legal h2 {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 3px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 18px;
   color: var(--white);
-  text-transform: uppercase;
   margin-top: 40px;
   margin-bottom: 12px;
 }
 
-.legal h2 .slash { color: var(--accent); }
+.legal .slash { display: none; }
 
 .legal p, .legal li {
   font-size: 15px;
@@ -702,104 +700,6 @@ body::before {
 
 .legal a:hover { text-decoration: underline; }
 
-/* ── Analyzer callout ──────────────────────────────────────────────────────── */
-/* Bridges the app and the web analyzer. The analyzer is the cyan side
-   of the brand, so this card uses a subtle cyan-tinted border to read
-   as "the other tool" without competing with the red app accent. */
-
-.analyzer-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-top: 3px solid #1BAFE0;
-  border-radius: var(--radius-card);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  align-items: center;
-}
-
-.analyzer-card-text {
-  min-width: 0;
-}
-
-.analyzer-card-label {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: #1BAFE0;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-
-.analyzer-card-title {
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 22px;
-  color: var(--white);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
-}
-
-.analyzer-card-desc {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.55;
-}
-
-.analyzer-card-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 24px;
-  border-radius: var(--radius-btn);
-  border: 1px solid #1BAFE0;
-  background: rgba(27,175,224,0.10);
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #1BAFE0;
-  transition: background 120ms ease, transform 120ms ease;
-  white-space: nowrap;
-}
-
-.analyzer-card-btn:hover {
-  background: rgba(27,175,224,0.18);
-  transform: translateY(-1px);
-}
-
-/* ── Responsive ────────────────────────────────────────────────────────────── */
-
-@media (max-width: 640px) {
-  .hero { padding: 60px 0 40px; }
-  .hero-title { font-size: 36px; letter-spacing: 3px; }
-  .hero-tagline { font-size: 11px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .coaches-grid { grid-template-columns: 1fr; }
-  .phone-frame { width: 190px; border-radius: 26px; padding: 10px; }
-  .phone-notch { width: 64px; height: 18px; top: 10px; border-radius: 0 0 10px 10px; }
-  .phone-frame img { border-radius: 16px; }
-  .screenshots { gap: 16px; }
-  .carousel-arrow { width: 40px; height: 40px; }
-  .carousel-arrow svg { width: 20px; height: 20px; }
-  .carousel-prev { left: 2px; }
-  .carousel-next { right: 2px; }
-  .status-strip { gap: 20px; }
-  .nav-links { gap: 8px 14px; font-size: 10px; }
-  .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
-  .nav-wordmark { font-size: 12px; letter-spacing: 2px; }
-  .analyzer-card {
-    grid-template-columns: 1fr;
-    padding: 24px;
-  }
-  .analyzer-card-btn { justify-content: center; }
-  .legal h1 { font-size: 26px; }
-}
-
 /* ── Roadmap ───────────────────────────────────────────────────────────── */
 .roadmap-intro {
   font-family: var(--font-heading);
@@ -818,6 +718,7 @@ body::before {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 20px 24px;
+  box-shadow: var(--shadow-card);
 }
 .roadmap-row {
   display: flex;
@@ -833,15 +734,12 @@ body::before {
   margin: 0;
 }
 .roadmap-stage {
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 12px;
   color: var(--accent);
   background: var(--accent-dim);
-  border: 1px solid rgba(200, 39, 45, 0.5);
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
@@ -862,16 +760,16 @@ body::before {
   border-radius: var(--radius-pill);
 }
 .roadmap-scale {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1.5px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
   color: var(--dim);
   text-align: center;
   margin-top: 28px;
 }
 
 /* ── FAQ ───────────────────────────────────────────────────────────── */
-#faq { padding: 96px 0; }
+#faq { padding: 96px 0 40px; }
 
 .faq-list {
   display: flex;
@@ -886,6 +784,7 @@ body::before {
   border: 1px solid var(--border);
   border-radius: var(--radius-card);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
   transition: border-color 0.15s ease;
 }
 .faq-item[open] { border-color: var(--border-solid); }
@@ -896,7 +795,7 @@ body::before {
   cursor: pointer;
   padding: 20px 24px;
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 17px;
   color: var(--white);
   display: flex;
@@ -924,11 +823,40 @@ body::before {
   font-size: 15px;
 }
 .faq-answer p + p { margin-top: 0.8em; }
-.faq-answer strong { color: var(--white); font-weight: 600; }
+.faq-answer strong { color: var(--white); font-weight: 700; }
 .faq-answer em { color: var(--dim); font-style: normal; }
 
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .hero { padding: 56px 0 36px; }
+  .hero-title { font-size: 36px; }
+  .hero-tagline { font-size: 14px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .phone-frame { width: 190px; border-radius: 26px; padding: 10px; }
+  .phone-notch { width: 64px; height: 18px; top: 10px; border-radius: 0 0 10px 10px; }
+  .phone-frame img { border-radius: 16px; }
+  .screenshots { gap: 16px; }
+  .carousel-arrow { width: 40px; height: 40px; }
+  .carousel-arrow svg { width: 20px; height: 20px; }
+  .carousel-prev { left: 2px; }
+  .carousel-next { right: 2px; }
+  .status-strip { gap: 10px; }
+  .status-item { min-width: 100px; padding: 12px 16px; }
+  .nav-links { gap: 8px 14px; }
+  .nav-links a { font-size: 12px; }
+  .nav-wordmark { font-size: 13px; letter-spacing: 1.5px; }
+  .section-header { font-size: 22px; padding-top: 64px; }
+  .analyzer-card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+  .analyzer-card-btn { justify-content: center; }
+  .legal h1 { font-size: 26px; }
+}
+
 @media (max-width: 600px) {
-  #faq { padding: 64px 0; }
+  #faq { padding: 64px 0 32px; }
   .faq-item summary { padding: 16px 18px; font-size: 16px; }
   .faq-answer { padding: 0 18px 18px; font-size: 14.5px; }
 }
