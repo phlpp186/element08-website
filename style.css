@@ -42,6 +42,31 @@
   --radius: var(--radius-card);
 }
 
+html[data-theme="mid"] {
+  /* Misty — light-mid muted teal, coral-orange accent (the app's ELEMENT 08).
+     The middle stop between Caribbean and Chalk Dark. Dark sea-ink text. */
+  --bg:        #7FA0AA;
+  --abyss:     #6E9098;
+  --surface:   #DCEAED;
+  --panel:     #EAF2F3;
+  --accent:    #E8623A;
+  --accent-dim: rgba(232,98,58,0.14);
+  --sand:      #E39A2A;
+  --green:     #128C6A;
+  --amber:     #E39A2A;
+  --white:     #08303A;
+  --text:      #123B44;
+  --dim:       #4E6E76;
+  --border:    rgba(15,48,56,0.12);
+  --border-solid: #A6C0C6;
+  --shadow-card: 0 6px 22px rgba(15,48,56,0.10);
+  --shadow-float: 0 14px 40px rgba(15,48,56,0.18);
+  --on-accent: #FFFFFF;
+  --canvas:
+    radial-gradient(90% 55% at 50% -8%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #8CACB5 0%, #7FA0AA 45%, #779BA5 100%);
+}
+
 html[data-theme="dark"] {
   /* Chalk Dark — warm dark slate, sky-cyan accent (the app's chalk_dark) */
   --bg:        #1F1D1A;
@@ -156,7 +181,10 @@ a:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visib
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 .theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.theme-toggle .icon-moon { display: none; }
+/* Three schemes: light shows sun, mid shows a half-disc, dark shows moon. */
+.theme-toggle .icon-mid, .theme-toggle .icon-moon { display: none; }
+html[data-theme="mid"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="mid"] .theme-toggle .icon-mid { display: block; }
 html[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
 html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 
