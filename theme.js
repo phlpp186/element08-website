@@ -1,6 +1,6 @@
 /* ELEMENT | 08 — theme switching for the static site.
  *
- * Three schemes, matching the app: Caribbean (light) · Misty (mid) · Chalk
+ * Three schemes, matching the app: Caribbean (light) · Titanium (mid) · Chalk
  * Dark (dark). The toggle cycles light → mid → dark. With no saved choice the
  * OS preference picks light or dark (mid is an explicit choice only). The
  * choice persists in localStorage; loaded synchronously in <head> so the

@@ -43,28 +43,29 @@
 }
 
 html[data-theme="mid"] {
-  /* Misty — light-mid muted teal, coral-orange accent (the app's ELEMENT 08).
-     The middle stop between Caribbean and Chalk Dark. Dark sea-ink text. */
-  --bg:        #7FA0AA;
-  --abyss:     #6E9098;
-  --surface:   #DCEAED;
-  --panel:     #EAF2F3;
-  --accent:    #E8623A;
-  --accent-dim: rgba(232,98,58,0.14);
-  --sand:      #E39A2A;
-  --green:     #128C6A;
-  --amber:     #E39A2A;
-  --white:     #08303A;
-  --text:      #123B44;
-  --dim:       #4E6E76;
-  --border:    rgba(15,48,56,0.12);
-  --border-solid: #A6C0C6;
-  --shadow-card: 0 6px 22px rgba(15,48,56,0.10);
-  --shadow-float: 0 14px 40px rgba(15,48,56,0.18);
+  /* Titanium — brushed-silver mid, Audi Progressive Red accent. The middle
+     stop between Caribbean (light) and Chalk Dark. Carbon-ink text. The light
+     twin of the app's ELEMENT 08 "Carbon" theme (Audi Revolut direction). */
+  --bg:        #C2CBD1;
+  --abyss:     #B0BAC1;
+  --surface:   #EEF2F4;
+  --panel:     #F8FAFB;
+  --accent:    #E0002A;
+  --accent-dim: rgba(224,0,42,0.14);
+  --sand:      #B5730A;
+  --green:     #0E7A54;
+  --amber:     #B5730A;
+  --white:     #0A0D0F;
+  --text:      #14181B;
+  --dim:       #5C666D;
+  --border:    rgba(18,26,31,0.15);
+  --border-solid: #9DA8AF;
+  --shadow-card: 0 6px 22px rgba(18,26,31,0.10);
+  --shadow-float: 0 14px 40px rgba(18,26,31,0.18);
   --on-accent: #FFFFFF;
   --canvas:
-    radial-gradient(90% 55% at 50% -8%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
-    linear-gradient(180deg, #8CACB5 0%, #7FA0AA 45%, #779BA5 100%);
+    radial-gradient(90% 55% at 50% -8%, rgba(255,255,255,0.5), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #CDD5DA 0%, #C2CBD1 45%, #B7C1C7 100%);
 }
 
 html[data-theme="dark"] {
