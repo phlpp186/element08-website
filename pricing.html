@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PRE-LAUNCH: hidden until the AI assistant ships. Not linked from any nav/footer.
+       At launch: remove the noindex line below, add a "Plans" nav link on the other pages,
+       and (optional) wire data-i18n keys + translations like the rest of the site. -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Plans: ELEMENT | 08</title>
+  <meta name="description" content="ELEMENT | 08 plans: log for free, or add the AI dive assistant with Pro and Pro Max. What each plan includes and how the assistant is metered.">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="theme.js"></script>
+  <style>
+    .pr-wide{max-width:1040px;margin:0 auto;padding:0 24px}
+    .pr-hero{text-align:center;padding-top:64px}
+    .pr-eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:12px;
+      letter-spacing:2.5px;text-transform:uppercase;color:var(--dim)}
+    .pr-eyebrow::before{content:'';width:24px;height:6px;border-radius:4px;background:var(--accent)}
+    .pr-hero h1{font-family:var(--font-heading);font-weight:800;font-size:clamp(30px,5vw,44px);
+      color:var(--white);letter-spacing:-.5px;margin:14px 0 12px;text-wrap:balance}
+    .pr-hero p{max-width:56ch;margin:0 auto;color:var(--dim);font-size:17px;font-weight:600}
+
+    .pr-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;align-items:start}
+    .pr-tier{position:relative;background:var(--panel);border:1px solid var(--border);
+      border-radius:var(--radius-card);padding:26px 24px;box-shadow:var(--shadow-card);
+      display:flex;flex-direction:column;gap:16px}
+    .pr-tier.pop{border:2px solid var(--accent);box-shadow:var(--shadow-float);transform:translateY(-6px)}
+    .pr-ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--accent);
+      color:var(--on-accent);font-weight:800;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+      padding:6px 14px;border-radius:var(--radius-pill);white-space:nowrap}
+    .pr-name{font-family:var(--font-heading);font-weight:800;font-size:20px;color:var(--white)}
+    .pr-blurb{color:var(--dim);font-size:14px;font-weight:600;margin-top:-6px;min-height:38px}
+    .pr-price{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+    .pr-amt{font-size:38px;font-weight:800;color:var(--white);letter-spacing:-1px;font-variant-numeric:tabular-nums}
+    .pr-per{color:var(--dim);font-weight:700;font-size:15px}
+    .pr-alt{color:var(--dim);font-size:13px;font-weight:700;margin-top:-8px}
+    .pr-alt b{color:var(--green)}
+    .pr-feat{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:11px}
+    .pr-feat li{display:flex;gap:10px;font-size:14.5px;font-weight:600;align-items:flex-start;color:var(--text)}
+    .pr-tick{flex:0 0 18px;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--accent-dim);
+      color:var(--accent);display:grid;place-items:center;font-size:11px;font-weight:900}
+    .pr-feat li.ai .pr-tick{background:rgba(31,184,148,.16);color:var(--green)}
+    .pr-feat li.ai{color:var(--white)}
+    .pr-cta{margin-top:auto;display:inline-block;text-align:center;text-decoration:none;
+      font-family:var(--font-heading);font-weight:800;font-size:15px;padding:13px 18px;
+      border-radius:var(--radius-btn);transition:transform .12s ease,filter .12s ease,background .12s ease}
+    .pr-cta.solid{background:var(--accent);color:var(--on-accent)}
+    .pr-cta.solid:hover{filter:brightness(.93);transform:translateY(-1px)}
+    .pr-cta.ghost{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
+    .pr-cta.ghost:hover{background:var(--accent-dim)}
+    .pr-cta:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+    .pr-lead{color:var(--dim);font-weight:600;font-size:15px;max-width:62ch;margin:-12px 0 22px}
+    .pr-addons{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .pr-addon{background:var(--surface);border:1px solid var(--border-solid);border-radius:var(--radius-card);
+      padding:22px;display:flex;flex-direction:column;gap:10px}
+    .pr-addon-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+    .pr-addon-name{font-family:var(--font-heading);font-weight:800;font-size:17px;color:var(--white)}
+    .pr-addon-price{font-weight:800;color:var(--accent);font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums}
+    .pr-addon p{margin:0;color:var(--dim);font-size:14px;font-weight:600}
+
+    .pr-why{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-card);
+      padding:30px 28px;box-shadow:var(--shadow-card)}
+    .pr-why-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+    .pr-why-grid h3{font-family:var(--font-heading);font-size:16px;font-weight:800;color:var(--white);margin:0 0 6px}
+    .pr-why-grid p{margin:0;color:var(--text);font-size:14.5px;font-weight:600}
+    .pr-k{display:block;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+      color:var(--accent);margin-bottom:8px}
+
+    .pr-faq{display:flex;flex-direction:column;gap:10px}
+    .pr-faq details{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+      padding:2px 18px;box-shadow:var(--shadow-card)}
+    .pr-faq summary{cursor:pointer;list-style:none;padding:15px 0;font-family:var(--font-heading);
+      font-weight:800;color:var(--white);font-size:15.5px;display:flex;justify-content:space-between;
+      align-items:center;gap:12px}
+    .pr-faq summary::-webkit-details-marker{display:none}
+    .pr-faq summary::after{content:'+';color:var(--accent);font-weight:900;font-size:20px;line-height:1}
+    .pr-faq details[open] summary::after{content:'\2013'}
+    .pr-faq summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+    .pr-faq p{margin:0 0 16px;color:var(--dim);font-weight:600;font-size:14.5px;max-width:66ch}
+    .pr-faq a{color:var(--accent);font-weight:800;text-decoration:none}
+
+    .pr-fine{margin:36px auto 0;text-align:center;color:var(--dim);font-size:12.5px;font-weight:600}
+    .pr-fine a{color:var(--accent);text-decoration:none;font-weight:800}
+
+    @media (max-width:860px){
+      .pr-tiers{grid-template-columns:1fr}
+      .pr-tier.pop{transform:none}
+      .pr-addons,.pr-why-grid{grid-template-columns:1fr}
+    }
+    @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="nav-wordmark">ELEMENT <span class="pipe">|</span> 08</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="terms.html">Terms</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Switch theme (light / mid / dark)">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4l1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-mid" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18z" fill="currentColor" stroke="none"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pr-hero">
+      <div class="container">
+        <span class="pr-eyebrow">Plans</span>
+        <h1>Log for free. Add the assistant when you want more.</h1>
+        <p>Every plan keeps your training data on your device. The AI dive assistant, which answers questions about your own logs, comes with a monthly pool of questions that grows with your plan.</p>
+      </div>
+    </section>
+
+    <section class="pr-wide" aria-label="Subscription tiers">
+      <div class="pr-tiers">
+        <!-- Free -->
+        <div class="pr-tier">
+          <div class="pr-name">Free</div>
+          <div class="pr-blurb">Everything you need to log and train, forever.</div>
+          <div class="pr-price"><span class="pr-amt">&euro;0</span></div>
+          <div class="pr-alt">No account required</div>
+          <ul class="pr-feat">
+            <li><span class="pr-tick">&#10003;</span> Unlimited logging, every discipline</li>
+            <li><span class="pr-tick">&#10003;</span> Works fully offline, data stays on device</li>
+            <li><span class="pr-tick">&#10003;</span> Limited analytics</li>
+            <li><span class="pr-tick">&#10003;</span> Timers, guided sessions &amp; breathwork</li>
+            <li class="ai"><span class="pr-tick">&#10003;</span> 10 assistant questions / month</li>
+          </ul>
+          <a class="pr-cta ghost" href="/#download">Download free</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pr-tier pop">
+          <span class="pr-ribbon">Most popular</span>
+          <div class="pr-name">Pro</div>
+          <div class="pr-blurb">Every feature unlocked, plus a monthly pool of questions.</div>
+          <div class="pr-price"><span class="pr-amt">&euro;19.99</span><span class="pr-per">/ year</span></div>
+          <div class="pr-alt">or <b>&euro;59.99 once</b> &middot; Lifetime</div>
+          <ul class="pr-feat">
+            <li><span class="pr-tick">&#10003;</span> Everything in Free</li>
+            <li><span class="pr-tick">&#10003;</span> Cloud backup &amp; multi-device sync</li>
+            <li><span class="pr-tick">&#10003;</span> Full analytics, Compare &amp; Chart Builder</li>
+            <li><span class="pr-tick">&#10003;</span> Dive Reel &amp; coach tools</li>
+            <li class="ai"><span class="pr-tick">&#10003;</span> 90 assistant questions / month</li>
+          </ul>
+          <a class="pr-cta solid" href="/#download">Go Pro</a>
+        </div>
+
+        <!-- Pro Max -->
+        <div class="pr-tier">
+          <div class="pr-name">Pro Max</div>
+          <div class="pr-blurb">For divers who lean on the assistant every session.</div>
+          <div class="pr-price"><span class="pr-amt">&euro;6.99</span><span class="pr-per">/ month</span></div>
+          <div class="pr-alt">or &euro;59.99 / year &middot; <b>save ~28%</b></div>
+          <ul class="pr-feat">
+            <li><span class="pr-tick">&#10003;</span> Everything in Pro</li>
+            <li class="ai"><span class="pr-tick">&#10003;</span> 300 assistant questions / month</li>
+            <li><span class="pr-tick">&#10003;</span> First access to new assistant features</li>
+          </ul>
+          <a class="pr-cta ghost" href="/#download">Go Pro Max</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-header"><span class="slash">//</span> Add-ons</div>
+      <p class="pr-lead">For lifetime owners and the occasional busy month. Both grant the same assistant questions as the plans above.</p>
+      <div class="pr-addons">
+        <div class="pr-addon">
+          <div class="pr-addon-top">
+            <span class="pr-addon-name">Assistant add-on</span>
+            <span class="pr-addon-price">&euro;5.99 / mo &middot; &euro;49.99 / yr</span>
+          </div>
+          <p>Own a Lifetime Pro plan? Add 300 assistant questions a month. Your one-time app price stays yours; this recurring add-on covers only the ongoing cost of running the AI, and can be cancelled anytime.</p>
+        </div>
+        <div class="pr-addon">
+          <div class="pr-addon-top">
+            <span class="pr-addon-name">Question top-ups</span>
+            <span class="pr-addon-price">100 &euro;3.99 &middot; 300 &euro;9.99</span>
+          </div>
+          <p>Ran out in a heavy month? Add a one-time pack of questions on top of any plan. No subscription, no auto-renew.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-header"><span class="slash">//</span> Why metered</div>
+      <div class="pr-why">
+        <div class="pr-why-grid">
+          <div>
+            <span class="pr-k">Real compute, real cost</span>
+            <p>Every question runs a live AI model that we pay for each time it is used, unlike the rest of the app. A monthly pool keeps it fair: heavy users cover their own cost, and everyone else is not subsidising them through a higher flat price.</p>
+          </div>
+          <div>
+            <span class="pr-k">Your data stays yours</span>
+            <p>Only your question and summarised figures, such as averages, counts, and per-hold heart-rate and oxygen stats, are sent to answer it. Your raw dives, full depth profiles, location and notes never leave your device. You can limit what the assistant sees, or turn it off entirely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-header"><span class="slash">//</span> Questions</div>
+      <div class="pr-faq">
+        <details open>
+          <summary>What counts as one &ldquo;assistant question&rdquo;?</summary>
+          <p>One question you ask and the answer it gives back. Follow-ups in the same conversation each count as a question. The charts the app draws for you are free.</p>
+        </details>
+        <details>
+          <summary>Do unused questions roll over?</summary>
+          <p>No. Your allowance resets at the start of each calendar month. If you need more before then, add a one-time top-up.</p>
+        </details>
+        <details>
+          <summary>Is my dive data private?</summary>
+          <p>Yes. Your raw logs stay on your device; only aggregated numbers are sent to answer a question, to a processor under EU-standard data protection. Full detail is in our <a href="privacy.html">Privacy Policy</a>.</p>
+        </details>
+        <details>
+          <summary>Is the assistant medical or safety advice?</summary>
+          <p>No. It is an informational tool for exploring your own logged data. It is not medical, safety, or dive-planning advice, and you should never let it influence how you dive. See our <a href="terms.html">Terms</a>.</p>
+        </details>
+        <details>
+          <summary>Can I cancel anytime?</summary>
+          <p>Yes. Manage or cancel in your App Store or Google Play account. You keep access until the end of the period you have paid for.</p>
+        </details>
+      </div>
+
+      <p class="pr-fine">
+        Prices in EUR, including any applicable tax. Subscriptions are billed through the App Store or Google Play and renew until cancelled.
+        &nbsp;<a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="safety.html">Safety &amp; Contraindications</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 ELEMENT | 08. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
