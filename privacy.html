@@ -31,7 +31,7 @@
 
   <div class="container legal">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: June 24, 2026</p>
+    <p class="last-updated">Last updated: July 7, 2026</p>
 
     <p>ELEMENT | 08 ("the App") is a freediving training and logging application. The App works fully offline and needs no account; an <strong>optional</strong> free account adds cloud backup and coach&harr;athlete features. This policy explains what data we collect, how it is used, where it is stored, and your rights under the EU General Data Protection Regulation (GDPR).</p>
 
@@ -61,14 +61,24 @@
     </ul>
     <p>You control these connections and can disconnect, or delete your account, at any time, which stops further sharing. Access is enforced at the database level (row-level security): a coach can only ever see data for athletes connected to them, and never another coach's athletes.</p>
 
+    <h2><span class="slash">//</span> AI ASSISTANT</h2>
+    <p>The App includes an optional <strong>AI assistant</strong> (a Pro feature) that answers questions about your own logged training and dive data in natural language. It is off until you open it, and the first time you use it you are asked to give explicit consent after a short summary of how it works. How your data is handled:</p>
+    <ul>
+      <li><strong>What is sent:</strong> the question you type, together with <em>aggregated</em> figures calculated on your device from your logs (for example averages, counts, and per-hold heart-rate and blood-oxygen statistics). Your raw dive logs, full depth-and-time profiles, GPS locations, and free-text notes <strong>never leave your device</strong> &mdash; only the summarised numbers needed to answer your question are sent.</li>
+      <li><strong>Who processes it:</strong> the request is relayed through our server to <strong>Anthropic PBC</strong> (United States), which runs the language model that generates the answer. Anthropic acts as our processor under a data-processing agreement and does <strong>not</strong> use the data to train its models.</li>
+      <li><strong>International transfer:</strong> because Anthropic processes the request in the United States, using the assistant transfers your data outside the EU. This transfer is safeguarded by the EU Standard Contractual Clauses in our agreement with Anthropic. Some of the aggregated figures can relate to your health (such as heart-rate and blood-oxygen values), so we ask for your <strong>explicit consent</strong> before the feature is used.</li>
+      <li><strong>Retention:</strong> Anthropic retains the request only for a limited period for security and abuse-prevention and then deletes it. We do not store your conversations on our servers; our server logs record only anonymous usage counts, never the content of your questions or answers.</li>
+      <li><strong>Your control:</strong> the assistant is available only on a Pro plan, you choose when to use it, you can limit which categories of data it may use under Settings, and you can simply not use it. Declining consent leaves every other part of the App fully usable.</li>
+    </ul>
+
     <h2><span class="slash">//</span> WHERE YOUR DATA IS STORED</h2>
-    <p>On-device data never leaves your device unless you use the cloud features above. Account and cloud data is stored on Supabase servers in the <strong>European Union (Frankfurt, Germany)</strong>.</p>
+    <p>On-device data never leaves your device unless you use the cloud features above. Account and cloud data is stored on Supabase servers in the <strong>European Union (Frankfurt, Germany)</strong>. The one exception is the optional AI assistant, which, when you use it, sends the data described under <em>AI Assistant</em> to Anthropic in the United States.</p>
 
     <h2><span class="slash">//</span> PURCHASES &amp; SUBSCRIPTIONS</h2>
     <p>When you buy a subscription or a one-time purchase, the transaction is processed by Apple or Google. We use RevenueCat, a subscription-management provider, to verify, deliver, and restore your purchases. For this purpose RevenueCat receives your purchase history along with an app-generated identifier and a device identifier. This information is used only to provide the features you bought. It is not used to track you across other apps or for advertising.</p>
 
     <h2><span class="slash">//</span> ANALYTICS &amp; TRACKING</h2>
-    <p>The App uses <strong>no</strong> analytics services, advertising SDKs, or tracking pixels, and does not track you across other apps or websites. The only third parties are RevenueCat (purchases) and, if you create an account, Supabase (accounts and cloud storage), each described in this policy and used solely to provide the App.</p>
+    <p>The App uses <strong>no</strong> analytics services, advertising SDKs, or tracking pixels, and does not track you across other apps or websites. The only third parties are RevenueCat (purchases), Supabase (accounts and cloud storage, if you create an account), and Anthropic (only if you use the AI assistant), each described in this policy and used solely to provide the App.</p>
 
     <h2><span class="slash">//</span> DATA SHARING</h2>
     <p>We do not sell your data and never share it for advertising. Data is shared only as needed to provide the App:</p>
@@ -76,10 +86,11 @@
       <li><strong>Apple / Google &amp; RevenueCat</strong>: purchase and subscription data, to process and restore purchases.</li>
       <li><strong>Supabase</strong>: your account and cloud data, to provide accounts, cloud backup, and coaching (EU-hosted, as above).</li>
       <li><strong>Your coach</strong>: if you connect with one, the coaching data described under <em>Cloud Account &amp; Sync</em>.</li>
+      <li><strong>Anthropic</strong>: if you use the AI assistant, your question and the aggregated figures needed to answer it, to generate the response (United States, under Standard Contractual Clauses &mdash; see <em>AI Assistant</em>).</li>
     </ul>
 
     <h2><span class="slash">//</span> LEGAL BASIS</h2>
-    <p>Where the GDPR applies, we process your data on the basis of: providing the service you requested (Art. 6(1)(b)) for account and coaching features; your consent (Art. 6(1)(a)), which you give at sign-up and can withdraw at any time; and our legitimate interest in operating and securing the App (Art. 6(1)(f)).</p>
+    <p>Where the GDPR applies, we process your data on the basis of: providing the service you requested (Art. 6(1)(b)) for account and coaching features; your consent (Art. 6(1)(a)), which you give at sign-up and can withdraw at any time; and our legitimate interest in operating and securing the App (Art. 6(1)(f)). For the AI assistant, and specifically for any health-related figures it may include, we rely on your <strong>explicit consent</strong> (Art. 6(1)(a) and Art. 9(2)(a)), which you give before first use and can withdraw at any time by not using the feature.</p>
 
     <h2><span class="slash">//</span> YOUR RIGHTS</h2>
     <p>You can exercise these rights at any time, directly in the App:</p>
@@ -92,7 +103,7 @@
     <p>You also have the right to lodge a complaint with a data-protection supervisory authority.</p>
 
     <h2><span class="slash">//</span> DATA RETENTION</h2>
-    <p>On-device data is kept until you delete it or uninstall the App. Account and cloud data is kept until you delete your account, after which it is removed from our systems. Invite codes expire automatically.</p>
+    <p>On-device data is kept until you delete it or uninstall the App. Account and cloud data is kept until you delete your account, after which it is removed from our systems. Invite codes expire automatically. When you use the AI assistant, Anthropic retains the request only briefly for security purposes (see <em>AI Assistant</em>); we do not keep your conversations.</p>
 
     <h2><span class="slash">//</span> DATA DELETION</h2>
     <ul>
