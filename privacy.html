@@ -31,7 +31,7 @@
 
   <div class="container legal">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: July 7, 2026</p>
+    <p class="last-updated">Last updated: August 27, 2026</p>
 
     <p>ELEMENT | 08 ("the App") is a freediving training and logging application. The App works fully offline and needs no account; an <strong>optional</strong> free account adds cloud backup and coach&harr;athlete features. This policy explains what data we collect, how it is used, where it is stored, and your rights under the EU General Data Protection Regulation (GDPR).</p>
 
@@ -43,12 +43,20 @@
     <ul>
       <li><strong>Training sessions:</strong> Stored locally on your device. This includes timers, block timelines, contraction markers, ratings, and notes.</li>
       <li><strong>Dive logs:</strong> Imported from FIT/Garmin (and other supported) files you select. Parsed and stored locally.</li>
-      <li><strong>Oximeter data:</strong> SpO2, heart rate, and perfusion index readings received via Bluetooth Low Energy (BLE) from your paired device. Stored locally as part of your training session.</li>
+      <li><strong>Heart rate and oximeter data:</strong> SpO2, heart rate, and perfusion index readings from a pulse oximeter paired over Bluetooth Low Energy (BLE), and heart rate recorded by a connected watch (see <em>Watch Apps</em> below) or contained in a dive-computer file you import. Stored locally as part of your training session.</li>
       <li><strong>App settings:</strong> Theme, audio preferences, units, and other configuration. Stored locally.</li>
     </ul>
 
     <h2><span class="slash">//</span> BLUETOOTH</h2>
     <p>The App uses Bluetooth Low Energy (BLE) to connect to pulse oximeters and dive devices for real-time monitoring during training. BLE is only active when you initiate a scan or connect to a device, and communicates only with your own paired devices. No BLE data is transmitted to external services.</p>
+
+    <h2><span class="slash">//</span> WATCH APPS</h2>
+    <p>ELEMENT | 08 has companion apps for <strong>Garmin</strong> watches (via the Connect IQ store) and for <strong>Apple Watch</strong>. Both are extensions of the App on your wrist. Neither has its own account, neither contains analytics or advertising, and neither sends anything to us or to any third party.</p>
+    <ul>
+      <li><strong>Garmin watch app:</strong> it records the session you run on your wrist &mdash; dive and rest times, the distances you confirm with the &plusmn; buttons, contraction marks, heart rate from the watch's own sensor, and readings from the watch's pressure and motion sensors, which it uses to detect when you submerge, surface and turn. When the session ends, the result is sent to the App on your paired phone over the Connect IQ channel and saved to your logbook. The watch also saves the session to your own Garmin&nbsp;Connect account as an ordinary activity, in the same way any Garmin app does; that copy is between you and Garmin, and is covered by Garmin's own privacy policy.</li>
+      <li><strong>Apple Watch app:</strong> while a session is running it reads your <strong>heart rate</strong> and <strong>swimming distance</strong> from Apple Health (HealthKit), and on supported models it uses the water-depth sensor to detect each dive automatically. It asks your permission the first time. This data is used only to build the session on your own devices, is sent only to the App on your paired iPhone, and is <strong>never written back into Apple Health</strong>. Health data obtained through HealthKit is never used for advertising or marketing, and is never sold or shared with data brokers.</li>
+    </ul>
+    <p>Heart rate recorded by either watch becomes part of your training session in the App and is then treated exactly like the rest of your logbook: it stays on your device unless you turn on a cloud feature or use the optional AI assistant, both described below.</p>
 
     <h2><span class="slash">//</span> ACCOUNTS</h2>
     <p>Accounts are <strong>optional</strong>: you can use the entire App without one. If you create a free account, you sign up with an email address and a password, and we store your email, a display name you choose, and a coach/athlete role flag. When you sign up you are asked to agree to this Privacy Policy and our Terms. We use <strong>Supabase</strong>, a hosting and authentication provider, to operate accounts; Supabase acts as our processor under a data-processing agreement.</p>
