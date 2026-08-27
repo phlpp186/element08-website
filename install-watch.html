@@ -36,14 +36,16 @@
     <h1>Install on your Garmin watch</h1>
     <p class="last-updated">Last updated: August 27, 2026</p>
 
-    <p>The ELEMENT | 08 watch app is not on the Connect IQ store, and it will not be. Garmin does not list apps for freediving, scuba, skydiving or base-jumping at all, as a blanket category rule rather than a judgement about this app. So you install it yourself, by copying one file to your watch over USB. It takes about two minutes.</p>
+    <p>The ELEMENT | 08 watch app is not on the Connect IQ store, and it will not be. Garmin does not list apps for freediving, scuba, skydiving or base-jumping at all: a blanket category rule, not a judgement about this app. So you install it yourself by copying one file to your watch over USB. It takes a few minutes and you only do it once.</p>
 
     <h2><span class="slash">//</span> BEFORE YOU START</h2>
-    <p><strong>This app does not make breath-hold training safe.</strong> Never train in or near water alone, and never without a trained buddy within arm's reach. A watch cannot rescue you and neither can a spectator. Read <a href="safety.html">Safety &amp; Contraindications</a> first if you have not.</p>
-    <p>You also need the <strong>ELEMENT | 08 phone app</strong> (<a href="https://apps.apple.com/app/id6762002010">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=com.apneaadvantage.element08">Android</a>) to build sessions and receive results. The watch app on its own has nowhere to send your dives.</p>
+    <p><strong>This app does not make breath-hold training safe.</strong> Never train in or near water alone, and never without a trained buddy within arm's reach. A watch cannot rescue you and a spectator is not a safety. Read <a href="safety.html">Safety &amp; Contraindications</a> first if you have not.</p>
+    <p>You also need the <strong>ELEMENT | 08 phone app</strong> (<a href="https://apps.apple.com/app/id6762002010">iPhone</a> or <a href="https://play.google.com/store/apps/details?id=com.apneaadvantage.element08">Android</a>) to build sessions and receive your dives. The watch app on its own has nowhere to send them.</p>
 
-    <h2><span class="slash">//</span> STEP 1 &middot; DOWNLOAD THE FILE FOR YOUR WATCH</h2>
-    <p>Each watch model needs its own file. Picking the wrong one is the most common mistake, and the watch will simply ignore it.</p>
+    <p>You will need a computer. This cannot be done from a phone.</p>
+
+    <h2><span class="slash">//</span> 1 &middot; DOWNLOAD THE FILE FOR YOUR WATCH</h2>
+    <p>Every model needs its own file. Choosing the wrong one is the most common mistake, and the watch gives you no error: the app simply never appears.</p>
     <p>
       <select id="dev" class="lang-select" style="max-width:100%;width:auto;min-width:18rem">
         <option value="">Choose your watch model...</option>
@@ -69,46 +71,75 @@
       </select>
     </p>
     <p id="dl" style="display:none"><a id="dlLink" class="btn btn-primary" href="#" download>Download</a> <span id="dlName" style="opacity:.6"></span></p>
+    <p>Save it somewhere you will find again. Your Downloads folder is fine.</p>
 
-    <h2><span class="slash">//</span> STEP 2 &middot; CONNECT THE WATCH</h2>
-    <p>Plug the watch into your computer with its charging cable. Use a cable you know transfers data: many charging cables carry power only, and a power-only cable is a common reason nothing appears.</p>
-    <p><strong>Look at the watch.</strong> Most models ask <em>"Use MTP (media transfer)?"</em> as soon as they are plugged in. Choose <strong>Yes</strong>. Until you answer that prompt the watch stays invisible to your computer, which looks exactly like a broken cable. If you miss it, unplug and plug in again.</p>
+    <h2><span class="slash">//</span> 2 &middot; GET OPENMTP (NOT NEEDED FOR THE DESCENT G1)</h2>
+    <p><strong>Descent G1 owners can skip this step.</strong> The G1 appears as an ordinary USB drive, so your computer can open it without help.</p>
+    <p>Every other model (G2, Mk2, Mk3, fenix, and the rest) uses a transfer mode called MTP. Windows understands it already, so Windows users can skip this step too. <strong>macOS cannot</strong>, because Apple only supports its own media devices, so Mac users need one free tool:</p>
+    <p><a class="btn btn-primary" href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener">Download OpenMTP</a> <span style="opacity:.6">free and open source</span></p>
 
-    <h2><span class="slash">//</span> STEP 3 &middot; COPY THE FILE</h2>
-    <p>The file goes into the folder <code>GARMIN/APPS</code> on the watch.</p>
+    <h2><span class="slash">//</span> 3 &middot; CONNECT THE WATCH</h2>
+    <p>Plug the watch into the computer with its charging cable. Use a cable you know carries data: many charging cables carry power only, and that looks exactly like a broken connection.</p>
+    <p><strong>Now look at the watch.</strong> It asks <em>"Use MTP (media transfer)?"</em>. Answer <strong>Yes</strong>. Until you do, the watch stays completely invisible to the computer.</p>
+    <figure class="install-shot">
+      <img src="img/install/1-mtp-prompt.jpg" alt="The watch asking: Use MTP (media transfer)? Choose Yes.">
+      <figcaption>Answer <strong>Yes</strong>. Miss this and nothing will appear on your computer.</figcaption>
+    </figure>
+    <p>Once you have answered, the watch shows a USB symbol. That is what "connected" looks like.</p>
+    <figure class="install-shot">
+      <img src="img/install/2-usb-connected.jpg" alt="The watch showing the charge screen with a USB symbol.">
+      <figcaption>The USB symbol means the watch is ready to transfer.</figcaption>
+    </figure>
 
-    <h3>Windows</h3>
-    <ol>
-      <li>Open File Explorer. The watch appears as a device, usually under <em>This PC</em>.</li>
-      <li>Open <strong>Internal Storage</strong>, then <strong>GARMIN</strong>, then <strong>APPS</strong>.</li>
-      <li>Drag the <code>.prg</code> file you downloaded into that folder.</li>
-      <li>Eject the watch and unplug it.</li>
-    </ol>
+    <h2><span class="slash">//</span> 4 &middot; OPEN THE WATCH'S STORAGE</h2>
+    <p><strong>Descent G1, or any watch on Windows:</strong> the watch appears like a normal drive. Open it, then open the <strong>GARMIN</strong> folder, then <strong>Apps</strong>, and skip to step 6.</p>
+    <p><strong>Everything else on macOS:</strong> open OpenMTP. It shows two panes: your computer on the left, the watch on the right.</p>
+    <p>The right pane will often say the device is not connected at first. <strong>This is normal and does not mean anything is wrong.</strong> Wait about 30 seconds after plugging in, then press the refresh button above the right pane.</p>
+    <figure class="install-shot">
+      <img src="img/install/3-openmtp-not-connected.png" alt="OpenMTP showing a not-connected message in the right pane.">
+      <figcaption>Seen this? Wait 30 seconds and press refresh. It is not an error.</figcaption>
+    </figure>
+    <p>The right pane then fills with the watch's folders.</p>
+    <figure class="install-shot">
+      <img src="img/install/4-openmtp-folders.png" alt="OpenMTP showing the watch's folder list in the right pane.">
+      <figcaption>The watch is open. Now find the GARMIN folder, and inside it, Apps.</figcaption>
+    </figure>
 
-    <h3>macOS</h3>
-    <p>macOS cannot open Garmin watches on its own, because Apple only supports its own media devices over this connection. You need one free tool:</p>
-    <ol>
-      <li>Install <a href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener">OpenMTP</a>, which is free and open source.</li>
-      <li><strong>Quit Garmin Express first.</strong> Garmin Express and OpenMTP both claim the watch and will not work at the same time. This is the single most common reason the watch does not appear.</li>
-      <li>Open OpenMTP. The watch shows on one side, your Mac on the other.</li>
-      <li>Navigate to <strong>GARMIN</strong>, then <strong>APPS</strong>, and copy the <code>.prg</code> file across.</li>
-      <li>Eject the watch in OpenMTP and unplug it.</li>
-    </ol>
+    <h2><span class="slash">//</span> 5 &middot; FIND YOUR DOWNLOADED FILE</h2>
+    <p>In the left pane, navigate to wherever you saved the <code>.prg</code> file in step 1, most likely Downloads. In the right pane, open <strong>GARMIN</strong> and then <strong>Apps</strong>.</p>
+    <figure class="install-shot">
+      <img src="img/install/5-openmtp-find-prg.png" alt="OpenMTP with the .prg file on the left and the watch's Apps folder on the right.">
+      <figcaption>Your file on the left, the watch's <code>Apps</code> folder on the right. You will have one <code>.prg</code> file, not a folder full of them.</figcaption>
+    </figure>
 
-    <h2><span class="slash">//</span> STEP 4 &middot; FIND IT ON THE WATCH</h2>
-    <p>Unplug the watch. ELEMENT | 08 now appears in your activity list, alongside the built-in activities. Start it there.</p>
-    <p>To send a session to it, open the phone app, build a session, and use the watch as the target. Both apps need to be open while a session transfers.</p>
+    <h2><span class="slash">//</span> 6 &middot; COPY THE FILE ACROSS</h2>
+    <p>Drag the <code>.prg</code> file from the left pane into the watch's <strong>Apps</strong> folder on the right. When it appears there, you are done.</p>
+    <figure class="install-shot">
+      <img src="img/install/6-openmtp-copied.png" alt="The .prg file now present in the watch's Apps folder.">
+      <figcaption>The file is on the watch. Now unplug it.</figcaption>
+    </figure>
+    <p>Eject or unplug the watch.</p>
+
+    <h2><span class="slash">//</span> 7 &middot; START IT ON THE WATCH</h2>
+    <p>ELEMENT | 08 now appears in your watch's activity list, alongside the built-in activities.</p>
+    <figure class="install-shot">
+      <img src="img/install/7-app-list.jpg" alt="ELEMENT 08 listed among the watch's activities.">
+      <figcaption>There it is. Start a session from here.</figcaption>
+    </figure>
+    <p>To send a training session to it, open the phone app, build the session, and choose the watch as the target. Both apps need to be open while a session transfers.</p>
 
     <h2><span class="slash">//</span> IF SOMETHING GOES WRONG</h2>
     <ul>
-      <li><strong>The file vanished from GARMIN/APPS.</strong> That is correct and expected. The watch moves installed apps into its own storage, so the folder looks empty again. Check your activity list instead.</li>
-      <li><strong>The watch does not appear at all.</strong> First check the watch screen for the <em>"Use MTP (media transfer)?"</em> prompt and answer <strong>Yes</strong>; an unanswered prompt keeps the watch hidden. Then, on macOS, quit Garmin Express and any other file-transfer tool and reconnect. If it still does not show, try a different cable: power-only cables are common.</li>
-      <li><strong>The app is not in the activity list.</strong> You almost certainly copied the file for a different watch model. Go back to step 1 and check the model name carefully, including the case size.</li>
-      <li><strong>Still stuck?</strong> Write to <a href="mailto:apnea.advantage@gmail.com">apnea.advantage@gmail.com</a> and say which watch you have and which system you are on.</li>
+      <li><strong>Nothing appears on the computer.</strong> Check the watch screen first: an unanswered <em>"Use MTP"</em> prompt keeps it invisible. Unplug and plug in again if you missed it.</li>
+      <li><strong>OpenMTP says the device is not connected.</strong> Wait 30 seconds and press refresh. If it persists, quit <strong>Garmin Express</strong> and any other transfer tool: they claim the watch and OpenMTP cannot see it while they are running.</li>
+      <li><strong>Still nothing.</strong> Try a different cable. Power-only charging cables are common and give no clue that they are the problem.</li>
+      <li><strong>The app is not in the activity list.</strong> You almost certainly copied the file for a different model. Go back to step 1 and check the model name carefully, including the case size.</li>
+      <li><strong>The file is no longer in the Apps folder.</strong> If you look again later and it has gone, that is fine. The watch takes installed apps into its own storage. Check your activity list rather than the folder.</li>
+      <li><strong>Still stuck?</strong> Write to <a href="mailto:apnea.advantage@gmail.com">apnea.advantage@gmail.com</a> with your watch model and whether you are on Windows or a Mac.</li>
     </ul>
 
     <h2><span class="slash">//</span> UPDATES</h2>
-    <p>Because the app is not on the Connect IQ store, it will not update itself. When a new version is released, come back to this page and copy the new file over the old one the same way.</p>
+    <p>Because the app is not on the Connect IQ store, it will not update itself. When a new version is released, come back here and copy the new file over the old one exactly the same way.</p>
   </div>
 
   <footer class="site-footer">
