@@ -932,3 +932,30 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   border-bottom: 1px solid var(--accent-dim);
 }
 .watch-cta a:hover { border-bottom-color: var(--accent); }
+
+/* Per-watch capability table (install-watch.html) */
+.cap-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 22px;
+  font-size: 14px;
+  min-width: 620px;
+}
+.cap-table th,
+.cap-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border, rgba(128,128,128,.22));
+  vertical-align: top;
+}
+.cap-table thead th {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--white);
+}
+.cap-table tbody td:first-child { color: var(--dim); }
+.cap-table .cap-note { font-weight: 400; opacity: .6; font-size: 11px; }
+.cap-table .y { color: #3FB27F; font-weight: 600; }
+.cap-table .p { color: #D9A441; font-weight: 600; }
+.cap-table .n { color: #9A9A9A; }
