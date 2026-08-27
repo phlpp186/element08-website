@@ -908,3 +908,27 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   opacity: .72;
   max-width: 560px;
 }
+
+/* `.legal a` (0,0,1,1) outranks `.btn-primary` (0,0,1,0), so a button inside a
+   legal-layout page took the accent colour as its TEXT and vanished into its
+   own background. Restore the button's own colours where the two meet. */
+.legal a.btn-primary {
+  color: var(--on-accent);
+  text-decoration: none;
+}
+.legal a.btn-primary:hover { text-decoration: none; }
+
+/* Route to the sideloaded watch app, on the one page everyone lands on. */
+.watch-cta {
+  margin-top: 18px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  color: var(--dim);
+}
+.watch-cta a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-dim);
+}
+.watch-cta a:hover { border-bottom-color: var(--accent); }
