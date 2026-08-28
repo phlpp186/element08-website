@@ -111,7 +111,8 @@
     <p id="dl" style="display:none"><a id="dlLink" class="btn btn-primary" href="#" download>Download</a> <span id="dlName" style="opacity:.6"></span></p>
     <p>Save it somewhere you will find again. Your Downloads folder is fine.</p>
 
-    <h2><span class="slash">//</span> 2 &middot; GET OPENMTP (NOT NEEDED IF YOU USE WINDOWS OR HAVE A DESCENT G1)</h2>
+    <h2><span class="slash">//</span> 2 &middot; OPENMTP: MAC ONLY, AND NEVER FOR A DESCENT G1</h2>
+    <p class="warn" id="g1-skip" style="display:none"><strong>You chose a Descent G1, so this step is not for you.</strong> Do not download OpenMTP. Go straight to step 3.</p>
     <p><strong>Descent G1 owners can skip this step.</strong> The G1 appears as an ordinary USB drive, so your computer can open it without help.</p>
     <p>Every other model (G2, Mk2, Mk3, fenix, and the rest) uses a transfer mode called MTP. Windows understands it already, so Windows users can skip this step too. <strong>macOS cannot</strong>, because Apple only supports its own media devices, so Mac users need one free tool:</p>
     <p><a class="btn btn-primary" href="https://openmtp.ganeshrvel.com/" target="_blank" rel="noopener">Download OpenMTP</a> <span style="opacity:.6">free and open source</span></p>
@@ -130,6 +131,7 @@
     </figure>
 
     <h2><span class="slash">//</span> 4 &middot; OPEN THE WATCH'S STORAGE</h2>
+    <p class="warn" id="g1-route" style="display:none"><strong>Descent G1:</strong> open the drive that appears, then <strong>GARMIN</strong>, then <strong>Apps</strong>, and go to step 6. Everything below about OpenMTP is for other watches.</p>
     <p><strong>Descent G1, or any watch on Windows:</strong> the watch appears like a normal drive. Open it, then open the <strong>GARMIN</strong> folder, then <strong>Apps</strong>, and skip to step 6.</p>
     <p><strong>Everything else on macOS:</strong> open OpenMTP. It shows two panes: your computer on the left, the watch on the right.</p>
     <p>The right pane will often say the device is not connected at first. <strong>This is normal and does not mean anything is wrong.</strong> Wait about 30 seconds after plugging in, then press the refresh button above the right pane.</p>
@@ -220,6 +222,15 @@
         link.textContent = 'Download for ' + sel.options[sel.selectedIndex].text;
         name.textContent = file.split('/').pop();
         box.style.display = '';
+        // The G1 is the one model that needs no MTP tool at all, and a tester
+        // followed step 2 anyway (2026-08-28) because the heading is the first
+        // thing the eye lands on and the exemption was a line of body text
+        // under it. Say it where she is already looking instead.
+        var isG1 = sel.value === 'descentg1';
+        ['g1-skip', 'g1-route'].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) { el.style.display = isG1 ? '' : 'none'; }
+        });
       });
     })();
   </script>
