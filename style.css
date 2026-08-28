@@ -959,3 +959,13 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
 .cap-table .y { color: #3FB27F; font-weight: 600; }
 .cap-table .p { color: #D9A441; font-weight: 600; }
 .cap-table .n { color: #9A9A9A; }
+
+/* Data-loss warning on the install guide. Amber, not red: red is the brand
+   accent here and would read as decoration rather than as a caution. */
+.legal .warn {
+  border-left: 3px solid #D9A441;
+  background: rgba(217, 164, 65, .07);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 18px 0;
+}
