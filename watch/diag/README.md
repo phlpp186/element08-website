@@ -3,25 +3,25 @@
 Not linked from install-watch.html, and not what the model dropdown serves.
 Handed out by direct link, to one tester at a time, for one open bug.
 
-`ELEMENT08-descentg1.prg` — Descent G1, 2026-08-28, built from element08-watch
-`5c89608`. Three changes over the published build:
+`ELEMENT08-descentg1.prg` — Descent G1, 2026-08-30, built from element08-watch
+`0d97645`. **Per-key plan storage was REVERTED out of this binary on 2026-08-30**
+after it measured worse on the watch, not better: idle free heap 9.5k against
+12.2k, and 2.6k after a 20-block push against 5.7k. 2.6k is below the save
+floor, so a session on that build risks dying in saveAndEnd and taking the
+session with it, which is what happened. See
+`Deeptimerapp/appstore/g1-long-plan-investigation.md` §3g.
 
-- **Per-key plan storage.** A plan's blocks live in fixed-size parts under
-  their own Storage keys and are paged in one part at a time, so nothing ever
-  holds a whole plan. This is what removes the ceiling: 40 blocks used to kill
-  the app outright from a 12.2 KB start.
+What this binary carries:
 - **Free heap on every ACK**, so the phone can ask how much room there is
-  before it sends anything, and can stop capping plans for a watch that no
-  longer needs capping.
+  before it sends anything.
+- **No full-plan read to draw a label.** App start and the Home menu used to
+  deserialize the whole plan to render one sublabel.
+- **The ACK goes out before the UI work**, so a failure decorating the screen
+  is no longer indistinguishable from a store that never happened.
 - **FIT label fields trimmed**, which stops a long session crashing at save.
 
-Verified in the Connect IQ simulator on a G1 memory profile: 29 assertions,
-free heap flat at ~9.5k from the first message to the tenth whether the plan is
-40 blocks or 78. See `element08-watch/tools/plan-store-selfcheck.md`.
-
-**A session has never been RUN on this build.** Storage, reading and the
-runner's acceptance of a plan are proven; blocks advancing, timers and cues are
-not. A part-boundary bug would show first at block 8.
+Measured on the tester's watch: this generation carries a 20-block plan and
+leaves 5.7k free. The ceiling above that is still open.
 
 When the G1 long-plan bug closes, either fold this into the published build or
 delete the folder. Do not leave a stale binary here for someone to find.
