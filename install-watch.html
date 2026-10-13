@@ -34,9 +34,11 @@
 
   <div class="container legal">
     <h1>Install on your Garmin watch</h1>
-    <p class="last-updated">Last updated: August 30, 2026</p>
+    <p class="last-updated">Last updated: October 13, 2026</p>
 
     <p>The ELEMENT | 08 watch app is not on the Connect IQ store, and it will not be. Garmin does not list apps for freediving, scuba, skydiving or base-jumping at all: a blanket category rule, not a judgement about this app. So you install it yourself by copying one file to your watch over USB. It takes a few minutes and you only do it once.</p>
+
+    <p class="warn"><strong>Descent G1: new build, 13 October 2026.</strong> Fixes a crash when opening the app while sessions were still waiting to send to your phone, and a crash on the second dive of a session. Every G1 owner should update. Other models are unchanged.</p>
 
     <p class="warn"><strong>New build, 30 August 2026.</strong> Fixes a crash that could lose a long session while it was saving, and lets the phone app see how much room your watch has so it can warn you before sending a training plan that will not fit. Worth updating.</p>
 
@@ -82,7 +84,7 @@
 
     <p><strong>The Descent G1 is an exception.</strong> It has very little memory, so it cannot record motion data the way the other watches do. It estimates turns and distance from your dive time alone, and running the calibration is what makes that estimate more accurate.</p>
 
-    <p class="warn"><strong>On a G1, save your session before it reaches about 30 dives</strong>, then start a new one and carry on. That same small memory makes the G1 less reliable across a long session: one very large session carries a higher risk of a crash than the same dives split into several.</p>
+    <p class="warn"><strong>On a G1, save your session before it reaches about 30 dives</strong>, then start a new one and carry on. Between two sessions, close the app and open it again before you start the next one. That same small memory makes the G1 less reliable across a long session: one very large session carries a higher risk of a crash than the same dives split into several.</p>
 
     <p><strong>Turn detection is imperfect.</strong> With fins the signal is clear and it is right almost every time. Without fins, every arm stroke looks like a turn to a sensor, and it gets it wrong more often. Either way you can add, move or delete turns yourself in the app afterwards, and your correction always wins.</p>
 
@@ -158,6 +160,7 @@
 
     <h2><span class="slash">//</span> 6 &middot; COPY THE FILE ACROSS</h2>
     <p>Drag the <code>.prg</code> file from the left pane into the watch's <strong>Apps</strong> folder on the right. When it appears there, you are done.</p>
+    <p><strong>Updating?</strong> First delete every older <code>ELEMENT08</code> file in <strong>Apps</strong>. If your browser saved the new download as <code>ELEMENT08-descentg1-2.prg</code> or similar, an old copy left beside it can be the one the watch keeps running.</p>
     <figure class="install-shot">
       <img src="img/install/6-openmtp-copied.png" alt="The .prg file now present in the watch's Apps folder.">
       <figcaption>The file is on the watch. Now unplug it.</figcaption>
