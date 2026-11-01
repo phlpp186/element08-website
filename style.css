@@ -924,6 +924,20 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   font-family: var(--font-heading);
   font-size: 15px;
   color: var(--dim);
+  /* The watch sits beside the sentence rather than above it: the point is that
+     the app runs on THAT, and a picture makes it in one glance. Wraps to its
+     own line on a narrow screen. */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.watch-cta img {
+  width: 92px;
+  height: 92px;
+  flex: none;
+  border-radius: 50%;
 }
 .watch-cta a {
   color: var(--accent);

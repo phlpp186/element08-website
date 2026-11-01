@@ -507,8 +507,20 @@
            freediving apps), so the ONLY route to it is this link. Buried in the
            footer it was effectively invisible. -->
       <p class="watch-cta">
-        Training with a Garmin Descent or fenix?
-        <a href="install-watch.html">Install the watch app</a>
+        <!-- Removes itself if the file is not there, so a missing asset is a
+             missing picture rather than a broken-image icon on the home page. -->
+        <img
+          src="img/watch-mk3i.png"
+          alt="ELEMENT | 08 running on a Garmin Descent Mk3i"
+          width="92"
+          height="92"
+          loading="lazy"
+          onerror="this.remove()"
+        >
+        <span>
+          Training with a Garmin Descent or fenix?
+          <a href="install-watch.html">Install the watch app</a>
+        </span>
       </p>
     </div>
   </section>
