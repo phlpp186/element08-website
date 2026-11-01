@@ -7,8 +7,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="de" href="https://element08.io/nutzungsbedingungen.html">
   <link rel="stylesheet" href="style.css">
   <script src="theme.js"></script>
+  <script>
+    // German readers (site language choice, else browser language) get the
+    // German version; ?lang=en keeps this page, which the German one links to.
+    (function () {
+      if (new URLSearchParams(location.search).get('lang') === 'en') return;
+      var lang = null;
+      try { lang = localStorage.getItem('element08.lang'); } catch (e) { /* storage blocked */ }
+      if (!lang) lang = (navigator.languages || [navigator.language || 'en'])[0] || 'en';
+      if (/^de\b/i.test(lang)) location.replace('nutzungsbedingungen.html');
+    })();
+  </script>
 </head>
 <body>
 
@@ -31,12 +43,13 @@
 
   <div class="container legal">
     <h1>Terms of Service &amp; EULA</h1>
-    <p class="last-updated">Last updated: July 7, 2026</p>
+    <p class="last-updated">Last updated: November 1, 2026</p>
+    <p class="last-updated">Deutsche Fassung: <a href="nutzungsbedingungen.html" hreflang="de" lang="de">Nutzungsbedingungen</a></p>
 
-    <p>These Terms of Service (also referred to as the End User License Agreement, or "EULA") govern your use of ELEMENT | 08 ("the App"). By installing or using the App, you agree to these terms. If you do not agree, do not use the App.</p>
+    <p>These Terms of Service (also referred to as the End User License Agreement, or "EULA") govern your use of ELEMENT | 08 ("the App"), provided by Apnea Advantage, Philipp Heinzelmann, Amselweg 9, 73560 B&ouml;bingen an der Rems, Germany ("we", "us"; see our <a href="impressum.html">Impressum</a>). By installing or using the App, you agree to these terms. If you do not agree, do not use the App.</p>
 
     <h2><span class="slash">//</span> USE OF THE APP</h2>
-    <p>The App is a training tool for freediving and breath-hold activities. You may use it for personal, non-commercial training purposes. You are responsible for using the App safely and within your physical capabilities.</p>
+    <p>The App is a training tool for freediving, breath-hold and dryland fitness training. You may use it for personal, non-commercial training purposes; coaches may also use its coaching features to work with their athletes. You are responsible for using the App safely and within your physical capabilities.</p>
 
     <h2><span class="slash">//</span> SCOPE OF LICENSE</h2>
     <p>We grant you a personal, non-exclusive, non-transferable, revocable license to install and use the App on devices that you own or control, subject to your store account. On iOS this license applies to use on Apple-branded devices tied to your Apple ID and is extended to other accounts associated with you via Family Sharing or volume purchasing. You may not rent, lease, lend, sell, redistribute, sublicense, copy, decompile, reverse-engineer, or attempt to derive the source code of the App except where such activity is expressly permitted by law.</p>
@@ -44,43 +57,50 @@
     <h2><span class="slash">//</span> SUBSCRIPTIONS AND IN-APP PURCHASES</h2>
     <p>The App is free to download. It offers optional auto-renewing subscriptions and one-time purchases (together, the "Paid Features") that unlock additional functionality. The current titles, lengths, and prices of each Paid Feature are listed in the App on the upgrade screen and in your platform App Store at the time of purchase.</p>
     <p>Auto-renewing subscriptions automatically renew at the end of each billing period at the then-current price unless you cancel at least 24 hours before the end of the current period. Your Apple ID or Google account will be charged for the renewal within 24 hours of the period end. You can manage subscriptions and turn off auto-renewal in your Apple ID account settings or Google Play account settings.</p>
-    <p>Cancelling a subscription stops future renewals. You keep access to the Paid Features for the remainder of the already-paid period. Refunds for partial periods are not provided. Refund requests for subscriptions and one-time purchases are handled by Apple (App Store) or Google (Play Store) under their respective refund policies. We do not directly issue refunds for store-processed purchases.</p>
+    <p>Cancelling a subscription stops future renewals. You keep access to the Paid Features for the remainder of the already-paid period. Refunds for partial periods are not provided. Refund requests for subscriptions and one-time purchases are handled by Apple (App Store) or Google (Play Store) under their respective refund policies. We do not directly issue refunds for store-processed purchases. Your statutory rights, including any statutory right of withdrawal, remain unaffected.</p>
     <p>One-time purchases (lifetime tiers, individual training programs) do not auto-renew and remain available on the same store account they were bought on.</p>
 
     <h2><span class="slash">//</span> NOT MEDICAL ADVICE</h2>
-    <p>The App is <strong>not a medical device</strong> and does not provide medical advice, diagnosis, or treatment. SpO2 readings from connected pulse oximeters are for informational and training purposes only. Do not rely on the App for medical decisions.</p>
-    <p>Breath-hold training carries inherent risks including hypoxia and loss of consciousness. Always train with a safety buddy and never practice breath holds in or near water alone.</p>
+    <p>The App is not a medical device and does not provide medical advice, diagnosis, or treatment. SpO2 and heart-rate readings from connected devices are for informational and training purposes only. Do not rely on the App for medical decisions.</p>
+    <p>Cycle tracking is a training log only. It does not predict periods, ovulation or fertility, and it must not be used for contraception or to plan or avoid a pregnancy.</p>
+    <p>Breath-hold training carries inherent risks including hypoxia and loss of consciousness. Always train with a safety buddy and never practice breath holds in or near water alone. Read our <a href="safety.html">Safety &amp; Contraindications</a> page before you start.</p>
 
     <h2><span class="slash">//</span> ASSUMPTION OF RISK</h2>
-    <p>Freediving and breath-hold training are inherently dangerous activities. By using the App, you acknowledge that:</p>
+    <p>Freediving and breath-hold training are inherently dangerous activities, and strength, interval and other fitness training can cause injury. By using the App, you acknowledge that:</p>
     <ul>
       <li>You participate in these activities at your own risk</li>
-      <li>You are physically fit and have no medical conditions that would make breath-hold training unsafe</li>
+      <li>You are physically fit and have no medical conditions that would make breath-hold or fitness training unsafe; if in doubt, consult a doctor first</li>
       <li>You will follow safe training practices, including never training alone in water</li>
+      <li>You choose weights, intensities and exercises you can perform with correct technique, use equipment as intended, and stop if you feel pain, dizziness or unusual discomfort</li>
       <li>You understand that oximeter readings may be inaccurate and should not be relied upon as the sole safety measure</li>
     </ul>
 
+    <h2><span class="slash">//</span> COACHING</h2>
+    <p>The App lets athletes and coaches connect, share training plans and progress, and keep a record of coaching fees. Coaches are independent and are not our employees or agents. Training plans, advice and feedback from a coach are the coach's own responsibility. Any fees are agreed directly between coach and athlete: the App only records the amounts and payments the coach enters and does not process payments. We are not a party to any agreement between coach and athlete.</p>
+
     <h2><span class="slash">//</span> AI ASSISTANT</h2>
-    <p>The App includes an optional AI assistant that answers questions about your own logged data. Its responses are <strong>generated by a third-party large language model</strong> (provided by Anthropic) and may be <strong>inaccurate, incomplete, or misleading</strong>. You are interacting with an automated system, not a person.</p>
-    <p>The assistant is provided for <strong>informational purposes only</strong>. It is <strong>not</strong> medical, health, or safety advice, and it is <strong>not</strong> dive-planning or training guidance. Do not rely on it for any decision affecting your health or safety, and never let its output influence how deep, how long, or how you dive. The <em>Not Medical Advice</em>, <em>Assumption of Risk</em>, and <em>Limitation of Liability</em> sections apply in full to the assistant and its output.</p>
+    <p>The App includes an optional AI assistant that answers questions about your own logged data. Its responses are generated by a third-party large language model (provided by Anthropic) and may be inaccurate, incomplete, or misleading. You are interacting with an automated system, not a person.</p>
+    <p>The assistant is provided for informational purposes only. It is not medical, health, or safety advice, and it is not dive-planning or training guidance. Do not rely on it for any decision affecting your health or safety, and never let its output influence how deep, how long, or how you dive. The Not Medical Advice, Assumption of Risk, and Limitation of Liability sections apply in full to the assistant and its output.</p>
     <p>You agree not to misuse the assistant, including attempting to access data that is not yours, and to use it in accordance with the AI provider's usage policies. We make no warranty as to the accuracy, availability, or fitness for any purpose of the assistant, and may change or discontinue it at any time.</p>
     <p>The assistant relies on a third-party AI service and carries an ongoing operating cost. We may change, limit, suspend, or discontinue the assistant, or any other feature that depends on a third-party service, at any time, including for paid plans, giving reasonable notice where a paid feature is materially affected. One-time and &ldquo;lifetime&rdquo; purchases unlock the App's core on-device features as they exist from time to time; they do not include the assistant and do not guarantee its continued availability. The assistant is accessible only through an active subscription or question pack.</p>
 
     <h2><span class="slash">//</span> LIMITATION OF LIABILITY</h2>
-    <p>To the maximum extent permitted by law, ELEMENT | 08 and its developers shall not be liable for any injury, death, loss, or damage arising from the use of the App, including but not limited to:</p>
+    <p>We are liable without limitation for damage caused intentionally or by gross negligence, for injury to life, body or health, under the German Product Liability Act (Produkthaftungsgesetz), and where we have given a guarantee.</p>
+    <p>For slight negligence we are liable only if we breach an obligation that is essential to the purpose of these Terms and on which you may regularly rely (a "cardinal obligation"), and then only for the typical damage that was foreseeable when you started using the App. Otherwise, liability for slight negligence is excluded. Where the App or a feature is provided free of charge, we are liable only for intent and gross negligence, subject to the first paragraph.</p>
+    <p>Within these limits, we are in particular not liable for:</p>
     <ul>
-      <li>Physical injury resulting from breath-hold or freediving training</li>
+      <li>The consequences of the inherent risks of breath-hold, freediving and fitness training that you accept under Assumption of Risk</li>
       <li>Inaccurate readings from connected Bluetooth devices</li>
       <li>Reliance on inaccurate, incomplete, or misleading output from the AI assistant</li>
-      <li>Loss of training data</li>
+      <li>Loss of training data that a regular backup would have prevented</li>
       <li>App malfunctions or interruptions during training</li>
     </ul>
 
     <h2><span class="slash">//</span> INTELLECTUAL PROPERTY</h2>
-    <p>The App, its design, code, audio content, and branding are the property of ELEMENT | 08. You may not copy, modify, distribute, or reverse-engineer any part of the App.</p>
+    <p>The App, its design, code, audio and video content, and branding are our property. You may not copy, modify, distribute, or reverse-engineer any part of the App.</p>
 
     <h2><span class="slash">//</span> THIRD-PARTY DEVICES</h2>
-    <p>The App supports Bluetooth pulse oximeters from various manufacturers. We are not affiliated with these manufacturers and make no guarantees about the accuracy or reliability of their devices.</p>
+    <p>The App supports Bluetooth pulse oximeters, dive computers and watches from various manufacturers. We are not affiliated with these manufacturers and make no guarantees about the accuracy or reliability of their devices.</p>
 
     <h2><span class="slash">//</span> APPLE'S ROLE (iOS USERS)</h2>
     <p>This section applies to use of the App on iOS and other Apple operating systems.</p>
@@ -93,16 +113,17 @@
     <p>You represent and warrant that you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country, and that you are not listed on any U.S. Government list of prohibited or restricted parties. You agree to comply with all applicable U.S. and foreign export-control and trade-sanctions laws when using the App.</p>
 
     <h2><span class="slash">//</span> U.S. GOVERNMENT END USERS</h2>
-    <p>The App and related documentation are "Commercial Items" as defined at 48 C.F.R. §2.101, consisting of "Commercial Computer Software" and "Commercial Computer Software Documentation" as such terms are used in 48 C.F.R. §12.212 or 48 C.F.R. §227.7202, as applicable. Consistent with these provisions, the App and its documentation are licensed to U.S. Government end users only as Commercial Items and only with those rights granted to all other end users under these terms.</p>
+    <p>The App and related documentation are "Commercial Items" as defined at 48 C.F.R. &sect;2.101, consisting of "Commercial Computer Software" and "Commercial Computer Software Documentation" as such terms are used in 48 C.F.R. &sect;12.212 or 48 C.F.R. &sect;227.7202, as applicable. Consistent with these provisions, the App and its documentation are licensed to U.S. Government end users only as Commercial Items and only with those rights granted to all other end users under these terms.</p>
 
     <h2><span class="slash">//</span> TERMINATION</h2>
-    <p>You may stop using the App at any time by uninstalling it. We reserve the right to modify or discontinue the App at any time without notice.</p>
+    <p>You may stop using the App at any time by uninstalling it and, if you have one, deleting your account. We may further develop, change or discontinue the App or individual features. Where this materially affects a Paid Feature you have paid for and that is still running, we will inform you with reasonable notice in advance, and your statutory rights remain unaffected.</p>
 
     <h2><span class="slash">//</span> CHANGES</h2>
-    <p>We may update these Terms from time to time. Continued use of the App after changes constitutes acceptance of the updated Terms.</p>
+    <p>We may update these Terms in the future, for example when we add features or the law changes. We will inform you of material changes in the App before they take effect. If you do not agree, you can stop using the App and cancel any subscription before the changes take effect; changes do not apply retroactively to periods you have already paid for.</p>
 
     <h2><span class="slash">//</span> GOVERNING LAW</h2>
-    <p>These Terms are governed by the laws of the jurisdiction in which the developer resides, without regard to conflict of law provisions.</p>
+    <p>These Terms are governed by the laws of the Federal Republic of Germany, excluding the UN Convention on Contracts for the International Sale of Goods. If you are a consumer, this choice of law does not deprive you of the protection of the mandatory consumer-protection provisions of the country where you habitually reside.</p>
+    <p>We are neither obliged nor willing to take part in dispute-resolution proceedings before a consumer arbitration board.</p>
 
     <h2><span class="slash">//</span> CONTACT</h2>
     <p>If you have questions about these Terms, contact us at <a href="mailto:apnea.advantage@gmail.com">apnea.advantage@gmail.com</a>.</p>
