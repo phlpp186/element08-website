@@ -7,8 +7,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="alternate" hreflang="de" href="https://element08.io/datenschutz.html">
   <link rel="stylesheet" href="style.css">
   <script src="theme.js"></script>
+  <script>
+    // German readers (site language choice, else browser language) get the
+    // German version; ?lang=en keeps this page, which the German one links to.
+    (function () {
+      if (new URLSearchParams(location.search).get('lang') === 'en') return;
+      var lang = null;
+      try { lang = localStorage.getItem('element08.lang'); } catch (e) { /* storage blocked */ }
+      if (!lang) lang = (navigator.languages || [navigator.language || 'en'])[0] || 'en';
+      if (/^de\b/i.test(lang)) location.replace('datenschutz.html');
+    })();
+  </script>
 </head>
 <body>
 
@@ -31,19 +43,22 @@
 
   <div class="container legal">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: August 27, 2026</p>
+    <p class="last-updated">Last updated: November 1, 2026</p>
+    <p class="last-updated">Deutsche Fassung: <a href="datenschutz.html" hreflang="de" lang="de">Datenschutzerkl&auml;rung</a></p>
 
     <p>ELEMENT | 08 ("the App") is a freediving training and logging application. The App works fully offline and needs no account; an <strong>optional</strong> free account adds cloud backup and coach&harr;athlete features. This policy explains what data we collect, how it is used, where it is stored, and your rights under the EU General Data Protection Regulation (GDPR).</p>
 
     <h2><span class="slash">//</span> CONTROLLER</h2>
-    <p>The data controller responsible for your data is the operator named in our <a href="impressum.html">Impressum</a>. For any privacy question or request, contact <a href="mailto:apnea.advantage@gmail.com">apnea.advantage@gmail.com</a>.</p>
+    <p>The data controller responsible for your data is Apnea Advantage, Philipp Heinzelmann, Amselweg 9, 73560 B&ouml;bingen an der Rems, Germany (see also our <a href="impressum.html">Impressum</a>). For any privacy question or request, contact <a href="mailto:apnea.advantage@gmail.com">apnea.advantage@gmail.com</a>.</p>
 
     <h2><span class="slash">//</span> DATA COLLECTION</h2>
-    <p>By default, your training data stays on your device: the App does not require an account and works fully offline. Data leaves your device only when you use a feature that needs it: in-app purchases, and, if you choose to create an account, cloud backup and coach&harr;athlete sync (see <em>Cloud Account &amp; Sync</em> below).</p>
+    <p>By default, your training data stays on your device: the App does not require an account and works fully offline. Your logbook leaves your device only when you use a feature that needs it: cloud backup, coaching, or the AI assistant. A few functions contact online services without an account (app updates, exercise videos, place names); they are listed under <em>Online Services</em> below, together with exactly what they receive.</p>
     <ul>
       <li><strong>Training sessions:</strong> Stored locally on your device. This includes timers, block timelines, contraction markers, ratings, and notes.</li>
-      <li><strong>Dive logs:</strong> Imported from FIT/Garmin (and other supported) files you select. Parsed and stored locally.</li>
+      <li><strong>Fitness workouts:</strong> the strength, interval and conditioning workouts you complete, with exercises, sets, repetitions, weights and times. Stored locally as part of your logbook.</li>
+      <li><strong>Dive logs:</strong> Imported from FIT/Garmin (and other supported) files you select, including the GPS position your dive computer recorded, if any. Parsed and stored locally.</li>
       <li><strong>Heart rate and oximeter data:</strong> SpO2, heart rate, and perfusion index readings from a pulse oximeter paired over Bluetooth Low Energy (BLE), and heart rate recorded by a connected watch (see <em>Watch Apps</em> below) or contained in a dive-computer file you import. Stored locally as part of your training session.</li>
+      <li><strong>Cycle tracking:</strong> only if you turn it on; see <em>Cycle Tracking</em> below.</li>
       <li><strong>App settings:</strong> Theme, audio preferences, units, and other configuration. Stored locally.</li>
     </ul>
 
@@ -53,10 +68,35 @@
     <h2><span class="slash">//</span> WATCH APPS</h2>
     <p>ELEMENT | 08 has companion apps for <strong>Garmin</strong> watches (via the Connect IQ store) and for <strong>Apple Watch</strong>. Both are extensions of the App on your wrist. Neither has its own account, neither contains analytics or advertising, and neither sends anything to us or to any third party.</p>
     <ul>
-      <li><strong>Garmin watch app:</strong> it records the session you run on your wrist &mdash; dive and rest times, the distances you confirm with the &plusmn; buttons, contraction marks, heart rate from the watch's own sensor, and readings from the watch's pressure and motion sensors, which it uses to detect when you submerge, surface and turn. When the session ends, the result is sent to the App on your paired phone over the Connect IQ channel and saved to your logbook. The watch also saves the session to your own Garmin&nbsp;Connect account as an ordinary activity, in the same way any Garmin app does; that copy is between you and Garmin, and is covered by Garmin's own privacy policy.</li>
+      <li><strong>Garmin watch app:</strong> it records the session you run on your wrist: dive and rest times, the distances you confirm with the &plusmn; buttons, contraction marks, heart rate from the watch's own sensor, and readings from the watch's pressure and motion sensors, which it uses to detect when you submerge, surface and turn. When the session ends, the result is sent to the App on your paired phone over the Connect IQ channel and saved to your logbook. The watch also saves the session to your own Garmin&nbsp;Connect account as an ordinary activity, in the same way any Garmin app does; that copy is between you and Garmin, and is covered by Garmin's own privacy policy.</li>
       <li><strong>Apple Watch app:</strong> while a session is running it reads your <strong>heart rate</strong> and <strong>swimming distance</strong> from Apple Health (HealthKit), and on supported models it uses the water-depth sensor to detect each dive automatically. It asks your permission the first time. This data is used only to build the session on your own devices, is sent only to the App on your paired iPhone, and is <strong>never written back into Apple Health</strong>. Health data obtained through HealthKit is never used for advertising or marketing, and is never sold or shared with data brokers.</li>
     </ul>
     <p>Heart rate recorded by either watch becomes part of your training session in the App and is then treated exactly like the rest of your logbook: it stays on your device unless you turn on a cloud feature or use the optional AI assistant, both described below.</p>
+
+    <h2><span class="slash">//</span> CYCLE TRACKING</h2>
+    <p>Cycle tracking is an optional training feature for divers who want to see how their menstrual cycle relates to their training. Information about your cycle is <strong>health data</strong>, a special category of personal data under Art.&nbsp;9 GDPR, so it is handled more strictly than anything else in the App:</p>
+    <ul>
+      <li><strong>Off until you turn it on:</strong> nothing is recorded until you give explicit consent under Settings &rsaquo; Your body &rsaquo; Cycle tracking. The App never asks you to turn it on through a pop-up.</li>
+      <li><strong>What is recorded:</strong> the days you log, with period flow, symptoms (such as cramps, low energy, headache), how training felt that day, and an optional short note. The App does not predict periods, ovulation or fertility, and is not a medical device.</li>
+      <li><strong>Stays on your device:</strong> cycle data is stored only on your phone. It is <strong>never</strong> included in backups (local or cloud), and <strong>never</strong> sent to the AI assistant.</li>
+      <li><strong>Sharing with a coach (optional, off by default):</strong> if you are connected to a coach, you can choose to share cycle days with that coach, by name, and choose which parts (period days, symptoms and how training felt, notes). Only what you choose is sent, to our EU server (Supabase, Frankfurt), where only that coach can read it.</li>
+      <li><strong>Your control:</strong> switching sharing off, turning cycle tracking off, or using <em>Delete all cycle data</em> removes the copy on our server as well. <em>Delete all cycle data</em> also erases every cycle entry on your device.</li>
+    </ul>
+
+    <h2><span class="slash">//</span> PHOTOS, VIDEOS &amp; NOTIFICATIONS</h2>
+    <ul>
+      <li><strong>Photos and videos:</strong> to build a dive reel or a share card, the App asks for access to your photo library. On iPhone it looks at the recording times of your videos to suggest the ones filmed during your dive; on Android you pick them yourself. The App saves finished reels to your library. Your photos and videos are processed on your device and are <strong>never uploaded</strong> by the App; a reel or card leaves your phone only when you share it yourself.</li>
+      <li><strong>Notifications:</strong> during a workout, the App can announce the next exercise while your phone is locked. These notifications are scheduled on your device; nothing is sent to us or to a push-notification service. The App asks for permission first, and you can turn notifications off in your phone's settings.</li>
+    </ul>
+
+    <h2><span class="slash">//</span> ONLINE SERVICES</h2>
+    <p>These functions work without an account. Each contacts one service, which necessarily receives your device's <strong>IP address</strong> along with the request described:</p>
+    <ul>
+      <li><strong>App updates (Expo):</strong> when the App starts, it checks for and downloads small updates to its own code from Expo's update service (650 Industries, Inc., United States). The request carries the App's version, your platform (iOS or Android), and a random installation identifier created by the update system; it contains none of your training data. Expo is certified under the EU-U.S. Data Privacy Framework, which safeguards this transfer.</li>
+      <li><strong>New-version notice (Supabase):</strong> the App asks our EU server (Supabase, Frankfurt) which App version is current, so it can tell you when a store update is available. No account or personal data is sent.</li>
+      <li><strong>Exercise and course videos (Bunny.net):</strong> exercise clips and training videos are streamed from the content-delivery network of BunnyWay d.o.o. (Slovenia, EU), which receives the request for the video you open.</li>
+      <li><strong>Place names (Apple / Google):</strong> when an imported dive session contains GPS coordinates and no location, the App asks your phone's built-in place-lookup service for the name of the place (for example "Dahab, Egypt"). The session's coordinates are sent to Apple (on iPhone) or Google (on Android) for this and are handled under their privacy policies. The App never reads where your phone is and needs no location permission. If you prefer, type the location yourself before importing, or remove the place name afterwards.</li>
+    </ul>
 
     <h2><span class="slash">//</span> ACCOUNTS</h2>
     <p>Accounts are <strong>optional</strong>: you can use the entire App without one. If you create a free account, you sign up with an email address and a password, and we store your email, a display name you choose, and a coach/athlete role flag. When you sign up you are asked to agree to this Privacy Policy and our Terms. We use <strong>Supabase</strong>, a hosting and authentication provider, to operate accounts; Supabase acts as our processor under a data-processing agreement.</p>
@@ -64,15 +104,15 @@
     <h2><span class="slash">//</span> CLOUD ACCOUNT &amp; SYNC</h2>
     <p>With an account you can use these features. They are off until you turn them on:</p>
     <ul>
-      <li><strong>Cloud backup (Pro):</strong> a copy of your logbook is stored in your account so you can restore it on a new device.</li>
-      <li><strong>Coaching:</strong> you connect with a coach (or, as a coach, with your athletes) using an invite code. While connected, a coach can assign you training plans, and the progress you choose to report (plan completions, notes, any logbook session you attach, and the PBs/goals in your athlete profile) is shared with that coach.</li>
+      <li><strong>Cloud backup (Pro):</strong> a copy of your logbook (including fitness workouts, but never cycle data) is stored in your account so you can restore it on a new device.</li>
+      <li><strong>Coaching:</strong> you connect with a coach (or, as a coach, with your athletes) using an invite code. While connected, a coach can assign you training plans, and the progress you choose to report (plan completions, notes, any logbook session you attach, and the PBs/goals in your athlete profile) is shared with that coach. If your coach records coaching fees, the agreed amount, due day and the payments your coach marks as received are stored so both of you can see them. Cycle days are shared only if you choose to (see <em>Cycle Tracking</em>).</li>
     </ul>
     <p>You control these connections and can disconnect, or delete your account, at any time, which stops further sharing. Access is enforced at the database level (row-level security): a coach can only ever see data for athletes connected to them, and never another coach's athletes.</p>
 
     <h2><span class="slash">//</span> AI ASSISTANT</h2>
     <p>The App includes an optional <strong>AI assistant</strong> that answers questions about your own logged training and dive data in natural language. It is off until you open it, and the first time you use it you are asked to give explicit consent after a short summary of how it works. How your data is handled:</p>
     <ul>
-      <li><strong>What is sent:</strong> the question you type, together with <em>aggregated</em> figures calculated on your device from your logs (for example averages, counts, and per-hold heart-rate and blood-oxygen statistics). Your raw dive logs, full depth-and-time profiles, GPS locations, and free-text notes <strong>never leave your device</strong>; only the summarised numbers needed to answer your question are sent.</li>
+      <li><strong>What is sent:</strong> the question you type, together with <em>aggregated</em> figures calculated on your device from your logs (for example averages, counts, and per-hold heart-rate and blood-oxygen statistics). Your raw dive logs, full depth-and-time profiles, GPS locations, free-text notes, and cycle data <strong>never leave your device</strong>; only the summarised numbers needed to answer your question are sent.</li>
       <li><strong>Who processes it:</strong> the request is relayed through our server to <strong>Anthropic PBC</strong> (United States), which runs the language model that generates the answer. Anthropic acts as our processor under a data-processing agreement and does <strong>not</strong> use the data to train its models.</li>
       <li><strong>International transfer:</strong> because Anthropic processes the request in the United States, using the assistant transfers your data outside the EU. This transfer is safeguarded by the EU Standard Contractual Clauses in our agreement with Anthropic. Some of the aggregated figures can relate to your health (such as heart-rate and blood-oxygen values), so we ask for your <strong>explicit consent</strong> before the feature is used.</li>
       <li><strong>Retention:</strong> Anthropic retains the request only for a limited period for security and abuse-prevention and then deletes it. We do not store your conversations on our servers; our server logs record only anonymous usage counts, never the content of your questions or answers.</li>
@@ -80,42 +120,47 @@
     </ul>
 
     <h2><span class="slash">//</span> WHERE YOUR DATA IS STORED</h2>
-    <p>On-device data never leaves your device unless you use the cloud features above. Account and cloud data is stored on Supabase servers in the <strong>European Union (Frankfurt, Germany)</strong>. The one exception is the optional AI assistant, which, when you use it, sends the data described under <em>AI Assistant</em> to Anthropic in the United States.</p>
+    <p>Your logbook, cycle data, photos and settings are stored on your device. Account and cloud data, including any cycle days you share with a coach, is stored on Supabase servers in the <strong>European Union (Frankfurt, Germany)</strong>. Data reaches the United States in three cases: the App's update check with Expo (no training data, see <em>Online Services</em>), purchase verification with RevenueCat (see <em>Purchases &amp; Subscriptions</em>), and, only when you use it, the AI assistant (see <em>AI Assistant</em>). Place-name lookups are handled by Apple or Google under their own policies.</p>
 
     <h2><span class="slash">//</span> PURCHASES &amp; SUBSCRIPTIONS</h2>
-    <p>When you buy a subscription or a one-time purchase, the transaction is processed by Apple or Google. We use RevenueCat, a subscription-management provider, to verify, deliver, and restore your purchases. For this purpose RevenueCat receives your purchase history along with an app-generated identifier and a device identifier. This information is used only to provide the features you bought. It is not used to track you across other apps or for advertising.</p>
+    <p>When you buy a subscription or a one-time purchase, the transaction is processed by Apple or Google. We use RevenueCat, a subscription-management provider, to verify, deliver, and restore your purchases. For this purpose RevenueCat receives your purchase history along with an app-generated identifier and a device identifier. This information is used only to provide the features you bought. It is not used to track you across other apps or for advertising. RevenueCat is based in the United States; the transfer is safeguarded by the EU Standard Contractual Clauses in RevenueCat's data-processing agreement with us.</p>
 
     <h2><span class="slash">//</span> ANALYTICS &amp; TRACKING</h2>
-    <p>The App uses <strong>no</strong> analytics services, advertising SDKs, or tracking pixels, and does not track you across other apps or websites. The only third parties are RevenueCat (purchases), Supabase (accounts and cloud storage, if you create an account), and Anthropic (only if you use the AI assistant), each described in this policy and used solely to provide the App.</p>
+    <p>The App uses <strong>no</strong> analytics services, advertising SDKs, or tracking pixels, and does not track you across other apps or websites. The only third parties are those described in this policy: RevenueCat (purchases), Supabase (accounts, cloud storage and the new-version notice), Expo (app updates), Bunny.net (videos), Apple or Google (place names), and Anthropic (only if you use the AI assistant). Each is used solely to provide the App.</p>
 
     <h2><span class="slash">//</span> DATA SHARING</h2>
     <p>We do not sell your data and never share it for advertising. Data is shared only as needed to provide the App:</p>
     <ul>
       <li><strong>Apple / Google &amp; RevenueCat</strong>: purchase and subscription data, to process and restore purchases.</li>
       <li><strong>Supabase</strong>: your account and cloud data, to provide accounts, cloud backup, and coaching (EU-hosted, as above).</li>
-      <li><strong>Your coach</strong>: if you connect with one, the coaching data described under <em>Cloud Account &amp; Sync</em>.</li>
+      <li><strong>Expo</strong>: technical update requests (App version, platform, installation identifier, IP address), to deliver App updates.</li>
+      <li><strong>Bunny.net</strong>: video requests and IP address, to stream exercise and course videos (EU).</li>
+      <li><strong>Apple / Google</strong>: the GPS coordinates of imported dive sessions, to look up place names.</li>
+      <li><strong>Your coach</strong>: if you connect with one, the coaching data described under <em>Cloud Account &amp; Sync</em>, and cycle days only if you choose to share them.</li>
       <li><strong>Anthropic</strong>: if you use the AI assistant, your question and the aggregated figures needed to answer it, to generate the response (United States, under Standard Contractual Clauses; see <em>AI Assistant</em>).</li>
     </ul>
 
     <h2><span class="slash">//</span> LEGAL BASIS</h2>
-    <p>Where the GDPR applies, we process your data on the basis of: providing the service you requested (Art. 6(1)(b)) for account and coaching features; your consent (Art. 6(1)(a)), which you give at sign-up and can withdraw at any time; and our legitimate interest in operating and securing the App (Art. 6(1)(f)). For the AI assistant, and specifically for any health-related figures it may include, we rely on your <strong>explicit consent</strong> (Art. 6(1)(a) and Art. 9(2)(a)), which you give before first use and can withdraw at any time by not using the feature.</p>
+    <p>Where the GDPR applies, we process your data on the basis of: providing the service you requested (Art. 6(1)(b)) for account, coaching, video and update features; your consent (Art. 6(1)(a)), which you give at sign-up and can withdraw at any time; and our legitimate interest in operating, securing and improving the usefulness of the App (Art. 6(1)(f)), which covers the new-version notice and place-name lookups. For the AI assistant, and specifically for any health-related figures it may include, and for cycle tracking and any cycle data you share with a coach, we rely on your <strong>explicit consent</strong> (Art. 6(1)(a) and Art. 9(2)(a)), which you give before first use and can withdraw at any time.</p>
 
     <h2><span class="slash">//</span> YOUR RIGHTS</h2>
     <p>You can exercise these rights at any time, directly in the App:</p>
     <ul>
-      <li><strong>Access &amp; portability:</strong> export your cloud-account data under Settings &rsaquo; Account &rsaquo; Export my data, and your on-device logbook under Settings &rsaquo; Backup &amp; Data. Exports are provided in a standard machine-readable (JSON) format.</li>
+      <li><strong>Access &amp; portability:</strong> export your cloud-account data under Settings &rsaquo; Account &rsaquo; Export my data, and your on-device logbook under Settings &rsaquo; Backup &amp; restore. Exports are provided in a standard machine-readable (JSON) format.</li>
       <li><strong>Erasure:</strong> permanently delete your account and all of its cloud data under Settings &rsaquo; Account &rsaquo; Delete account &amp; data.</li>
       <li><strong>Rectification:</strong> edit your profile and entries within the App.</li>
-      <li><strong>Withdraw consent:</strong> sign out, disconnect from a coach, or delete your account.</li>
+      <li><strong>Withdraw consent:</strong> sign out, disconnect from a coach, delete your account, stop using the AI assistant, or turn off cycle tracking or cycle sharing under Settings &rsaquo; Your body &rsaquo; Cycle tracking. Withdrawing consent does not affect processing that happened before.</li>
+      <li><strong>Object:</strong> where we rely on legitimate interest (Art. 6(1)(f)), you can object to the processing at any time (Art. 21 GDPR) by contacting us.</li>
     </ul>
     <p>You also have the right to lodge a complaint with a data-protection supervisory authority.</p>
 
     <h2><span class="slash">//</span> DATA RETENTION</h2>
-    <p>On-device data is kept until you delete it or uninstall the App. Account and cloud data is kept until you delete your account, after which it is removed from our systems. Invite codes expire automatically. When you use the AI assistant, Anthropic retains the request only briefly for security purposes (see <em>AI Assistant</em>); we do not keep your conversations.</p>
+    <p>On-device data is kept until you delete it or uninstall the App. Account and cloud data is kept until you delete your account, after which it is removed from our systems. Shared cycle days are removed from our server as soon as you stop sharing, turn cycle tracking off, or delete your cycle data. Invite codes expire automatically. When you use the AI assistant, Anthropic retains the request only briefly for security purposes (see <em>AI Assistant</em>); we do not keep your conversations. Expo and Bunny.net keep technical request logs only as long as needed to run their services.</p>
 
     <h2><span class="slash">//</span> DATA DELETION</h2>
     <ul>
       <li><strong>On-device data:</strong> delete individual sessions in the App, or uninstall the App (removes all local data).</li>
+      <li><strong>Cycle data:</strong> Settings &rsaquo; Your body &rsaquo; Cycle tracking &rsaquo; <em>Delete all cycle data</em> removes every cycle entry on your device and any copy shared with a coach.</li>
       <li><strong>Account &amp; cloud data:</strong> Settings &rsaquo; Account &rsaquo; Delete account &amp; data permanently removes your account and everything stored for it on our servers. This cannot be undone.</li>
     </ul>
 
