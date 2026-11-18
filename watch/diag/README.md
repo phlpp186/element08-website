@@ -9,7 +9,7 @@ after it measured worse on the watch, not better: idle free heap 9.5k against
 12.2k, and 2.6k after a 20-block push against 5.7k. 2.6k is below the save
 floor, so a session on that build risks dying in saveAndEnd and taking the
 session with it, which is what happened. See
-`Deeptimerapp/appstore/g1-long-plan-investigation.md` §3g.
+`Deeptimerapp/docs/research/g1-long-plan-investigation.md` §3g.
 
 What this binary carries:
 - **Free heap on every ACK**, so the phone can ask how much room there is
