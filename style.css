@@ -983,3 +983,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
   border-radius: 0 8px 8px 0;
   margin: 18px 0;
 }
+
+/* Older build notes on the install guide, folded away under the two newest. */
+.legal .install-history { margin: 18px 0; }
+.legal .install-history .faq-answer p { margin-bottom: 0; }
